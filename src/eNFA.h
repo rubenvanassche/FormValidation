@@ -47,6 +47,8 @@ public:
 
 	bool process(std::string) const;
 
+	friend std::ostream& operator<<(std::ostream&, const eNFA&);
+
 
 private:
 
