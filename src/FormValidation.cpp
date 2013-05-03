@@ -1,28 +1,30 @@
 
 #include <iostream>
 #include "eNFA.h"
+#include "RegexToNFA.h"
 
 int main() {
-	FA::alphabet sigma;
+	/*FA::alphabet sigma;
 	sigma.insert('a'); sigma.insert('b'); sigma.insert('c'); sigma.insert('d'); sigma.insert('e');
 	FA::transitions delta;
 	FA::transitionsInternal trans;
 	FA::states Q;
-	Q.push_back("1"); Q.push_back("2"); Q.push_back("3");
-	trans['a'] = &(Q[1]); trans['b'] = &(Q[0]); trans['c'] = &(Q[0]); trans['d'] = &(Q[2]); trans['e'] = &(Q[1]); trans[0] = &(Q[1]);
-	delta[&(Q[0])] = trans;
+	Q.push_back(new FA::state("1")); Q.push_back(new FA::state("2")); Q.push_back(new FA::state("3"));
+	trans['a'] = FA::stateset(1, Q[1]); trans['b'] = FA::stateset(1, Q[0]); trans['c'] = FA::stateset(1, Q[0]); trans['d'] = FA::stateset(1, Q[2]); trans['e'] = FA::stateset(1, Q[1]); trans[0] = FA::stateset(1, Q[1]);
+	delta[Q[0]] = trans;
 	trans.clear();
-	trans['d'] = &(Q[1]); trans['e'] = &(Q[0]); trans[0] = &(Q[1]);
-	delta[&(Q[1])] = trans;
+	trans['d'] = FA::stateset(1, Q[1]); trans['e'] = FA::stateset(1, Q[0]);trans['c'] = FA::stateset(1, Q[2]); trans[0] = FA::stateset(1, Q[1]);
+	delta[Q[1]] = trans;
 	trans.clear();
-	trans['a'] = &(Q[1]); trans['b'] = &(Q[2]); trans['e'] = &(Q[2]);
-	delta[&(Q[2])] = trans;
+	trans['a'] = FA::stateset(1, Q[1]); trans['b'] = FA::stateset(1, Q[2]); trans['e'] = FA::stateset(1, Q[2]);
+	delta[Q[2]] = trans;
 	trans.clear();
-	FA::startState *q0 = &(Q[0]);
+	FA::startState *q0 = Q[0];
 	FA::acceptingStates F;
-	F.insert(&Q[2]);
+	F.insert(Q[2]);
 	FA::eNFA testNFA(sigma, Q, delta, q0, F);
-	std::cout << testNFA.process("d") << std::endl;
-
-
+	std::cout << testNFA.process("ac") << std::endl;*/
+	FA::eNFA *enfa = FA::regexToNFA("a+b");
+	std::cout << *(enfa) << std::endl;
+	std::cout << "Result: " << enfa->process("a") << std::endl;
 }
