@@ -59,7 +59,12 @@ state* regexToNFAInternal(regex regEx, states& Q, transitions& delta, acceptingS
 			std::stringstream subRegExStream;
 			regex subRegEx;
 			regexit++;
-			while (*regexit != ')') {
+			int brackets = 0;
+			while (!brackets && *regexit != ')') {
+				if (*regexit == '(')
+					brackets++;
+				if (*regexit == ')')
+					brackets--;
 				subRegExStream << *regexit;
 				//std::cout << *regexit << std::endl;
 				regexit++;
@@ -91,7 +96,12 @@ state* regexToNFAInternal(regex regEx, states& Q, transitions& delta, acceptingS
 			std::stringstream subRegExStream;
 			regex subRegEx;
 			regexit++;
-			while (*regexit != ')') {
+			int brackets = 0;
+			while (!brackets && *regexit != ')') {
+				if (*regexit == '(')
+					brackets++;
+				if (*regexit == ')')
+					brackets--;
 				subRegExStream << *regexit;
 				regexit++;
 			}
