@@ -24,8 +24,52 @@ bool eNFA::process(std::string str) const {
 			currentStates.push_back(*stateit);
 			stateit++;
 		}
+		int size = currentStates.size();
+		bool moreEpsilon = 1;
+		int i = 1;
+		//std::cout << "MORE" << i << " " << size << std::endl;
+		while (moreEpsilon) {
+			moreEpsilon = 0;
+			stateit = currentStates.begin() + i;
+			for(; i < size; i++) {
+				transitionsInternal theseTransitions = delta.find(*stateit)->second;
+				std::map<symbol, stateset>::iterator transit = theseTransitions.begin();
+				while (transit != theseTransitions.end()) {
+
+					if (transit->first == 0) {
+						std::vector<state*>::iterator deltastateit = transit->second.begin();
+						while (deltastateit != transit->second.end()) {
+							//if (**deltastateit == "7") testbool = 1;
+							if (std::find(currentStates.begin(), currentStates.end(), *deltastateit) == currentStates.end()) {
+								currentStates.push_back(*deltastateit);
+								//transitionsInternal *temp = delta.find(*deltastateit)->second;
+								//if ((delta.find(*deltastateit)->second).find((char) 0) != (delta.find(*deltastateit)->second).end())
+									//moreEpsilon = 1;
+							}
+							deltastateit++;
+						}
+					}
+					transit++;
+				}
+				stateit++;
+			}
+			i = 1;
+			if (size != currentStates.size()) {
+				size = currentStates.size();
+				moreEpsilon = 1;
+			}
+			//std::cout << "MORE" << i << " " << size << std::endl;
+		}
+
 
 	}
+	/*std::cout << "CURRENTSTATES" << std::endl;
+	std::vector<state*>::iterator currentit = currentStates.begin();
+	while (currentit != currentStates.end()) {
+		std::cout << **(currentit) << std::endl;
+		currentit++;
+	}
+	std::cout << "ENDCURRENTSTATES" << std::endl;*/
 	while (inputit != str.end()) {
 		oldStates = currentStates;
 		currentStates.clear();
@@ -49,22 +93,8 @@ bool eNFA::process(std::string str) const {
 		}
 		stateit = currentStates.begin();
 		int size = currentStates.size();
-		for(int i=0; i < size; i++) {
-			transitionsInternal theseTransitions = delta.find(*stateit)->second;
-			std::map<symbol, stateset>::iterator transit = theseTransitions.begin();
-			while (transit != theseTransitions.end()) {
-
-				if (transit->first == 0) {
-					std::vector<state*>::iterator deltastateit = transit->second.begin();
-					while (deltastateit != transit->second.end()) {
-						currentStates.push_back(*deltastateit);
-						deltastateit++;
-					}
-				}
-				transit++;
-			}
-			stateit++;
-		}
+		bool moreEpsilon = 1;
+		int i = 0;
 		/*std::cout << "CURRENTSTATES" << std::endl;
 		std::vector<state*>::iterator currentit = currentStates.begin();
 		while (currentit != currentStates.end()) {
@@ -72,6 +102,33 @@ bool eNFA::process(std::string str) const {
 			currentit++;
 		}
 		std::cout << "ENDCURRENTSTATES" << std::endl;*/
+		while (moreEpsilon) {
+			moreEpsilon = 0;
+			stateit = currentStates.begin() + i;
+			for(; i < size; i++) {
+				transitionsInternal theseTransitions = delta.find(*stateit)->second;
+				std::map<symbol, stateset>::iterator transit = theseTransitions.begin();
+				while (transit != theseTransitions.end()) {
+
+					if (transit->first == 0) {
+						std::vector<state*>::iterator deltastateit = transit->second.begin();
+						while (deltastateit != transit->second.end()) {
+							currentStates.push_back(*deltastateit);
+							//transitionsInternal *temp = delta.find(*deltastateit)->second;
+							if ((delta.find(*deltastateit)->second).find((char) 0) != (delta.find(*deltastateit)->second).end())
+								moreEpsilon = 1;
+							deltastateit++;
+						}
+					}
+					transit++;
+				}
+				stateit++;
+			}
+			i = size;
+			size = currentStates.size();
+			//std::cout << "ENDMORE " << i << " " << size << std::endl;
+		}
+
 
 		inputit++;
 

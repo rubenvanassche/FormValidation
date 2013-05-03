@@ -16,14 +16,14 @@
 namespace FA {
 
 
-eNFA* regexToNFA(regex);
+eNFA* regexToNFA(regex, bool=0);
 
-void generateOr(char, char, states&, transitions&, int&);
-
-
-void generateConcatenation(char, char, states&, transitions&, int&);
+state* generateOr(char, char, states&, transitions&, int&, state*, bool);
 
 
-void generateKleene(char, states&, transitions&, int&);
+state* generateConcatenation(char, char, states&, transitions&, int&, state*, bool);
+
+
+state* generateKleene(char, states&, transitions&, int&, state*);
 }
 #endif /* REGEXTONFA_H_ */
