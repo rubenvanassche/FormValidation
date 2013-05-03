@@ -154,4 +154,51 @@ int main() {
 	std::cout << "Result for abbbbbbbb: " << enfa9->process("abbbbbbbb") << std::endl;
 	std::cout << "Result for bbbbbbbb: " << enfa9->process("bbbbbbbb") << std::endl;
 
+	FA::eNFA *enfa10 = FA::regexToNFA("a+(bc)");
+	//std::cout << *enfa10 << std::endl;
+	std::cout << "Regex 'a+(bc)'" << std::endl;
+	std::cout << "Result for empty: " << enfa10->process("") << std::endl;
+	std::cout << "Result for a: " << enfa10->process("a") << std::endl;
+	std::cout << "Result for b: " << enfa10->process("b") << std::endl;
+	std::cout << "Result for ab: " << enfa10->process("ab") << std::endl;
+	std::cout << "Result for ba: " << enfa10->process("ba") << std::endl;
+	std::cout << "Result for ac: " << enfa10->process("ac") << std::endl;
+	std::cout << "Result for ca: " << enfa10->process("ca") << std::endl;
+	std::cout << "Result for bc: " << enfa10->process("bc") << std::endl;
+	std::cout << "Result for cb: " << enfa10->process("cb") << std::endl;
+	std::cout << "Result for abc: " << enfa10->process("abc") << std::endl;
+
+
+	FA::eNFA *enfa11 = FA::regexToNFA("a(b+c)");
+	//std::cout << *enfa11 << std::endl;
+	std::cout << "Regex 'a(b+c)'" << std::endl;
+	std::cout << "Result for empty: " << enfa11->process("") << std::endl;
+	std::cout << "Result for a: " << enfa11->process("a") << std::endl;
+	std::cout << "Result for b: " << enfa11->process("b") << std::endl;
+	std::cout << "Result for ab: " << enfa11->process("ab") << std::endl;
+	std::cout << "Result for ba: " << enfa11->process("ba") << std::endl;
+	std::cout << "Result for ac: " << enfa11->process("ac") << std::endl;
+	std::cout << "Result for ca: " << enfa11->process("ca") << std::endl;
+	std::cout << "Result for bc: " << enfa11->process("bc") << std::endl;
+	std::cout << "Result for cb: " << enfa11->process("cb") << std::endl;
+	std::cout << "Result for abc: " << enfa11->process("abc") << std::endl;
+
+	FA::eNFA *enfa12 = FA::regexToNFA("(a+b)*");
+	//std::cout << *enfa12 << std::endl;
+	std::cout << "Regex '(a+b)*'" << std::endl;
+	std::cout << "Result for empty: " << enfa12->process("") << std::endl;
+	std::cout << "Result for a: " << enfa12->process("a") << std::endl;
+	std::cout << "Result for b: " << enfa12->process("b") << std::endl;
+	std::cout << "Result for ab: " << enfa12->process("ab") << std::endl;
+	std::cout << "Result for aab: " << enfa12->process("aab") << std::endl;
+	std::cout << "Result for abb: " << enfa12->process("abb") << std::endl;
+	std::cout << "Result for aa: " << enfa12->process("aa") << std::endl;
+	std::cout << "Result for aaaaaaaa: " << enfa12->process("aaaaaaaa") << std::endl;
+	std::cout << "Result for aaaaaaaab: " << enfa12->process("aaaaaaaab") << std::endl;
+	std::cout << "Result for abbbbbbbb: " << enfa12->process("abbbbbbbb") << std::endl;
+	std::cout << "Result for bbbbbbbb: " << enfa12->process("bbbbbbbb") << std::endl;
+	std::cout << "Result for abaabaaabbbbabbaba: " << enfa12->process("abaabaaabbbbabbaba") << std::endl;
+	std::cout << "Result for c: " << enfa12->process("c") << std::endl;
+	std::cout << "Result for ca: " << enfa12->process("ca") << std::endl;
+	std::cout << "Result for ac: " << enfa12->process("ac") << std::endl;
 }

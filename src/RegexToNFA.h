@@ -16,14 +16,23 @@
 namespace FA {
 
 
-eNFA* regexToNFA(regex, bool=0);
-
-state* generateOr(char, char, states&, transitions&, int&, state*, bool);
+eNFA* regexToNFA(regex);
 
 
-state* generateConcatenation(char, char, states&, transitions&, int&, state*, bool);
+state* regexToNFAInternal(regex, states&, transitions&, acceptingStates&, bool=1);
 
 
-state* generateKleene(char, states&, transitions&, int&, state*);
+state* generateOr(char, char, states&, transitions&, int&, state*, bool,
+		          states&, transitions&, state*, acceptingStates&,
+		          states&, transitions&, state*, acceptingStates&);
+
+
+state* generateConcatenation(char, char, states&, transitions&, int&, state*, bool,
+                             states&, transitions&, state*, acceptingStates&,
+                             states&, transitions&, state*, acceptingStates&);
+
+
+state* generateKleene(char, states&, transitions&, int&, state*,
+					  states&, transitions&, state*, acceptingStates&);
 }
 #endif /* REGEXTONFA_H_ */
