@@ -45,13 +45,13 @@ eNFA* regexToNFA(regex regEx) {
 			}
 		}
 		if (regExOperator == '*')
-			/*generateKleene()*/;
+			generateKleene(char1, Q, delta, stateCount);
 		else
 			char2 = (char) *regexit;
 		if (regExOperator == '+')
 			generateOr(char1, char2, Q, delta, stateCount);
 		else if (regExOperator == '.')
-			/*generateConcatenation()*/;
+			generateConcatenation(char1, char2, Q, delta, stateCount);
 		regexit++;
 
 
@@ -104,5 +104,63 @@ void generateOr(char char1, char char2, states& Q, transitions& delta, int& stat
 	}
 }
 
+void generateConcatenation(char char1, char char2, states& Q, transitions& delta, int& stateCount) {
+	transitionsInternal deltaInt;
+	if (char1 != 0) {
+		for (int i=0; i < 4; i++) {
+			Q.push_back(new state(static_cast<std::ostringstream*>( &(std::ostringstream() << stateCount) )->str()));
+			stateCount++;
+		}
+		int size = Q.size();
+		stateset targetStates;
+		targetStates.push_back(Q[size -3]);
+		deltaInt[char1] = targetStates;
+		targetStates.clear();
+		delta[Q[size - 4]] = deltaInt;
+		deltaInt.clear();
+		targetStates.push_back(Q[size -2]);
+		deltaInt[0] = targetStates;
+		targetStates.clear();
+		delta[Q[size - 3]] = deltaInt;
+		deltaInt.clear();
+		targetStates.push_back(Q[size -1]);
+		deltaInt[char2] = targetStates;
+		targetStates.clear();
+		delta[Q[size - 2]] = deltaInt;
+		deltaInt.clear();
+		delta[Q[size - 1]] = deltaInt;
+	}
+
+}
+
+void generateKleene(char char1, states& Q, transitions& delta, int& stateCount) {
+	transitionsInternal deltaInt;
+	if (char1 != 0) {
+		for (int i=0; i < 4; i++) {
+			Q.push_back(new state(static_cast<std::ostringstream*>( &(std::ostringstream() << stateCount) )->str()));
+			stateCount++;
+		}
+		int size = Q.size();
+		stateset targetStates;
+		targetStates.push_back(Q[size -1]);
+		targetStates.push_back(Q[size -3]);
+		deltaInt[0] = targetStates;
+		targetStates.clear();
+		delta[Q[size - 4]] = deltaInt;
+		deltaInt.clear();
+		targetStates.push_back(Q[size -2]);
+		deltaInt[char1] = targetStates;
+		targetStates.clear();
+		delta[Q[size - 3]] = deltaInt;
+		deltaInt.clear();
+		targetStates.push_back(Q[size -1]);
+		targetStates.push_back(Q[size -3]);
+		deltaInt[0] = targetStates;
+		targetStates.clear();
+		delta[Q[size - 2]] = deltaInt;
+		deltaInt.clear();
+		delta[Q[size - 1]] = deltaInt;
+	}
+}
 
 }
