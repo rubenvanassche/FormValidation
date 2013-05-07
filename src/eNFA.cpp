@@ -9,8 +9,6 @@
 
 namespace FA {
 
-eNFA::eNFA() {}
-
 eNFA::eNFA(alphabet alphabet_, states states_, transitions transitions_,startState* start_, acceptingStates accepting_) :
 			sigma(alphabet_), Q(states_), delta(transitions_), q0(start_), F(accepting_) {}
 
@@ -20,7 +18,7 @@ bool eNFA::process(std::string str) const {
 	std::vector<state*> oldStates;
 	currentStates.push_back(q0);
 	transitionsInternal initialTransitions = delta.find(q0)->second;
-	if (initialTransitions.find((char) 0) != initialTransitions.end()) {       //e-transitions from q0?
+	if (initialTransitions.find((char) 0) != initialTransitions.end()) {
 		stateset::iterator stateit = initialTransitions[(char) 0].begin();
 		while (stateit != initialTransitions[(char) 0].end()) {
 			currentStates.push_back(*stateit);
@@ -29,9 +27,10 @@ bool eNFA::process(std::string str) const {
 		int size = currentStates.size();
 		bool moreEpsilon = 1;
 		int i = 1;
-		while (moreEpsilon) {              //more e-transitions to go?
+		//std::cout << "MORE" << i << " " << size << std::endl;
+		while (moreEpsilon) {
 			moreEpsilon = 0;
-			stateit = currentStates.begin() + i;    //dont't check twice
+			stateit = currentStates.begin() + i;
 			for(; i < size; i++) {
 				transitionsInternal theseTransitions = delta.find(*stateit)->second;
 				std::map<symbol, stateset>::iterator transit = theseTransitions.begin();
@@ -55,7 +54,7 @@ bool eNFA::process(std::string str) const {
 				stateit++;
 			}
 			i = 1;
-			if (size != currentStates.size()) {    //Another round?
+			if (size != currentStates.size()) {
 				size = currentStates.size();
 				moreEpsilon = 1;
 			}
@@ -75,7 +74,7 @@ bool eNFA::process(std::string str) const {
 		oldStates = currentStates;
 		currentStates.clear();
 		std::vector<state*>::iterator stateit = oldStates.begin();
-		while (stateit != oldStates.end()) {                                   //Regular transitions
+		while (stateit != oldStates.end()) {
 			transitionsInternal theseTransitions = delta.find(*stateit)->second;
 			std::map<symbol, stateset>::iterator transit = theseTransitions.begin();
 			while (transit != theseTransitions.end()) {
@@ -103,7 +102,7 @@ bool eNFA::process(std::string str) const {
 			currentit++;
 		}
 		std::cout << "ENDCURRENTSTATES" << std::endl;*/
-		while (moreEpsilon) {                               //Check for e-transitions, same method as before
+		while (moreEpsilon) {
 			moreEpsilon = 0;
 			stateit = currentStates.begin() + i;
 			for(; i < size; i++) {
@@ -114,8 +113,7 @@ bool eNFA::process(std::string str) const {
 					if (transit->first == 0) {
 						std::vector<state*>::iterator deltastateit = transit->second.begin();
 						while (deltastateit != transit->second.end()) {
-							if (find(currentStates.begin(), currentStates.end(), *deltastateit) == currentStates.end())
-								currentStates.push_back(*deltastateit);
+							currentStates.push_back(*deltastateit);
 							//transitionsInternal *temp = delta.find(*deltastateit)->second;
 							if ((delta.find(*deltastateit)->second).find((char) 0) != (delta.find(*deltastateit)->second).end())
 								moreEpsilon = 1;
@@ -137,7 +135,7 @@ bool eNFA::process(std::string str) const {
 	}
 
 
-	std::vector<state*>::iterator stateit = currentStates.begin();    //Any of the accepting states in the final states?
+	std::vector<state*>::iterator stateit = currentStates.begin();
 	while (stateit != currentStates.end()) {
 		//std::cout << "State: " << **(stateit) << std::endl;
 		if (F.find(*stateit) != F.end())
@@ -147,6 +145,38 @@ bool eNFA::process(std::string str) const {
 	return false;
 }
 
+stateset eNFA::eclose(state& workingState){
+	stateset states;
+
+	std::map<state*, transitionsInternal>::iterator itTransitions;
+	for(itTransitions = delta.begin();itTransitions  != delta.end();itTransitions++){
+		if(itTransitions->first == &workingState){
+			// now get the transitions for this state
+			std::map<symbol, stateset>::iterator itSet;
+			for(itSet = itTransitions->second.begin();itSet != itTransitions->second.end();itSet++){
+				if(itSet->first == '0'){
+					for(int i = 0; i < itSet->second.size();i++){
+						stateset newstates = this->eclose(*itSet->second.at(i));
+						// check for each state in newstates if there is an equivalent in states if not add the current state to states
+						for(int j = 0; j < newstates.size();j++){
+							for(int k = 0;k < states.size();k++){
+								bool inStates = false;
+								if(newstates.at(j) == states.at(k)){
+									inStates = true;
+								}
+
+								if(inStates == false){
+									states.push_back(states.at(k));
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+
+}
 
 std::ostream& operator<<(std::ostream& os, const eNFA& enfa) {
 	os << "Alphabet: ";
@@ -166,10 +196,10 @@ std::ostream& operator<<(std::ostream& os, const eNFA& enfa) {
 	transitions theTransitions = enfa.delta;
 	transitions::iterator transit = theTransitions.begin();
 	while (transit != theTransitions.end()) {
-		std::cout << "State " <<  *(transit->first) << std::endl;;
+		std::cout << "State " <<  *(transit->first) << " ";
 		transitionsInternal::iterator transintit = transit->second.begin();
 		while (transintit != transit->second.end()) {
-			std::cout << "    via " << transintit->first << " to";
+			std::cout << "via " << transintit->first << " to";
 			stateset::iterator stateit = transintit->second.begin();
 			while (stateit != transintit->second.end()) {
 				std::cout << " " << **(stateit);
@@ -192,266 +222,5 @@ std::ostream& operator<<(std::ostream& os, const eNFA& enfa) {
 	return os;
 }
 
-
-
-eNFA generateNFA(std::string filename) {          //Input file to eNFA
-	std::ifstream file(filename.c_str());
-	std::string line;
-	alphabet sigma;
-	states Q;
-	std::map<std::string, int> tempQ;
-	transitions delta;
-	state* q0;
-	acceptingStates F;
-	//std::cout << "Alphabet" << std::endl;
-	std::getline(file, line);
-	std::string::iterator lineit = line.begin();
-	//std::cout << line << std::endl;
-	while (lineit != line.end()) {
-		if (*lineit != ' ' && *lineit != '_' && sigma.find(*lineit) == sigma.end())
-			sigma.insert(*lineit);
-		else {
-			std::cout << "Invalid input in alphabet" << std::endl;
-			return eNFA();
-		}
-		lineit++;
-		if (lineit == line.end()) break;
-		else if (*lineit != ' ') {
-			std::cout << "Invalid input in alphabet" << std::endl;
-			return eNFA();
-		}
-		lineit++;
-		//std::cout << "Invalid input in alphabet" << std::endl;
-		//return eNFA();
-
-
-	}
-	//std::cout << "States" << std::endl;
-	std::getline(file, line);
-	if (!line.empty()) {
-		std::cout << "Missing blank line" << std::endl;
-		return eNFA();
-	}
-	//std::cout << line << std::endl;
-	std::getline(file, line);
-	int i = 0;
-	//std::cout << line << std::endl;
-	lineit = line.begin();
-	while (lineit != line.end()) {
-		std::stringstream namestream;
-		std::string name;
-		while (*lineit != ' ' && lineit != line.end()) {
-			namestream << *lineit;
-			lineit++;
-		}
-		name = namestream.str();
-		//std::cout << name << std::endl;
-		//std::cin >> i;
-		if (name !=  "" && tempQ.find(name) == tempQ.end()) {
-			Q.push_back(new state(name));
-			tempQ[name] = i;
-			i++;
-		}
-		else {
-			std::cout << "Invalid state in states" << std::endl;
-			return eNFA();
-		}
-		if (lineit == line.end()) break;
-		if (*lineit == ' ') {
-			lineit++;
-			continue;
-		}
-		std::cout << "Invalid input in states" << std::endl;
-		return eNFA();
-
-
-	}
-	//std::cout << "transitions" << std::endl;
-	std::getline(file, line);
-	if (!line.empty()) {
-		std::cout << "Missing blank line" << std::endl;
-		return eNFA();
-	}
-	transitionsInternal deltaInt;
-	stateset stateSet;
-	std::string state = "";
-	std::getline(file, line);
-	while (!line.empty()) {
-		//std::cout << "LINE" << line << std::endl;
-		std::stringstream namestream;
-		std::string thisState;
-		std::string word;
-		std::string targetState;
-		lineit = line.begin();
-		while (*lineit != ' ' && lineit != line.end()) {
-			namestream << *lineit;
-			lineit++;
-		}
-		thisState = namestream.str();
-		namestream.str("");
-		if (state.empty()) state = thisState;
-		if (tempQ.find(thisState) == tempQ.end()) {
-			std::cout << "Invalid state name in transition" << std::endl;
-			return eNFA();
-		}
-		if (thisState != state) {
-			int pos = tempQ[state];
-			delta[Q[pos]] = deltaInt;
-			deltaInt.clear();
-			state = thisState;
-		}
-		lineit++;
-		while (*lineit != ' ' && lineit != line.end()) {
-			namestream << *lineit;
-			lineit++;
-		}
-		word = namestream.str();
-		namestream.str("");
-		if (word != "via") {
-			std::cout << "Missing 'via'" << std::endl;
-			return eNFA();
-		}
-		lineit++;
-		if (*lineit != '_' && sigma.find(*lineit) == sigma.end()) {
-			std::cout << "Character not in alphabet" << std::endl;
-			return eNFA();
-		}
-		char c = *lineit;
-		lineit++;
-		lineit++;
-		while (*lineit != ' ' && lineit != line.end()) {
-			namestream << *lineit;
-			lineit++;
-		}
-		word = namestream.str();
-		namestream.str("");
-		if (word != "to") {
-			std::cout << "Missing 'to'" << std::endl;
-			return eNFA();
-		}
-		lineit++;
-		while (lineit != line.end()) {
-			while (lineit != line.end() && *lineit != ' ') {
-				namestream << *lineit;
-				lineit++;
-			}
-			targetState = namestream.str();
-			namestream.str("");
-			int pos = tempQ[targetState];
-
-			//deltaInt[Q[tempQ.find(name)]] =
-			stateSet.push_back(Q[pos]);
-			if (lineit != line.end()) lineit++;
-		}
-		if (c == '_') deltaInt[0] = stateSet;
-		else deltaInt[c] = stateSet;
-		stateSet.clear();
-
-		std::getline(file, line);
-	}
-	int pos = tempQ[state];
-	delta[Q[pos]] = deltaInt;
-	deltaInt.clear();
-
-	std::getline(file, line);
-	if (tempQ.find(line) == tempQ.end()) {
-		std::cout << "Invalid start state" << std::endl;
-		return eNFA();
-	}
-	q0 = Q[0];
-
-	std::getline(file, line);
-	if (!line.empty()) {
-		std::cout << "Missing blank line" << std::endl;
-		return eNFA();
-	}
-
-	std::getline(file, line);
-	lineit = line.begin();
-	std::stringstream namestream;
-	while (lineit != line.end()) {
-		while (*lineit != ' ' && lineit != line.end()) {
-			namestream << *lineit;
-			lineit++;
-		}
-		state = namestream.str();
-		namestream.str("");
-		if (tempQ.find(state) == tempQ.end()) {
-			std::cout << "Invalid accepting state" << std::endl;
-			return eNFA();
-		}
-		int pos = tempQ[state];
-		F.insert(Q[pos]);
-		if (lineit != line.end()) lineit++;
-	}
-	//std::cout << "Generated" << std::endl;
-	return eNFA(sigma, Q, delta, q0, F);
-
-}
-
-void eNFA::toFile(std::string filename) {   //Save eNFA to file, can be read again
-	std::ofstream file(filename.c_str());
-	alphabet::iterator alphit = sigma.begin();
-	int size = sigma.size();
-	int i = 0;
-	while (alphit != sigma.end()) {
-		i++;
-		file << *alphit;
-		if (i != size)
-			file << ' ';
-		alphit++;
-	}
-	file << std::endl << std::endl;
-	states::iterator stateit = Q.begin();
-	size = Q.size();
-	i = 0;
-	while (stateit != Q.end()) {
-		i++;
-		file << **stateit;
-		if (i != size)
-			file << ' ';
-		stateit++;
-	}
-	file << std::endl << std::endl;
-
-	transitions::iterator transit = delta.begin();
-	while (transit != delta.end()) {
-		transitionsInternal::iterator transintit = transit->second.begin();
-		while (transintit != transit->second.end()) {
-			if (transintit->first != 0)
-				file << *(transit->first) << " via " << (transintit->first) << " to ";
-			else
-				file << *(transit->first) << " via _ to ";
-			states::iterator targetStatesit = transintit->second.begin();
-			while (targetStatesit != transintit->second.end()) {
-				file << **targetStatesit;
-				if (targetStatesit + 1 != transintit->second.end())
-					file << ' ';
-				targetStatesit++;
-			}
-			file << std::endl;
-			transintit++;
-		}
-		transit++;
-	}
-	file << std::endl;
-
-	file << *q0 << std::endl << std::endl;
-
-	acceptingStates::iterator acceptit = F.begin();
-	size = F.size();
-	i = 0;
-	while (acceptit != F.end()) {
-		i++;
-		file << **acceptit;
-		if (i != size)
-			file << ' ';
-		acceptit++;
-	}
-	file << std::endl;
-
-
-
-}
 
 }
