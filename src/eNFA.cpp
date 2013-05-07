@@ -20,7 +20,7 @@ bool eNFA::process(std::string str) const {
 	std::vector<state*> oldStates;
 	currentStates.push_back(q0);
 	transitionsInternal initialTransitions = delta.find(q0)->second;
-	if (initialTransitions.find((char) 0) != initialTransitions.end()) {
+	if (initialTransitions.find((char) 0) != initialTransitions.end()) {       //e-transitions from q0?
 		stateset::iterator stateit = initialTransitions[(char) 0].begin();
 		while (stateit != initialTransitions[(char) 0].end()) {
 			currentStates.push_back(*stateit);
@@ -29,10 +29,9 @@ bool eNFA::process(std::string str) const {
 		int size = currentStates.size();
 		bool moreEpsilon = 1;
 		int i = 1;
-		//std::cout << "MORE" << i << " " << size << std::endl;
-		while (moreEpsilon) {
+		while (moreEpsilon) {              //more e-transitions to go?
 			moreEpsilon = 0;
-			stateit = currentStates.begin() + i;
+			stateit = currentStates.begin() + i;    //dont't check twice
 			for(; i < size; i++) {
 				transitionsInternal theseTransitions = delta.find(*stateit)->second;
 				std::map<symbol, stateset>::iterator transit = theseTransitions.begin();
@@ -56,7 +55,7 @@ bool eNFA::process(std::string str) const {
 				stateit++;
 			}
 			i = 1;
-			if (size != currentStates.size()) {
+			if (size != currentStates.size()) {    //Another round?
 				size = currentStates.size();
 				moreEpsilon = 1;
 			}
@@ -76,7 +75,7 @@ bool eNFA::process(std::string str) const {
 		oldStates = currentStates;
 		currentStates.clear();
 		std::vector<state*>::iterator stateit = oldStates.begin();
-		while (stateit != oldStates.end()) {
+		while (stateit != oldStates.end()) {                                   //Regular transitions
 			transitionsInternal theseTransitions = delta.find(*stateit)->second;
 			std::map<symbol, stateset>::iterator transit = theseTransitions.begin();
 			while (transit != theseTransitions.end()) {
@@ -104,7 +103,7 @@ bool eNFA::process(std::string str) const {
 			currentit++;
 		}
 		std::cout << "ENDCURRENTSTATES" << std::endl;*/
-		while (moreEpsilon) {
+		while (moreEpsilon) {                               //Check for e-transitions, same method as before
 			moreEpsilon = 0;
 			stateit = currentStates.begin() + i;
 			for(; i < size; i++) {
@@ -138,7 +137,7 @@ bool eNFA::process(std::string str) const {
 	}
 
 
-	std::vector<state*>::iterator stateit = currentStates.begin();
+	std::vector<state*>::iterator stateit = currentStates.begin();    //Any of the accepting states in the final states?
 	while (stateit != currentStates.end()) {
 		//std::cout << "State: " << **(stateit) << std::endl;
 		if (F.find(*stateit) != F.end())
@@ -195,7 +194,7 @@ std::ostream& operator<<(std::ostream& os, const eNFA& enfa) {
 
 
 
-eNFA generateNFA(std::string filename) {
+eNFA generateNFA(std::string filename) {          //Input file to eNFA
 	std::ifstream file(filename.c_str());
 	std::string line;
 	alphabet sigma;
@@ -390,7 +389,7 @@ eNFA generateNFA(std::string filename) {
 
 }
 
-void eNFA::toFile(std::string filename) {
+void eNFA::toFile(std::string filename) {   //Save eNFA to file, can be read again
 	std::ofstream file(filename.c_str());
 	alphabet::iterator alphit = sigma.begin();
 	int size = sigma.size();

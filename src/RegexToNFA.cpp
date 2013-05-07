@@ -16,20 +16,38 @@ eNFA* regexToNFA(regex regEx) {
 	transitionsInternal deltaInt;
 	startState *q0 = 0;
 	acceptingStates F;
+	bool hasEpsilon = false;
 	std::string::iterator regexit = regEx.begin();
 	while (regexit != regEx.end()) {
-		if (*regexit != '(' && *regexit != ')' && *regexit != '+' && *regexit != '.' && *regexit != '*'
+		if (*regexit != '(' && *regexit != ')' && *regexit != '+' && *regexit != '.' && *regexit != '*' && *regexit != '_'
 			&& sigma.find((char)*regexit) == sigma.end())
 			sigma.insert((char)*regexit);
+		else if (*regexit == '_')
+			hasEpsilon = true;
 		regexit++;
 	}
 	q0 = regexToNFAInternal(regEx, Q, delta, F, 0);
+
+	if (hasEpsilon) {    //Replaces all '_' with epsilon
+		transitions::iterator transit = delta.begin();
+		while (transit != delta.end()) {
+			transitionsInternal::iterator transintit = transit->second.find('_');
+			if (transintit != transit->second.end()) {
+				std::swap(transit->second[0], transintit->second);
+				transit->second.erase(transintit);
+			}
+			transit++;
+		}
+	}
 
 	return new eNFA(sigma, Q, delta, q0, F);
 
 }
 
 state* regexToNFAInternal(regex regEx, states& Q, transitions& delta, acceptingStates& F, bool recursion) {
+	//std::cout << "RegEx: "<< regEx << std::endl;
+	//int testint;
+	//std::cin >> testint;
 	std::string::iterator regexit = regEx.begin();
 	bool upcomingConcat = 0;
 	bool upcomingKleene = 0;
@@ -51,6 +69,8 @@ state* regexToNFAInternal(regex regEx, states& Q, transitions& delta, acceptingS
 	char char2;
 	char regExOperator;
 	while (regexit != regEx.end()) {
+		//if (!recursion)
+			//std::cout << "Letter " << *regexit << std::endl;
 		if (*regexit != '(' && *regexit != ')' && *regexit != '+' && *regexit != '.' && *regexit != '*' && !upcomingConcat) {
 			char1 = (char) *regexit;
 			regexit++;
@@ -60,18 +80,22 @@ state* regexToNFAInternal(regex regEx, states& Q, transitions& delta, acceptingS
 			regex subRegEx;
 			regexit++;
 			int brackets = 0;
-			while (!brackets && *regexit != ')') {
+			while (brackets || *regexit != ')') {
 				if (*regexit == '(')
 					brackets++;
-				if (*regexit == ')')
+				else if (*regexit == ')')
 					brackets--;
 				subRegExStream << *regexit;
-				//std::cout << *regexit << std::endl;
+				//std::cout << brackets << " "<<  subRegExStream.str() << std::endl;
+				//int testint;
+				//std::cin >> testint;
 				regexit++;
 			}
 			regexit++;
 			//std::cout << *regexit << std::endl;
 			subRegEx = subRegExStream.str();
+			//if (subRegEx == "(")
+				//std::cout << "A WRONG";
 			//std::cout << subRegExStream.str() << std::endl;
 			//std::cin >> char1;
 			//std::cout << subRegEx << std::endl;
@@ -89,15 +113,16 @@ state* regexToNFAInternal(regex regEx, states& Q, transitions& delta, acceptingS
 			}
 		}
 		upcomingConcat = 0;
-		upcomingKleene =  (*(regexit+1) == '*');
-		if (regExOperator == '*')
+		if (regExOperator == '*') {
+			//std::cout << "KLEENE: " << regEx << std::endl;
 			q0 = generateKleene(char1, Q, delta, stateCount, q0, Qa, deltaa, q0a, Fa);
+		}
 		else if (*regexit == '(') {
 			std::stringstream subRegExStream;
 			regex subRegEx;
 			regexit++;
 			int brackets = 0;
-			while (!brackets && *regexit != ')') {
+			while (brackets || *regexit != ')') {
 				if (*regexit == '(')
 					brackets++;
 				if (*regexit == ')')
@@ -106,13 +131,18 @@ state* regexToNFAInternal(regex regEx, states& Q, transitions& delta, acceptingS
 				regexit++;
 			}
 			regexit++;
+			upcomingKleene = (*regexit == '*');
 			subRegEx = subRegExStream.str();
 			q0b = regexToNFAInternal(subRegEx, Qb, deltab, Fb);
 
 
 		}
-		else
+		else {
 			char2 = (char) *regexit;
+			upcomingKleene =  (*(regexit+1) == '*');
+		}
+
+		//std::cout << upcomingKleene << std::endl;
 		if (regExOperator == '+')
 			q0 = generateOr(char1, char2, Q, delta, stateCount, q0, upcomingKleene, Qa, deltaa, q0a, Fa, Qb, deltab, q0b, Fb);
 		else if (regExOperator == '.') {
@@ -123,15 +153,18 @@ state* regexToNFAInternal(regex regEx, states& Q, transitions& delta, acceptingS
 		if (upcomingKleene)
 			regexit++;
 		upcomingKleene = 0;
+
 		if (regexit != regEx.end())
 			regexit++;
-		if (*regexit != '(' && *regexit != ')' && *regexit != '+' && *regexit != '.' && *regexit != '*')
+		//std::cout << regEx << " " << *regexit << " " << (regexit == regEx.end()) << std::endl;
+		if (*regexit != ')' && *regexit != '+' && *regexit != '.' && *regexit != '*')
 			upcomingConcat = 1;
 
 
 	}
-	F.insert(Q[Q.size() - 1]); //Change?
+	F.insert(Q[Q.size() - 1]);
 	//std::cout << *(F.begin()) << std::endl;
+	//std::cout << "Finished " << regEx << std::endl;
 	return q0;
 
 }
@@ -152,6 +185,10 @@ state* generateOr(char char1, char char2, states& Q, transitions& delta, int& st
 			transit++;
 		}
 	}
+
+	if (kleene)
+		generateKleene(char2, Q, delta, stateCount, q0, Qb, deltab, q0b, Fb);
+
 	if (Qb.size()) {
 		states::iterator stateit = Qb.begin();
 		while (stateit != Qb.end()) {
@@ -164,8 +201,6 @@ state* generateOr(char char1, char char2, states& Q, transitions& delta, int& st
 			transit++;
 		}
 	}
-	if (kleene)
-		generateKleene(char2, Q, delta, stateCount, q0, Qb, deltab, q0b, Fb);
 	transitionsInternal deltaInt;
 	for (int i=0; i < 6; i++) {
 		Q.push_back(new state(static_cast<std::ostringstream*>( &(std::ostringstream() << stateCount) )->str()));
@@ -271,6 +306,18 @@ state* generateConcatenation(char char1, char char2, states& Q, transitions& del
 			transit++;
 		}
 	}
+	if (kleene) {
+		states Qtemp;
+		transitions deltatemp;
+		state *q0temp = 0;
+		acceptingStates Ftemp;
+		if (char2)
+			generateKleene(char2, Q, delta, stateCount, q0, Qtemp, deltatemp, q0temp, Ftemp);
+		else {
+			q0b = generateKleene(char2, Q, delta, stateCount, q0, Qb, deltab, q0b, Fb, 1);
+		}
+
+	}
 	if (Qb.size()) {
 		states::iterator stateit = Qb.begin();
 		while (stateit != Qb.end()) {
@@ -279,17 +326,13 @@ state* generateConcatenation(char char1, char char2, states& Q, transitions& del
 		}
 		transitions::iterator transit = deltab.begin();
 		while (transit != deltab.end()) {
+			std::cout << "Copying delta for " << *(transit->first) << std::endl;
 			delta.insert(*transit);
 			transit++;
 		}
 	}
-	if (kleene) {
-		states Qtemp;
-		transitions deltatemp;
-		state *q0temp = 0;
-		acceptingStates Ftemp;
-		generateKleene(char2, Q, delta, stateCount, q0, Qtemp, deltatemp, q0temp, Ftemp);
-	}
+	//std::cout << "SIZES " << Qa.size() << " " << Qb.size() << " "<< q0b << std::endl;
+
 	transitionsInternal deltaInt;
 	for (int i=0; i < 4; i++) {
 		Q.push_back(new state(static_cast<std::ostringstream*>( &(std::ostringstream() << stateCount) )->str()));
@@ -336,16 +379,31 @@ state* generateConcatenation(char char1, char char2, states& Q, transitions& del
 	delta[Q[size - 3]] = deltaInt;
 	deltaInt.clear();
 	if (Qb.size()) {
-		targetStates.push_back(q0b);
-		deltaInt[0] = targetStates;
-		targetStates.clear();
-		delta[Q[size - 2]] = deltaInt;
-		deltaInt.clear();
-		targetStates.push_back(Q[size - 1]);
-		deltaInt[0] = targetStates;
-		targetStates.clear();
-		delta[(*Fb.begin())] = deltaInt;
-		deltaInt.clear();
+		if (kleene) {
+			targetStates.push_back(q0b);
+			deltaInt[0] = targetStates;
+			targetStates.clear();
+			delta[Q[size - 2]] = deltaInt;
+			deltaInt.clear();
+			targetStates.push_back(Q[size - 1]);
+			deltaInt[0] = targetStates;
+			targetStates.clear();
+			std::cout << *(*Fb.begin()) << std::endl;
+			delta[(*Fb.begin())] = deltaInt;
+			deltaInt.clear();
+		}
+		else {
+			targetStates.push_back(q0b);
+			deltaInt[0] = targetStates;
+			targetStates.clear();
+			delta[Q[size - 2]] = deltaInt;
+			deltaInt.clear();
+			targetStates.push_back(Q[size - 1]);
+			deltaInt[0] = targetStates;
+			targetStates.clear();
+			delta[(*Fb.begin())] = deltaInt;
+			deltaInt.clear();
+		}
 	}
 	else if (kleene) {
 		targetStates.push_back(Q[size - 8]);
@@ -367,50 +425,69 @@ state* generateConcatenation(char char1, char char2, states& Q, transitions& del
 		deltaInt.clear();
 	}
 	delta[Q[size - 1]] = deltaInt;
-	if (char1)
+	//if (char1)
 		return Q[size-4];
-	else
-	return 0;
+	//else
+	//return 0;
 
 }
 
 state* generateKleene(char char1, states& Q, transitions& delta, int& stateCount, state* q0,
-		              states& Qa, transitions& deltaa, state* q0a, acceptingStates& Fa) {
-	if (Qa.size()) {
-		states::iterator stateit = Qa.begin();
-		while (stateit != Qa.end()) {
-			Q.push_back(*stateit);
-			stateit++;
-		}
-		transitions::iterator transit = deltaa.begin();
-		while (transit != deltaa.end()) {
-			delta.insert(*transit);
-			transit++;
+		              states& Qa, transitions& deltaa, state* q0a, acceptingStates& Fa, bool internal) {
+	std::cout << stateCount << " " << internal << std::endl;
+	std::cout << "SIZE" << deltaa.size() << std::endl;
+	//if (internal)
+		//std::cout << "INTERNAL" << std::endl;
+	//std::cout << "Kleene with " << char1 << " " << Qa.size() << std::endl;
+	if (!internal) {
+			if (Qa.size()) {
+			states::iterator stateit = Qa.begin();
+			while (stateit != Qa.end()) {
+				Q.push_back(*stateit);
+				stateit++;
+			}
+			transitions::iterator transit = deltaa.begin();
+			while (transit != deltaa.end()) {
+				delta.insert(*transit);
+				transit++;
+			}
 		}
 	}
+		for (int i=0; i < 4; i++) {
+			Q.push_back(new state(static_cast<std::ostringstream*>( &(std::ostringstream() << stateCount) )->str()));
+			stateCount++;
+		}
+
+
 	transitionsInternal deltaInt;
-	for (int i=0; i < 4; i++) {
-		Q.push_back(new state(static_cast<std::ostringstream*>( &(std::ostringstream() << stateCount) )->str()));
-		stateCount++;
-	}
 	int size = Q.size();
+
 	stateset targetStates;
 	targetStates.push_back(Q[size -1]);
 	targetStates.push_back(Q[size -3]);
 	deltaInt[0] = targetStates;
 	targetStates.clear();
-	delta[Q[size - 4]] = deltaInt;
+	//if (!internal)
+		delta[Q[size - 4]] = deltaInt;
+	//else
+	//	deltaa[Q[size - 4]] = deltaInt;
 	deltaInt.clear();
 	if (Qa.size()) {
 		targetStates.push_back(q0a);
 		deltaInt[0] = targetStates;
 		targetStates.clear();
-		delta[Q[size - 3]] = deltaInt;
+		//if (!internal)
+			delta[Q[size - 3]] = deltaInt;
+		//else
+		//	deltaa[Q[size - 3]] = deltaInt;
 		deltaInt.clear();
 		targetStates.push_back(Q[size-2]);
 		deltaInt[0] = targetStates;
 		targetStates.clear();
-		delta[(*Fa.begin())] = deltaInt;
+		//if (!internal)
+			delta[(*Fa.begin())] = deltaInt;
+		//else
+		//	deltaa[(*Fa.begin())] = deltaInt;
 		deltaInt.clear();
 	}
 	else {
@@ -426,7 +503,16 @@ state* generateKleene(char char1, states& Q, transitions& delta, int& stateCount
 	targetStates.clear();
 	delta[Q[size - 2]] = deltaInt;
 	deltaInt.clear();
-	delta[Q[size - 1]] = deltaInt;
+	std::cout << "27? " << *(Q[size - 1])  << std::endl;
+	//if (!internal)
+		delta[Q[size - 1]] = deltaInt;
+	//else
+	//	deltaa[Q[size - 1]] = deltaInt;
+	std::cout << "SIZE" << deltaa.size() << std::endl;
+	if (internal) {
+		Fa.clear();
+		Fa.insert(Q[size-1]);
+	}
 	if (!q0)
 		return Q[size - 4];
 	else

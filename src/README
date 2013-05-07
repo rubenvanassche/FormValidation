@@ -1,0 +1,47 @@
+Talen en Automaten: Fase 1
+=========================
+
+Door: Jakob Struye & Ruben Van Assche
+
+
+
+Ondersteunde functionaliteit
+----------------------------
+
+-Reguliere Expressies
+-ε-NFA's
+-DFA's
+-Omzetten van reguliere expressie naar ε-NFA
+-Omzetten van ε-NFA naar DFA
+-ε-NFA opslaan als bestand en ε-NFA uitlezen uit bestand
+
+Merk op dat binnen het programma (concreet: argument van FA::regexToNFA(regex) en bestanden met ε-NFA) de ε dient voorgesteld te worden door het teken '_'. Dit betekent dus ook dat reguliere expressies geen '_' kunnen bevatten. Indien dit toch gewenst zou zijn, is dit in de code nog aan te passen.
+
+
+Een reguliere expressie kan naar een ε-NFA worden omgezet met de functie FA::regexToNFA(regex)
+waarbij de reguliere expresssie als string wordt meegegeven.
+De functie geeft dan de ε-NFA terug.
+De memberfunctie process(string) van de ε-NFA dient om te controleren of een bepaalde string behoort tot de taal die door de ε-NFA wordt uitgedrukt. Dit wordt weergegeven door de teruggegeven boolean.
+
+Merk op dat bij het ingeven van een reguliere expressie de volgende voorwaarden strikt moeten worden gerespecteerd:
+    -Alle bewerkingen hebben dezelfde prioriteit, de volgorde van de bewerkingen is dus van links naar rechts. Dit betekent bv. dat a+bc wordt geïnterpreteerd als (a+b)c.
+    -Bij elke concatenatie waarbij linker- of rechterdeel uit meer dan één teken bestaat, is het ten zeerste aangeraden beide delen tussen haakjes te plaatsen (als dit nog niet het geval was). Vooral een rechterdeel zonder haakjes kan voor problemen zorgen.
+    -Plaats niet meer haakjes dan nodig om de reguliere expressie uit te drukken (maar respecteer natuurlijk de bovenstaande regels). Zorg dat er zeker niets als "((...))" in je reguliere expressie voorkomt. Expressies als "((ab))" en "(((a+b)c))*(ab)" zullen tot problemen leiden.
+
+
+ε-NFA's opgeslagen als bestand, hebben de volgende structuur:
+
+"Het alfabet, met elk teken gescheiden door één spatie, geen spatie op het einde"
+"witregel"
+"De namen van de staten, zonder aanhalingstekens, gescheiden door één spatie, geen spatie op het einde"
+"witregel"
+"Alle transities, één transitie per regel, geen witregels tussenin, met de volgende structuur: staatnaam(van) via teken to staatnaam(naar)1 staatnaam(naar)2 ...
+Wederom zonder spatie op het einde"
+"witregel"
+"Naam van startstaat, zonder aanhalingstekens"
+"witregel"
+"Namen van eindstaten, zonder aanhalingstekens, gescheiden door één spatie, geen spatie op het einde"
+
+
+
+Inputbestanden dienen zich te bevinden in dezelfde map als de binary.

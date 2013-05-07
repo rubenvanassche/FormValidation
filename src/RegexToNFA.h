@@ -33,6 +33,6 @@ state* generateConcatenation(char, char, states&, transitions&, int&, state*, bo
 
 
 state* generateKleene(char, states&, transitions&, int&, state*,
-					  states&, transitions&, state*, acceptingStates&);
+					  states&, transitions&, state*, acceptingStates&, bool=0);
 }
 #endif /* REGEXTONFA_H_ */

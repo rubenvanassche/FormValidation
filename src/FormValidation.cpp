@@ -203,7 +203,7 @@ int main() {
 	std::cout << "Result for ca: " << enfa12->process("ca") << std::endl;
 	std::cout << "Result for ac: " << enfa12->process("ac") << std::endl;*/
 
-	FA::eNFA inputNFA = FA::generateNFA("NFAexample.txt");
+	/*FA::eNFA inputNFA = FA::generateNFA("NFAexample.txt");
 	//std::cout << inputNFA << std::endl;
 	std::cout << "Empty: " << inputNFA.process("") << std::endl;
 	std::cout << "a: " << inputNFA.process("a") << std::endl;
@@ -224,6 +224,54 @@ int main() {
 	std::cout << "da: " << inputNFA2.process("da") << std::endl;
 	std::cout << "db: " << inputNFA2.process("db") << std::endl;
 	std::cout << "dc: " << inputNFA2.process("dc") << std::endl;
-	std::cout << "dd: " << inputNFA2.process("dd") << std::endl;
+	std::cout << "dd: " << inputNFA2.process("dd") << std::endl;*/
+
+/*	FA::eNFA *enfa13 = FA::regexToNFA("(((0+(10))*)((1+(01))*))(0+_)");
+	std::cout << *enfa13 << std::endl;
+	std::cout << "Regex '(0+10)*(1+01)*(0+_)'" << std::endl;
+	std::cout << "Result for empty: " << enfa13->process("") << std::endl;
+	std::cout << "Result for 0: " << enfa13->process("0") << std::endl;
+	std::cout << "Result for 1: " << enfa13->process("1") << std::endl;
+	std::cout << "Result for 01: " << enfa13->process("01") << std::endl;
+	std::cout << "Result for 10: " << enfa13->process("10") << std::endl;
+	std::cout << "Result for 001: " << enfa13->process("001") << std::endl;
+	std::cout << "Result for 0011: " << enfa13->process("0011") << std::endl;
+	std::cout << "Result for 1100: " << enfa13->process("1100") << std::endl;
+	std::cout << "Result for 110: " << enfa13->process("110") << std::endl;
+	std::cout << "Result for 0001001011010: " << enfa13->process("0001001011010") << std::endl;
+	std::cout << "Result for 001011001110: " << enfa13->process("001011001110") << std::endl;
+	std::cout << "Result for 00101001110: " << enfa13->process("00101001110") << std::endl;
+	std::cout << "Result for 0000000: " << enfa13->process("0000000") << std::endl;
+	std::cout << "Result for 1111111: " << enfa13->process("1111111") << std::endl;
+	std::cout << "Result for 000010001001010110111011110: " << enfa13->process("000010001001010110111011110") << std::endl;*/
+	//FA::transitions delta = enfa13->getDelta();
+	//FA::transitions::iterator deltait = delta.begin();
+	/*while (deltait != delta.end()) {
+		if (*(deltait->first) == "34") {
+			FA::transitionsInternal::iterator deltaintit = deltait->second.begin();
+			while (deltaintit != deltait->second.end()) {
+				std::cout << (int) deltaintit->first << std::endl;
+				deltaintit++;
+			}
+		}
+		deltait++;
+	}*/
+
+	FA::eNFA *enfa14 = FA::regexToNFA("((ab)*)+((cd)*)");
+	std::cout << *enfa14 << std::endl;
+	std::cout << "Regex '(ab)*+(cd)*'" << std::endl;
+	std::cout << "Result for empty: " << enfa14->process("") << std::endl;
+	std::cout << "Result for a: " << enfa14->process("a") << std::endl;
+	std::cout << "Result for b: " << enfa14->process("b") << std::endl;
+	std::cout << "Result for c: " << enfa14->process("c") << std::endl;
+	std::cout << "Result for d: " << enfa14->process("d") << std::endl;
+	std::cout << "Result for cd: " << enfa14->process("cd") << std::endl;
+	std::cout << "Result for dc: " << enfa14->process("dc") << std::endl;
+	std::cout << "Result for ab: " << enfa14->process("ab") << std::endl;
+	std::cout << "Result for abcd: " << enfa14->process("abcd") << std::endl;
+	std::cout << "Result for abababababab: " << enfa14->process("ababababababab") << std::endl;
+	std::cout << "Result for ababababababc: " << enfa14->process("abababababababc") << std::endl;
+	std::cout << "Result for cdcdcdcdcdcd: " << enfa14->process("cdcdcdcdcdcd") << std::endl;
+
 
 }
