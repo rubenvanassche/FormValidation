@@ -45,3 +45,5 @@ Wederom zonder spatie op het einde"
 
 
 Inputbestanden dienen zich te bevinden in dezelfde map als de binary.
+
+Er is voor ε-NFA's een overload voor << voorzien. Deze is in de eerste plaats voor ontwikkelingsdoeleinden voorzien. De functie is nog steeds beschikbaar voor gebruikers, maar merk op dat er niet al te veel aandacht is besteed aan een heel overzichtelijke output.
