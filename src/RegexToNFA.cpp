@@ -326,7 +326,7 @@ state* generateConcatenation(char char1, char char2, states& Q, transitions& del
 		}
 		transitions::iterator transit = deltab.begin();
 		while (transit != deltab.end()) {
-			std::cout << "Copying delta for " << *(transit->first) << std::endl;
+			//std::cout << "Copying delta for " << *(transit->first) << std::endl;
 			delta.insert(*transit);
 			transit++;
 		}
@@ -388,7 +388,7 @@ state* generateConcatenation(char char1, char char2, states& Q, transitions& del
 			targetStates.push_back(Q[size - 1]);
 			deltaInt[0] = targetStates;
 			targetStates.clear();
-			std::cout << *(*Fb.begin()) << std::endl;
+			//std::cout << *(*Fb.begin()) << std::endl;
 			delta[(*Fb.begin())] = deltaInt;
 			deltaInt.clear();
 		}
@@ -434,8 +434,8 @@ state* generateConcatenation(char char1, char char2, states& Q, transitions& del
 
 state* generateKleene(char char1, states& Q, transitions& delta, int& stateCount, state* q0,
 		              states& Qa, transitions& deltaa, state* q0a, acceptingStates& Fa, bool internal) {
-	std::cout << stateCount << " " << internal << std::endl;
-	std::cout << "SIZE" << deltaa.size() << std::endl;
+	//std::cout << stateCount << " " << internal << std::endl;
+	//std::cout << "SIZE" << deltaa.size() << std::endl;
 	//if (internal)
 		//std::cout << "INTERNAL" << std::endl;
 	//std::cout << "Kleene with " << char1 << " " << Qa.size() << std::endl;
@@ -503,12 +503,12 @@ state* generateKleene(char char1, states& Q, transitions& delta, int& stateCount
 	targetStates.clear();
 	delta[Q[size - 2]] = deltaInt;
 	deltaInt.clear();
-	std::cout << "27? " << *(Q[size - 1])  << std::endl;
+	//std::cout << "27? " << *(Q[size - 1])  << std::endl;
 	//if (!internal)
 		delta[Q[size - 1]] = deltaInt;
 	//else
 	//	deltaa[Q[size - 1]] = deltaInt;
-	std::cout << "SIZE" << deltaa.size() << std::endl;
+	//std::cout << "SIZE" << deltaa.size() << std::endl;
 	if (internal) {
 		Fa.clear();
 		Fa.insert(Q[size-1]);
