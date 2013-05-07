@@ -25,7 +25,7 @@ int main() {
 	FA::eNFA testNFA(sigma, Q, delta, q0, F);
 	std::cout << testNFA << std::endl;
 	std::cout << testNFA.process("ac") << std::endl;*/
-	FA::eNFA *enfa1 = FA::regexToNFA("a+b");
+	/*FA::eNFA *enfa1 = FA::regexToNFA("a+b");
 	std::cout << "Regex 'a+b': " << std::endl;
 	std::cout << "Result for a: " << enfa1->process("a") << std::endl;
 	std::cout << "Result for b: " << enfa1->process("b") << std::endl;
@@ -248,6 +248,11 @@ int main() {
 	std::cout << "Result for 000010001001010110111011110: " << enfa13->process("000010001001010110111011110") << std::endl;
 
 
+	FA::stateset ecloseStates;
+	ecloseStates = enfa13->eclose(enfa13->getQ0());
+
+
+
 	FA::eNFA *enfa14 = FA::regexToNFA("((ab)*)+((cd)*)");
 	//std::cout << *enfa14 << std::endl;
 	std::cout << "Regex '(ab)*+(cd)*'" << std::endl;
@@ -262,7 +267,28 @@ int main() {
 	std::cout << "Result for abcd: " << enfa14->process("abcd") << std::endl;
 	std::cout << "Result for abababababab: " << enfa14->process("ababababababab") << std::endl;
 	std::cout << "Result for ababababababc: " << enfa14->process("abababababababc") << std::endl;
-	std::cout << "Result for cdcdcdcdcdcd: " << enfa14->process("cdcdcdcdcdcd") << std::endl;
+	std::cout << "Result for cdcdcdcdcdcd: " << enfa14->process("cdcdcdcdcdcd") << std::endl;*/
+
+	std::cout << "Please enter a regular expression" << std::endl;
+	FA::regex regEx;
+	std::cin >> regEx;
+	FA::eNFA *enfaCin = FA::regexToNFA(regEx);
+	bool cont = true;
+	while (cont) {
+		std::cout << "Please enter a string" << std::endl;
+		std::string str;
+		std::cin >> str;
+		bool accepted = enfaCin->process(str);
+		if (accepted)
+			std::cout << "This string belongs to the language expressed by the given regex" << std::endl;
+		else
+			std::cout << "This string does not belong to the language expressed by the given regex" << std::endl;
+		std::cout << "Would you like to enter another string (Y/n): " << std::endl;
+		char response;
+		std::cin >> response;
+		if (response == 'n' || response == 'N')
+			cont = false;
+	}
 
 
 }

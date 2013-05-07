@@ -18,7 +18,6 @@ typedef std::map<symbol, stateset> transitionsInternal;
 typedef std::map<state*, transitionsInternal> transitions;
 typedef std::set<state*> acceptingStates;
 typedef std::set<symbol> alphabet;
-typedef std::string startState;
 typedef std::string regex;
 }
 

@@ -14,7 +14,7 @@ eNFA* regexToNFA(regex regEx) {
 	states Q;
 	transitions delta;
 	transitionsInternal deltaInt;
-	startState *q0 = 0;
+	state *q0 = 0;
 	acceptingStates F;
 	bool hasEpsilon = false;
 	std::string::iterator regexit = regEx.begin();
@@ -54,7 +54,7 @@ state* regexToNFAInternal(regex regEx, states& Q, transitions& delta, acceptingS
 	static int stateCount;
 	if (!recursion)
 		stateCount = 0;
-	startState *q0 = 0;
+	state *q0 = 0;
 	states Qa;
 	transitions deltaa;
 	state* q0a;

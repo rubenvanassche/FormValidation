@@ -14,6 +14,8 @@
 #include <vector>
 #include <iostream>
 #include <algorithm>
+#include <fstream>
+#include <sstream>
 #include "common.h"
 
 
@@ -23,7 +25,9 @@ namespace FA {
 class eNFA {
 public:
 
-	eNFA(alphabet, states, transitions, startState*, acceptingStates);
+	eNFA();
+
+	eNFA(alphabet, states, transitions, state*, acceptingStates);
 
 	const transitions& getDelta() const {
 		return delta;
@@ -37,7 +41,7 @@ public:
 		return Q;
 	}
 
-	const startState* getQ0() const {
+	state* getQ0() const {
 		return q0;
 	}
 
@@ -47,7 +51,10 @@ public:
 
 	bool process(std::string) const;
 
-	stateset eclose(state&);
+
+	void toFile(std::string);
+
+	stateset eclose(state*);
 
 	friend std::ostream& operator<<(std::ostream&, const eNFA&);
 
@@ -57,11 +64,15 @@ private:
 	alphabet sigma;
 	states Q;
 	transitions delta;
-	startState *q0;
+	state *q0;
 	acceptingStates F;
 
 
 };
+
+
+eNFA generateNFA(std::string);
+
 
 }
 
