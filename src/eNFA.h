@@ -14,6 +14,8 @@
 #include <vector>
 #include <iostream>
 #include <algorithm>
+#include <fstream>
+#include <sstream>
 #include "common.h"
 
 
@@ -22,6 +24,8 @@ namespace FA {
 
 class eNFA {
 public:
+
+	eNFA();
 
 	eNFA(alphabet, states, transitions, startState*, acceptingStates);
 
@@ -47,6 +51,7 @@ public:
 
 	bool process(std::string) const;
 
+
 	friend std::ostream& operator<<(std::ostream&, const eNFA&);
 
 
@@ -61,6 +66,8 @@ private:
 
 };
 
+
+eNFA generateNFA(std::string);
 }
 
 

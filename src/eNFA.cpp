@@ -9,6 +9,8 @@
 
 namespace FA {
 
+eNFA::eNFA() {}
+
 eNFA::eNFA(alphabet alphabet_, states states_, transitions transitions_,startState* start_, acceptingStates accepting_) :
 			sigma(alphabet_), Q(states_), delta(transitions_), q0(start_), F(accepting_) {}
 
@@ -113,7 +115,8 @@ bool eNFA::process(std::string str) const {
 					if (transit->first == 0) {
 						std::vector<state*>::iterator deltastateit = transit->second.begin();
 						while (deltastateit != transit->second.end()) {
-							currentStates.push_back(*deltastateit);
+							if (find(currentStates.begin(), currentStates.end(), *deltastateit) == currentStates.end())
+								currentStates.push_back(*deltastateit);
 							//transitionsInternal *temp = delta.find(*deltastateit)->second;
 							if ((delta.find(*deltastateit)->second).find((char) 0) != (delta.find(*deltastateit)->second).end())
 								moreEpsilon = 1;
@@ -145,6 +148,7 @@ bool eNFA::process(std::string str) const {
 	return false;
 }
 
+
 std::ostream& operator<<(std::ostream& os, const eNFA& enfa) {
 	os << "Alphabet: ";
 	alphabet::iterator alphit = enfa.sigma.begin();
@@ -163,10 +167,10 @@ std::ostream& operator<<(std::ostream& os, const eNFA& enfa) {
 	transitions theTransitions = enfa.delta;
 	transitions::iterator transit = theTransitions.begin();
 	while (transit != theTransitions.end()) {
-		std::cout << "State " <<  *(transit->first) << " ";
+		std::cout << "State " <<  *(transit->first) << std::endl;;
 		transitionsInternal::iterator transintit = transit->second.begin();
 		while (transintit != transit->second.end()) {
-			std::cout << "via " << transintit->first << " to";
+			std::cout << "    via " << transintit->first << " to";
 			stateset::iterator stateit = transintit->second.begin();
 			while (stateit != transintit->second.end()) {
 				std::cout << " " << **(stateit);
@@ -189,5 +193,201 @@ std::ostream& operator<<(std::ostream& os, const eNFA& enfa) {
 	return os;
 }
 
+
+
+eNFA generateNFA(std::string filename) {
+	std::ifstream file(filename.c_str());
+	std::string line;
+	alphabet sigma;
+	states Q;
+	std::map<std::string, int> tempQ;
+	transitions delta;
+	state* q0;
+	acceptingStates F;
+	//std::cout << "Alphabet" << std::endl;
+	std::getline(file, line);
+	std::string::iterator lineit = line.begin();
+	//std::cout << line << std::endl;
+	while (lineit != line.end()) {
+		if (*lineit != ' ' && *lineit != '_' && sigma.find(*lineit) == sigma.end())
+			sigma.insert(*lineit);
+		else {
+			std::cout << "Invalid input in alphabet" << std::endl;
+			return eNFA();
+		}
+		lineit++;
+		if (lineit == line.end()) break;
+		else if (*lineit != ' ') {
+			std::cout << "Invalid input in alphabet" << std::endl;
+			return eNFA();
+		}
+		lineit++;
+		//std::cout << "Invalid input in alphabet" << std::endl;
+		//return eNFA();
+
+
+	}
+	//std::cout << "States" << std::endl;
+	std::getline(file, line);
+	if (!line.empty()) {
+		std::cout << "Missing blank line" << std::endl;
+		return eNFA();
+	}
+	//std::cout << line << std::endl;
+	std::getline(file, line);
+	int i = 0;
+	//std::cout << line << std::endl;
+	lineit = line.begin();
+	while (lineit != line.end()) {
+		std::stringstream namestream;
+		std::string name;
+		while (*lineit != ' ' && lineit != line.end()) {
+			namestream << *lineit;
+			lineit++;
+		}
+		name = namestream.str();
+		//std::cout << name << std::endl;
+		//std::cin >> i;
+		if (name !=  "" && tempQ.find(name) == tempQ.end()) {
+			Q.push_back(new state(name));
+			tempQ[name] = i;
+			i++;
+		}
+		else {
+			std::cout << "Invalid state in states" << std::endl;
+			return eNFA();
+		}
+		if (lineit == line.end()) break;
+		if (*lineit == ' ') {
+			lineit++;
+			continue;
+		}
+		std::cout << "Invalid input in states" << std::endl;
+		return eNFA();
+
+
+	}
+	//std::cout << "transitions" << std::endl;
+	std::getline(file, line);
+	if (!line.empty()) {
+		std::cout << "Missing blank line" << std::endl;
+		return eNFA();
+	}
+	transitionsInternal deltaInt;
+	stateset stateSet;
+	std::string state = "";
+	std::getline(file, line);
+	while (!line.empty()) {
+		//std::cout << "LINE" << line << std::endl;
+		std::stringstream namestream;
+		std::string thisState;
+		std::string word;
+		std::string targetState;
+		lineit = line.begin();
+		while (*lineit != ' ' && lineit != line.end()) {
+			namestream << *lineit;
+			lineit++;
+		}
+		thisState = namestream.str();
+		namestream.str("");
+		if (state.empty()) state = thisState;
+		if (tempQ.find(thisState) == tempQ.end()) {
+			std::cout << "Invalid state name in transition" << std::endl;
+			return eNFA();
+		}
+		if (thisState != state) {
+			int pos = tempQ[state];
+			delta[Q[pos]] = deltaInt;
+			deltaInt.clear();
+			state = thisState;
+		}
+		lineit++;
+		while (*lineit != ' ' && lineit != line.end()) {
+			namestream << *lineit;
+			lineit++;
+		}
+		word = namestream.str();
+		namestream.str("");
+		if (word != "via") {
+			std::cout << "Missing 'via'" << std::endl;
+			return eNFA();
+		}
+		lineit++;
+		if (*lineit != '_' && sigma.find(*lineit) == sigma.end()) {
+			std::cout << "Character not in alphabet" << std::endl;
+			return eNFA();
+		}
+		char c = *lineit;
+		lineit++;
+		lineit++;
+		while (*lineit != ' ' && lineit != line.end()) {
+			namestream << *lineit;
+			lineit++;
+		}
+		word = namestream.str();
+		namestream.str("");
+		if (word != "to") {
+			std::cout << "Missing 'to'" << std::endl;
+			return eNFA();
+		}
+		lineit++;
+		while (lineit != line.end()) {
+			while (lineit != line.end() && *lineit != ' ') {
+				namestream << *lineit;
+				lineit++;
+			}
+			targetState = namestream.str();
+			namestream.str("");
+			int pos = tempQ[targetState];
+
+			//deltaInt[Q[tempQ.find(name)]] =
+			stateSet.push_back(Q[pos]);
+			if (lineit != line.end()) lineit++;
+		}
+		if (c == '_') deltaInt[0] = stateSet;
+		else deltaInt[c] = stateSet;
+		stateSet.clear();
+
+		std::getline(file, line);
+	}
+	int pos = tempQ[state];
+	delta[Q[pos]] = deltaInt;
+	deltaInt.clear();
+
+	std::getline(file, line);
+	if (tempQ.find(line) == tempQ.end()) {
+		std::cout << "Invalid start state" << std::endl;
+		return eNFA();
+	}
+	q0 = Q[0];
+
+	std::getline(file, line);
+	if (!line.empty()) {
+		std::cout << "Missing blank line" << std::endl;
+		return eNFA();
+	}
+
+	std::getline(file, line);
+	lineit = line.begin();
+	std::stringstream namestream;
+	while (lineit != line.end()) {
+		while (*lineit != ' ' && lineit != line.end()) {
+			namestream << *lineit;
+			lineit++;
+		}
+		state = namestream.str();
+		namestream.str("");
+		if (tempQ.find(state) == tempQ.end()) {
+			std::cout << "Invalid accepting state" << std::endl;
+			return eNFA();
+		}
+		int pos = tempQ[state];
+		F.insert(Q[pos]);
+		if (lineit != line.end()) lineit++;
+	}
+	//std::cout << "Generated" << std::endl;
+	return eNFA(sigma, Q, delta, q0, F);
+
+}
 
 }

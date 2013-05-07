@@ -23,8 +23,9 @@ int main() {
 	FA::acceptingStates F;
 	F.insert(Q[2]);
 	FA::eNFA testNFA(sigma, Q, delta, q0, F);
+	std::cout << testNFA << std::endl;
 	std::cout << testNFA.process("ac") << std::endl;*/
-	FA::eNFA *enfa1 = FA::regexToNFA("a+b");
+	/*FA::eNFA *enfa1 = FA::regexToNFA("a+b");
 	std::cout << "Regex 'a+b': " << std::endl;
 	std::cout << "Result for a: " << enfa1->process("a") << std::endl;
 	std::cout << "Result for b: " << enfa1->process("b") << std::endl;
@@ -200,5 +201,17 @@ int main() {
 	std::cout << "Result for abaabaaabbbbabbaba: " << enfa12->process("abaabaaabbbbabbaba") << std::endl;
 	std::cout << "Result for c: " << enfa12->process("c") << std::endl;
 	std::cout << "Result for ca: " << enfa12->process("ca") << std::endl;
-	std::cout << "Result for ac: " << enfa12->process("ac") << std::endl;
+	std::cout << "Result for ac: " << enfa12->process("ac") << std::endl;*/
+
+	FA::eNFA inputNFA = FA::generateNFA("NFAexample.txt");
+	std::cout << inputNFA << std::endl;
+	std::cout << "Empty: " << inputNFA.process("") << std::endl;
+	std::cout << "a: " << inputNFA.process("a") << std::endl;
+	std::cout << "b: " << inputNFA.process("b") << std::endl;
+	std::cout << "c: " << inputNFA.process("c") << std::endl;
+	std::cout << "d: " << inputNFA.process("d") << std::endl;
+	std::cout << "da: " << inputNFA.process("da") << std::endl;
+	std::cout << "db: " << inputNFA.process("db") << std::endl;
+	std::cout << "dc: " << inputNFA.process("dc") << std::endl;
+	std::cout << "dd: " << inputNFA.process("dd") << std::endl;
 }
