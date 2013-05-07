@@ -52,6 +52,9 @@ public:
 	bool process(std::string) const;
 
 
+	void toFile(std::string);
+
+
 	friend std::ostream& operator<<(std::ostream&, const eNFA&);
 
 
@@ -68,6 +71,8 @@ private:
 
 
 eNFA generateNFA(std::string);
+
+
 }
 
 

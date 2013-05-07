@@ -204,7 +204,7 @@ int main() {
 	std::cout << "Result for ac: " << enfa12->process("ac") << std::endl;*/
 
 	FA::eNFA inputNFA = FA::generateNFA("NFAexample.txt");
-	std::cout << inputNFA << std::endl;
+	//std::cout << inputNFA << std::endl;
 	std::cout << "Empty: " << inputNFA.process("") << std::endl;
 	std::cout << "a: " << inputNFA.process("a") << std::endl;
 	std::cout << "b: " << inputNFA.process("b") << std::endl;
@@ -214,4 +214,16 @@ int main() {
 	std::cout << "db: " << inputNFA.process("db") << std::endl;
 	std::cout << "dc: " << inputNFA.process("dc") << std::endl;
 	std::cout << "dd: " << inputNFA.process("dd") << std::endl;
+	inputNFA.toFile("NFAOUT.txt");
+	FA::eNFA inputNFA2 = FA::generateNFA("NFAOUT.txt");
+	std::cout << "Empty: " << inputNFA2.process("") << std::endl;
+	std::cout << "a: " << inputNFA2.process("a") << std::endl;
+	std::cout << "b: " << inputNFA2.process("b") << std::endl;
+	std::cout << "c: " << inputNFA2.process("c") << std::endl;
+	std::cout << "d: " << inputNFA2.process("d") << std::endl;
+	std::cout << "da: " << inputNFA2.process("da") << std::endl;
+	std::cout << "db: " << inputNFA2.process("db") << std::endl;
+	std::cout << "dc: " << inputNFA2.process("dc") << std::endl;
+	std::cout << "dd: " << inputNFA2.process("dd") << std::endl;
+
 }

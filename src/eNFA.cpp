@@ -390,4 +390,69 @@ eNFA generateNFA(std::string filename) {
 
 }
 
+void eNFA::toFile(std::string filename) {
+	std::ofstream file(filename.c_str());
+	alphabet::iterator alphit = sigma.begin();
+	int size = sigma.size();
+	int i = 0;
+	while (alphit != sigma.end()) {
+		i++;
+		file << *alphit;
+		if (i != size)
+			file << ' ';
+		alphit++;
+	}
+	file << std::endl << std::endl;
+	states::iterator stateit = Q.begin();
+	size = Q.size();
+	i = 0;
+	while (stateit != Q.end()) {
+		i++;
+		file << **stateit;
+		if (i != size)
+			file << ' ';
+		stateit++;
+	}
+	file << std::endl << std::endl;
+
+	transitions::iterator transit = delta.begin();
+	while (transit != delta.end()) {
+		transitionsInternal::iterator transintit = transit->second.begin();
+		while (transintit != transit->second.end()) {
+			if (transintit->first != 0)
+				file << *(transit->first) << " via " << (transintit->first) << " to ";
+			else
+				file << *(transit->first) << " via _ to ";
+			states::iterator targetStatesit = transintit->second.begin();
+			while (targetStatesit != transintit->second.end()) {
+				file << **targetStatesit;
+				if (targetStatesit + 1 != transintit->second.end())
+					file << ' ';
+				targetStatesit++;
+			}
+			file << std::endl;
+			transintit++;
+		}
+		transit++;
+	}
+	file << std::endl;
+
+	file << *q0 << std::endl << std::endl;
+
+	acceptingStates::iterator acceptit = F.begin();
+	size = F.size();
+	i = 0;
+	while (acceptit != F.end()) {
+		i++;
+		file << **acceptit;
+		if (i != size)
+			file << ' ';
+		acceptit++;
+	}
+	file << std::endl;
+
+
+
+}
+
 }
