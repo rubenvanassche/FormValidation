@@ -12,7 +12,7 @@ Ondersteunde functionaliteit
 -ε-NFA's
 -DFA's
 -Omzetten van reguliere expressie naar ε-NFA
--Omzetten van ε-NFA naar DFA
+-Omzetten van ε-NFA naar DFA(enkel als code, niet in de applicatie)
 -ε-NFA opslaan als bestand en ε-NFA uitlezen uit bestand
 
 Merk op dat binnen het programma (concreet: argument van FA::regexToNFA(regex) en bestanden met ε-NFA) de ε dient voorgesteld te worden door het teken '_'. Dit betekent dus ook dat reguliere expressies geen '_' kunnen bevatten. Indien dit toch gewenst zou zijn, is dit in de code nog aan te passen.
