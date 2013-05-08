@@ -2,8 +2,6 @@
 #include <iostream>
 #include "eNFA.h"
 #include "RegexToNFA.h"
-#include "DFA.h"
-#include "SubsetConstruction.h"
 
 int main() {
 	/*FA::alphabet sigma;
@@ -275,7 +273,6 @@ int main() {
 	FA::regex regEx;
 	std::cin >> regEx;
 	FA::eNFA *enfaCin = FA::regexToNFA(regEx);
-	FA::DFA dfake = FA::eNFAtoDFA(*enfaCin);
 	//bool cont = true;
 	while (true) {
 		std::cout << "Please enter a string" << std::endl;
