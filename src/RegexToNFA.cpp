@@ -16,9 +16,9 @@ eNFA* regexToNFA(regex regEx) {
 	transitionsInternal deltaInt;
 	state *q0 = 0;
 	acceptingStates F;
-	bool hasEpsilon = false;
+	bool hasEpsilon = false;                   //is epsilon part of the regex?
 	std::string::iterator regexit = regEx.begin();
-	while (regexit != regEx.end()) {
+	while (regexit != regEx.end()) {            //generate alphabet
 		if (*regexit != '(' && *regexit != ')' && *regexit != '+' && *regexit != '.' && *regexit != '*' && *regexit != '_'
 			&& sigma.find((char)*regexit) == sigma.end())
 			sigma.insert((char)*regexit);
@@ -26,7 +26,7 @@ eNFA* regexToNFA(regex regEx) {
 			hasEpsilon = true;
 		regexit++;
 	}
-	q0 = regexToNFAInternal(regEx, Q, delta, F, 0);
+	q0 = regexToNFAInternal(regEx, Q, delta, F, 0);      //generate other four parts of the eNFA
 
 	if (hasEpsilon) {    //Replaces all '_' with epsilon
 		transitions::iterator transit = delta.begin();
@@ -52,10 +52,10 @@ state* regexToNFAInternal(regex regEx, states& Q, transitions& delta, acceptingS
 	bool upcomingConcat = 0;
 	bool upcomingKleene = 0;
 	static int stateCount;
-	if (!recursion)
+	if (!recursion)         //Start counting states back from 0 if new regex
 		stateCount = 0;
 	state *q0 = 0;
-	states Qa;
+	states Qa;        //Separate Q, delta, q0 and F for left and right parts of + or . if they're more than one char
 	transitions deltaa;
 	state* q0a;
 	acceptingStates Fa;
@@ -69,10 +69,8 @@ state* regexToNFAInternal(regex regEx, states& Q, transitions& delta, acceptingS
 	char char2;
 	char regExOperator;
 	while (regexit != regEx.end()) {
-		//if (!recursion)
-			//std::cout << "Letter " << *regexit << std::endl;
 		if (*regexit != '(' && *regexit != ')' && *regexit != '+' && *regexit != '.' && *regexit != '*' && !upcomingConcat) {
-			char1 = (char) *regexit;
+			char1 = (char) *regexit;    //Not a special sign, so a character part of the alphabet
 			regexit++;
 		}
 		else if (*regexit == '(') {
@@ -80,7 +78,7 @@ state* regexToNFAInternal(regex regEx, states& Q, transitions& delta, acceptingS
 			regex subRegEx;
 			regexit++;
 			int brackets = 0;
-			while (brackets || *regexit != ')') {
+			while (brackets || *regexit != ')') {     //get sub-regular expression between brackets
 				if (*regexit == '(')
 					brackets++;
 				else if (*regexit == ')')
@@ -99,13 +97,13 @@ state* regexToNFAInternal(regex regEx, states& Q, transitions& delta, acceptingS
 			//std::cout << subRegExStream.str() << std::endl;
 			//std::cin >> char1;
 			//std::cout << subRegEx << std::endl;
-			q0a = regexToNFAInternal(subRegEx, Qa, deltaa, Fa);
+			q0a = regexToNFAInternal(subRegEx, Qa, deltaa, Fa);     //generate eNFA (apart from alphabet) with subregex
 		}
 		else
-			char1 = (char) 0;
+			char1 = (char) 0;      //Left side of +.* is not a char
 		if (regexit != regEx.end() ) {
 			if ((*regexit != '+' && *regexit != '.' && *regexit != '*') || upcomingConcat)
-				regExOperator = '.';
+				regExOperator = '.';      //If previous loop noticed a following concatenation
 			else {
 				regExOperator = (char) *regexit;
 				if (*regexit != '*')
@@ -113,16 +111,14 @@ state* regexToNFAInternal(regex regEx, states& Q, transitions& delta, acceptingS
 			}
 		}
 		upcomingConcat = 0;
-		if (regExOperator == '*') {
-			//std::cout << "KLEENE: " << regEx << std::endl;
+		if (regExOperator == '*')       //Generate kleene closure for either char1 or the regex in the 4 final args
 			q0 = generateKleene(char1, Q, delta, stateCount, q0, Qa, deltaa, q0a, Fa);
-		}
 		else if (*regexit == '(') {
 			std::stringstream subRegExStream;
 			regex subRegEx;
 			regexit++;
 			int brackets = 0;
-			while (brackets || *regexit != ')') {
+			while (brackets || *regexit != ')') {  //Get subregex
 				if (*regexit == '(')
 					brackets++;
 				if (*regexit == ')')
@@ -131,14 +127,14 @@ state* regexToNFAInternal(regex regEx, states& Q, transitions& delta, acceptingS
 				regexit++;
 			}
 			regexit++;
-			upcomingKleene = (*regexit == '*');
+			upcomingKleene = (*regexit == '*');    //Generate kleene closure of right side of +.?
 			subRegEx = subRegExStream.str();
 			q0b = regexToNFAInternal(subRegEx, Qb, deltab, Fb);
 
 
 		}
 		else {
-			char2 = (char) *regexit;
+			char2 = (char) *regexit;    //get second char
 			upcomingKleene =  (*(regexit+1) == '*');
 		}
 
@@ -147,10 +143,10 @@ state* regexToNFAInternal(regex regEx, states& Q, transitions& delta, acceptingS
 			q0 = generateOr(char1, char2, Q, delta, stateCount, q0, upcomingKleene, Qa, deltaa, q0a, Fa, Qb, deltab, q0b, Fb);
 		else if (regExOperator == '.') {
 			state* q0temp = generateConcatenation(char1, char2, Q, delta, stateCount, q0, upcomingKleene, Qa, deltaa, q0a, Fa, Qb, deltab, q0b, Fb);
-			if (q0temp)
+			if (q0temp)       //may return 0, in which case q0 doesn't change
 				q0 = q0temp;
 		}
-		if (upcomingKleene)
+		if (upcomingKleene)  //skip 1 character to account for * already applied
 			regexit++;
 		upcomingKleene = 0;
 
@@ -173,7 +169,7 @@ state* regexToNFAInternal(regex regEx, states& Q, transitions& delta, acceptingS
 state* generateOr(char char1, char char2, states& Q, transitions& delta, int& stateCount, state* q0, bool kleene,
 		states& Qa, transitions& deltaa, state* q0a, acceptingStates& Fa,
 		states& Qb, transitions& deltab, state* q0b, acceptingStates& Fb) {
-	if (Qa.size()) {
+	if (Qa.size()) {                           //add states/transitions of left side subregex to main Q/delta
 		states::iterator stateit = Qa.begin();
 		while (stateit != Qa.end()) {
 			Q.push_back(*stateit);
@@ -186,7 +182,7 @@ state* generateOr(char char1, char char2, states& Q, transitions& delta, int& st
 		}
 	}
 
-	if (kleene)
+	if (kleene) //apply kleene closure to right side
 		generateKleene(char2, Q, delta, stateCount, q0, Qb, deltab, q0b, Fb);
 
 	if (Qb.size()) {
@@ -202,7 +198,7 @@ state* generateOr(char char1, char char2, states& Q, transitions& delta, int& st
 		}
 	}
 	transitionsInternal deltaInt;
-	for (int i=0; i < 6; i++) {
+	for (int i=0; i < 6; i++) {       //6 new states for OR
 		Q.push_back(new state(static_cast<std::ostringstream*>( &(std::ostringstream() << stateCount) )->str()));
 		stateCount++;
 	}
@@ -214,8 +210,8 @@ state* generateOr(char char1, char char2, states& Q, transitions& delta, int& st
 		targetStates.clear();
 		delta[Q[size - 6]] = deltaInt;
 		deltaInt.clear();
-		if (Qa.size()) {
-			targetStates.push_back(q0a);
+		if (Qa.size()) {     //insert subregex's partial eNFA into "top" part of new partial eNFA
+			targetStates.push_back(q0a);   //beginning of subregex's partial eNFA
 			deltaInt[0] = targetStates;
 			targetStates.clear();
 			delta[Q[size - 5]] = deltaInt;
@@ -223,10 +219,10 @@ state* generateOr(char char1, char char2, states& Q, transitions& delta, int& st
 			targetStates.push_back(Q[size - 3]);
 			deltaInt[0] = targetStates;
 			targetStates.clear();
-			delta[(*Fa.begin())] = deltaInt;
+			delta[(*Fa.begin())] = deltaInt;      //ending of subregex's partial eNFA (Fa.size() is always 1)
 			deltaInt.clear();
 		}
-		else if (char1 != 0) {
+		else if (char1 != 0) {           //regular "a+b" style partial eNFA
 			targetStates.push_back(Q[size - 3]);
 			deltaInt[char1] = targetStates;
 			targetStates.clear();
@@ -249,7 +245,7 @@ state* generateOr(char char1, char char2, states& Q, transitions& delta, int& st
 			deltaInt.clear();
 
 		}
-		if (Qb.size()) {
+		if (Qb.size()) {     //Insert subregex's partial eNFA into "bottom" of new partial eNFA
 			targetStates.push_back(q0b);
 			deltaInt[0] = targetStates;
 			targetStates.clear();
@@ -261,7 +257,7 @@ state* generateOr(char char1, char char2, states& Q, transitions& delta, int& st
 			delta[(*Fb.begin())] = deltaInt;
 			deltaInt.clear();
 		}
-		else if (kleene) {
+		else if (kleene) {                         //Account for extra new states if kleene closure was generated
 			targetStates.push_back(Q[size - 10]);
 			deltaInt[0] = targetStates;
 			targetStates.clear();
@@ -273,7 +269,7 @@ state* generateOr(char char1, char char2, states& Q, transitions& delta, int& st
 			delta[Q[size - 7]] = deltaInt;
 			deltaInt.clear();
 		}
-		else {
+		else {                              //regular partial eNFA
 			targetStates.push_back(Q[size - 2]);
 			deltaInt[char2] = targetStates;
 			targetStates.clear();
@@ -294,6 +290,7 @@ state* generateOr(char char1, char char2, states& Q, transitions& delta, int& st
 state* generateConcatenation(char char1, char char2, states& Q, transitions& delta, int& stateCount, state* q0, bool kleene,
 							 states& Qa, transitions& deltaa, state* q0a, acceptingStates& Fa,
 							 states& Qb, transitions& deltab, state* q0b, acceptingStates& Fb) {
+	//Fairly analogous to generateOr
 	if (Qa.size()) {
 		states::iterator stateit = Qa.begin();
 		while (stateit != Qa.end()) {
@@ -434,11 +431,7 @@ state* generateConcatenation(char char1, char char2, states& Q, transitions& del
 
 state* generateKleene(char char1, states& Q, transitions& delta, int& stateCount, state* q0,
 		              states& Qa, transitions& deltaa, state* q0a, acceptingStates& Fa, bool internal) {
-	//std::cout << stateCount << " " << internal << std::endl;
-	//std::cout << "SIZE" << deltaa.size() << std::endl;
-	//if (internal)
-		//std::cout << "INTERNAL" << std::endl;
-	//std::cout << "Kleene with " << char1 << " " << Qa.size() << std::endl;
+	//Internal: called from generateOr/Concat
 	if (!internal) {
 			if (Qa.size()) {
 			states::iterator stateit = Qa.begin();
@@ -453,10 +446,10 @@ state* generateKleene(char char1, states& Q, transitions& delta, int& stateCount
 			}
 		}
 	}
-		for (int i=0; i < 4; i++) {
-			Q.push_back(new state(static_cast<std::ostringstream*>( &(std::ostringstream() << stateCount) )->str()));
-			stateCount++;
-		}
+	for (int i=0; i < 4; i++) {
+		Q.push_back(new state(static_cast<std::ostringstream*>( &(std::ostringstream() << stateCount) )->str()));
+		stateCount++;
+	}
 
 
 	transitionsInternal deltaInt;
@@ -467,27 +460,18 @@ state* generateKleene(char char1, states& Q, transitions& delta, int& stateCount
 	targetStates.push_back(Q[size -3]);
 	deltaInt[0] = targetStates;
 	targetStates.clear();
-	//if (!internal)
-		delta[Q[size - 4]] = deltaInt;
-	//else
-	//	deltaa[Q[size - 4]] = deltaInt;
+	delta[Q[size - 4]] = deltaInt;
 	deltaInt.clear();
 	if (Qa.size()) {
 		targetStates.push_back(q0a);
 		deltaInt[0] = targetStates;
 		targetStates.clear();
-		//if (!internal)
-			delta[Q[size - 3]] = deltaInt;
-		//else
-		//	deltaa[Q[size - 3]] = deltaInt;
+		delta[Q[size - 3]] = deltaInt;
 		deltaInt.clear();
 		targetStates.push_back(Q[size-2]);
 		deltaInt[0] = targetStates;
 		targetStates.clear();
-		//if (!internal)
-			delta[(*Fa.begin())] = deltaInt;
-		//else
-		//	deltaa[(*Fa.begin())] = deltaInt;
+		delta[(*Fa.begin())] = deltaInt;
 		deltaInt.clear();
 	}
 	else {
@@ -503,12 +487,7 @@ state* generateKleene(char char1, states& Q, transitions& delta, int& stateCount
 	targetStates.clear();
 	delta[Q[size - 2]] = deltaInt;
 	deltaInt.clear();
-	//std::cout << "27? " << *(Q[size - 1])  << std::endl;
-	//if (!internal)
-		delta[Q[size - 1]] = deltaInt;
-	//else
-	//	deltaa[Q[size - 1]] = deltaInt;
-	//std::cout << "SIZE" << deltaa.size() << std::endl;
+	delta[Q[size - 1]] = deltaInt;
 	if (internal) {
 		Fa.clear();
 		Fa.insert(Q[size-1]);

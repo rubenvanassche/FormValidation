@@ -9,7 +9,7 @@
 
 namespace FA {
 
-eNFA::eNFA() {}
+eNFA::eNFA() {}   //Empty eNFA, returned by eNFA generating functions if something went wrong
 
 eNFA::eNFA(alphabet alphabet_, states states_, transitions transitions_,state* start_, acceptingStates accepting_) :
 			sigma(alphabet_), Q(states_), delta(transitions_), q0(start_), F(accepting_) {}
@@ -148,7 +148,7 @@ bool eNFA::process(std::string str) const {
 }
 
 
-stateset eNFA::eclose(state* workingState){
+stateset eNFA::eclose(state* workingState){    //get the eclose of a state*
 	stateset states;
 	states.push_back(workingState);
 	transitions::iterator itTransitions = delta.find(workingState);
@@ -234,7 +234,7 @@ eNFA generateNFA(std::string filename) {          //Input file to eNFA
 	std::getline(file, line);
 	std::string::iterator lineit = line.begin();
 	//std::cout << line << std::endl;
-	while (lineit != line.end()) {
+	while (lineit != line.end()) {        //read alphabet
 		if (*lineit != ' ' && *lineit != '_' && sigma.find(*lineit) == sigma.end())
 			sigma.insert(*lineit);
 		else {
@@ -264,7 +264,7 @@ eNFA generateNFA(std::string filename) {          //Input file to eNFA
 	int i = 0;
 	//std::cout << line << std::endl;
 	lineit = line.begin();
-	while (lineit != line.end()) {
+	while (lineit != line.end()) {                   //Read states
 		std::stringstream namestream;
 		std::string name;
 		while (*lineit != ' ' && lineit != line.end()) {
@@ -303,7 +303,7 @@ eNFA generateNFA(std::string filename) {          //Input file to eNFA
 	stateset stateSet;
 	std::string state = "";
 	std::getline(file, line);
-	while (!line.empty()) {
+	while (!line.empty()) {                            //read transitions
 		//std::cout << "LINE" << line << std::endl;
 		std::stringstream namestream;
 		std::string thisState;
@@ -321,7 +321,7 @@ eNFA generateNFA(std::string filename) {          //Input file to eNFA
 			std::cout << "Invalid state name in transition" << std::endl;
 			return eNFA();
 		}
-		if (thisState != state) {
+		if (thisState != state) {          //All transitions of previous state read, add to delta
 			int pos = tempQ[state];
 			delta[Q[pos]] = deltaInt;
 			deltaInt.clear();
@@ -376,11 +376,11 @@ eNFA generateNFA(std::string filename) {          //Input file to eNFA
 
 		std::getline(file, line);
 	}
-	int pos = tempQ[state];
+	int pos = tempQ[state];         //add transitions of final state
 	delta[Q[pos]] = deltaInt;
 	deltaInt.clear();
 
-	std::getline(file, line);
+	std::getline(file, line);       // get start state
 	if (tempQ.find(line) == tempQ.end()) {
 		std::cout << "Invalid start state" << std::endl;
 		return eNFA();
@@ -393,7 +393,7 @@ eNFA generateNFA(std::string filename) {          //Input file to eNFA
 		return eNFA();
 	}
 
-	std::getline(file, line);
+	std::getline(file, line);       //get accepting states
 	lineit = line.begin();
 	std::stringstream namestream;
 	while (lineit != line.end()) {
@@ -421,14 +421,14 @@ void eNFA::toFile(std::string filename) {   //Save eNFA to file, can be read aga
 	alphabet::iterator alphit = sigma.begin();
 	int size = sigma.size();
 	int i = 0;
-	while (alphit != sigma.end()) {
+	while (alphit != sigma.end()) {      //add alphabet
 		i++;
 		file << *alphit;
 		if (i != size)
 			file << ' ';
 		alphit++;
 	}
-	file << std::endl << std::endl;
+	file << std::endl << std::endl;       //add states
 	states::iterator stateit = Q.begin();
 	size = Q.size();
 	i = 0;
@@ -442,7 +442,7 @@ void eNFA::toFile(std::string filename) {   //Save eNFA to file, can be read aga
 	file << std::endl << std::endl;
 
 	transitions::iterator transit = delta.begin();
-	while (transit != delta.end()) {
+	while (transit != delta.end()) {                                      //add transitions
 		transitionsInternal::iterator transintit = transit->second.begin();
 		while (transintit != transit->second.end()) {
 			if (transintit->first != 0)
@@ -463,12 +463,12 @@ void eNFA::toFile(std::string filename) {   //Save eNFA to file, can be read aga
 	}
 	file << std::endl;
 
-	file << *q0 << std::endl << std::endl;
+	file << *q0 << std::endl << std::endl;         //add start state
 
 	acceptingStates::iterator acceptit = F.begin();
 	size = F.size();
 	i = 0;
-	while (acceptit != F.end()) {
+	while (acceptit != F.end()) {        //add accepting states
 		i++;
 		file << **acceptit;
 		if (i != size)

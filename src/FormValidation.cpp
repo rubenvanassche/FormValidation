@@ -273,8 +273,8 @@ int main() {
 	FA::regex regEx;
 	std::cin >> regEx;
 	FA::eNFA *enfaCin = FA::regexToNFA(regEx);
-	bool cont = true;
-	while (cont) {
+	//bool cont = true;
+	while (true) {
 		std::cout << "Please enter a string" << std::endl;
 		std::string str;
 		std::cin >> str;
@@ -283,11 +283,11 @@ int main() {
 			std::cout << "This string belongs to the language expressed by the given regex" << std::endl;
 		else
 			std::cout << "This string does not belong to the language expressed by the given regex" << std::endl;
-		std::cout << "Would you like to enter another string (Y/n): " << std::endl;
-		char response;
-		std::cin >> response;
-		if (response == 'n' || response == 'N')
-			cont = false;
+		//std::cout << "Would you like to enter another string (Y/n): " << std::endl;
+		//char response;
+		//std::cin >> response;
+		//if (response == 'n' || response == 'N')
+		//	cont = false;
 	}
 
 
