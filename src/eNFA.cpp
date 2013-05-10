@@ -15,6 +15,12 @@ eNFA::eNFA(alphabet alphabet_, states states_, transitions transitions_,state* s
 			sigma(alphabet_), Q(states_), delta(transitions_), q0(start_), F(accepting_) {}
 
 bool eNFA::process(std::string str) const {
+	for (unsigned i=0; i < str.size();i++) {            //used by mobile phone numbers
+		if (str[i] == '+')
+			str[i] = '#';
+		else if (str[i] == '*')
+			str[i] = '&';
+	}
 	std::string::iterator inputit = str.begin();
 	std::vector<state*> currentStates;
 	std::vector<state*> oldStates;
@@ -235,7 +241,7 @@ eNFA generateNFA(std::string filename) {          //Input file to eNFA
 	std::string::iterator lineit = line.begin();
 	//std::cout << line << std::endl;
 	while (lineit != line.end()) {        //read alphabet
-		if (*lineit != ' ' && *lineit != '_' && sigma.find(*lineit) == sigma.end())
+		if (*lineit != ' ' && *lineit != '<' && sigma.find(*lineit) == sigma.end())
 			sigma.insert(*lineit);
 		else {
 			std::cout << "Invalid input in alphabet" << std::endl;
@@ -339,7 +345,7 @@ eNFA generateNFA(std::string filename) {          //Input file to eNFA
 			return eNFA();
 		}
 		lineit++;
-		if (*lineit != '_' && sigma.find(*lineit) == sigma.end()) {
+		if (*lineit != '<' && sigma.find(*lineit) == sigma.end()) {
 			std::cout << "Character not in alphabet" << std::endl;
 			return eNFA();
 		}
@@ -370,7 +376,7 @@ eNFA generateNFA(std::string filename) {          //Input file to eNFA
 			stateSet.push_back(Q[pos]);
 			if (lineit != line.end()) lineit++;
 		}
-		if (c == '_') deltaInt[0] = stateSet;
+		if (c == '<') deltaInt[0] = stateSet;
 		else deltaInt[c] = stateSet;
 		stateSet.clear();
 
@@ -448,7 +454,7 @@ void eNFA::toFile(std::string filename) {   //Save eNFA to file, can be read aga
 			if (transintit->first != 0)
 				file << *(transit->first) << " via " << (transintit->first) << " to ";
 			else
-				file << *(transit->first) << " via _ to ";
+				file << *(transit->first) << " via < to ";
 			states::iterator targetStatesit = transintit->second.begin();
 			while (targetStatesit != transintit->second.end()) {
 				file << **targetStatesit;

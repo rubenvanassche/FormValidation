@@ -1,0 +1,96 @@
+Voornaam:
+	-Hoofdletters: begin en na punt
+	-enkel Latijns alfabet
+	-Speciale karakters: - (gevolgd door letter) en . (gevolgd door hoofdletter)
+	-Geen spaties
+
+	"((A+B+C+D+E+F+G+H+I+J+K+L+M+N+O+P+Q+R+S+T+U+V+W+X+Y+Z)((a+b+c+d+e+f+g+h+i+j+k+l+m+n+o+p+q+r+s+t+u+v+w+x+y+z)*))(((<+((-(A+B+C+D+E+F+G+H+I+J+K+L+M+N+O+P+Q+R+S+T+U+V+W+X+Y+Z))((a+b+c+d+e+f+g+h+i+j+k+l+m+n+o+p+q+r+s+t+u+v+w+x+y+z)*)))*)+((((.+(.-))(A+B+C+D+E+F+G+H+I+J+K+L+M+N+O+P+Q+R+S+T+U+V+W+X+Y+Z))*)(.+<)))"
+
+
+
+Familienaam:
+	-Hoofdletters: eventueel in het begin, na ., na spatie
+	-enkel Latijns alfabet
+	-Speciale karakters: - (gevolgd door hoofdletter) en . (gevolgd door hoofdletter of -)
+	-Spaties toegelaten, geen meerdere na elkaar
+
+	"((((A+B+C+D+E+F+G+H+I+J+K+L+M+N+O+P+Q+R+S+T+U+V+W+X+Y+Z+a+b+c+d+e+f+g+h+i+j+k+l+m+n+o+p+q+r+s+t+u+v+w+x+y+z)((a+b+c+d+e+f+g+h+i+j+k+l+m+n+o+p+q+r+s+t+u+v+w+x+y+z)*))(((<+((-(A+B+C+D+E+F+G+H+I+J+K+L+M+N+O+P+Q+R+S+T+U+V+W+X+Y+Z))((a+b+c+d+e+f+g+h+i+j+k+l+m+n+o+p+q+r+s+t+u+v+w+x+y+z)*)))*)+((((.+(.-))(A+B+C+D+E+F+G+H+I+J+K+L+M+N+O+P+Q+R+S+T+U+V+W+X+Y+Z))*)(.+<))))+<)(( (((A+B+C+D+E+F+G+H+I+J+K+L+M+N+O+P+Q+R+S+T+U+V+W+X+Y+Z+a+b+c+d+e+f+g+h+i+j+k+l+m+n+o+p+q+r+s+t+u+v+w+x+y+z)((a+b+c+d+e+f+g+h+i+j+k+l+m+n+o+p+q+r+s+t+u+v+w+x+y+z)*))(((<+((-(A+B+C+D+E+F+G+H+I+J+K+L+M+N+O+P+Q+R+S+T+U+V+W+X+Y+Z))((a+b+c+d+e+f+g+h+i+j+k+l+m+n+o+p+q+r+s+t+u+v+w+x+y+z)*)))*)+((((.+(.-))(A+B+C+D+E+F+G+H+I+J+K+L+M+N+O+P+Q+R+S+T+U+V+W+X+Y+Z))*)(.+<)))))*)"
+	
+
+	
+straatnaam:
+	-Hoofdletters: begin (kan ook cijfer zijn), meerdere na elkaar
+	-enkel Latijns alfabet en cijfers
+	-Speciale karakters: - (gevolgd door hoofdletter) en . (gevolgd door hoofdletter, spatie of -)
+	-Spaties toegelaten, geen meerdere na elkaar
+
+	"((((A+B+C+D+E+F+G+H+I+J+K+L+M+N+O+P+Q+R+S+T+U+V+W+X+Y+Z+a+b+c+d+e+f+g+h+i+j+k+l+m+n+o+p+q+r+s+t+u+v+w+x+y+z+0+1+2+3+4+5+6+7+8+9)((A+B+C+D+E+F+G+H+I+J+K+L+M+N+O+P+Q+R+S+T+U+V+W+X+Y+Z+a+b+c+d+e+f+g+h+i+j+k+l+m+n+o+p+q+r+s+t+u+v+w+x+y+z+0+1+2+3+4+5+6+7+8+9)*))(((<+((-(A+B+C+D+E+F+G+H+I+J+K+L+M+N+O+P+Q+R+S+T+U+V+W+X+Y+Z+a+b+c+d+e+f+g+h+i+j+k+l+m+n+o+p+q+r+s+t+u+v+w+x+y+z+0+1+2+3+4+5+6+7+8+9))((A+B+C+D+E+F+G+H+I+J+K+L+M+N+O+P+Q+R+S+T+U+V+W+X+Y+Z+a+b+c+d+e+f+g+h+i+j+k+l+m+n+o+p+q+r+s+t+u+v+w+x+y+z+0+1+2+3+4+5+6+7+8+9)*)))*)+((((.(<+-+ ))(A+B+C+D+E+F+G+H+I+J+K+L+M+N+O+P+Q+R+S+T+U+V+W+X+Y+Z))*)(.+<))))+<)(( (((A+B+C+D+E+F+G+H+I+J+K+L+M+N+O+P+Q+R+S+T+U+V+W+X+Y+Z+a+b+c+d+e+f+g+h+i+j+k+l+m+n+o+p+q+r+s+t+u+v+w+x+y+z+0+1+2+3+4+5+6+7+8+9)((A+B+C+D+E+F+G+H+I+J+K+L+M+N+O+P+Q+R+S+T+U+V+W+X+Y+Z+a+b+c+d+e+f+g+h+i+j+k+l+m+n+o+p+q+r+s+t+u+v+w+x+y+z+0+1+2+3+4+5+6+7+8+9)*))(((<+((-(A+B+C+D+E+F+G+H+I+J+K+L+M+N+O+P+Q+R+S+T+U+V+W+X+Y+Z+a+b+c+d+e+f+g+h+i+j+k+l+m+n+o+p+q+r+s+t+u+v+w+x+y+z+0+1+2+3+4+5+6+7+8+9))((A+B+C+D+E+F+G+H+I+J+K+L+M+N+O+P+Q+R+S+T+U+V+W+X+Y+Z+a+b+c+d+e+f+g+h+i+j+k+l+m+n+o+p+q+r+s+t+u+v+w+x+y+z+0+1+2+3+4+5+6+7+8+9)*)))*)+((((.(<+-+ ))(A+B+C+D+E+F+G+H+I+J+K+L+M+N+O+P+Q+R+S+T+U+V+W+X+Y+Z))*)(.+<)))))*)"
+
+
+
+
+Huisnummer:
+	-getal gevolgd door evt. 1 letter
+
+	"((0+1+2+3+4+5+6+7+8+9)((0+1+2+3+4+5+6+7+8+9)*))(a+b+c+d+e+f+g+h+i+j+k+l+m+n+o+p+q+r+s+t+u+v+w+x+y+z+A+B+C+D+E+F+G+H+I+J+K+L+M+N+O+P+Q+R+S+T+U+V+W+X+Y+Z+<)"
+
+
+
+Bus:
+	-getal
+
+	"(0+1+2+3+4+5+6+7+8+9)((0+1+2+3+4+5+6+7+8+9)*)"
+
+
+
+Postcode:
+	-4 cijfers
+
+	"(((0+1+2+3+4+5+6+7+8+9)(0+1+2+3+4+5+6+7+8+9))(0+1+2+3+4+5+6+7+8+9))(0+1+2+3+4+5+6+7+8+9)"
+
+
+
+Gemeente:
+	-Hoofdletters: enkel begin van woord
+	-Enkel Latijns alfabet
+	-Speciale tekens: - (gevolgd door letter) en ' (gevolgd door letter)
+	-Spaties toegelaten, geen meerdere na elkaar
+
+	"((A+B+C+D+E+F+G+H+I+J+K+L+M+N+O+P+Q+R+S+T+U+V+W+X+Y+Z)((a+b+c+d+e+f+g+h+i+j+k+l+m+n+o+p+q+r+s+t+u+v+w+x+y+z)*))(<+(((-+ +')((A+B+C+D+E+F+G+H+I+J+K+L+M+N+O+P+Q+R+S+T+U+V+W+X+Y+Z+a+b+c+d+e+f+g+h+i+j+k+l+m+n+o+p+q+r+s+t+u+v+w+x+y+z)((a+b+c+d+e+f+g+h+i+j+k+l+m+n+o+p+q+r+s+t+u+v+w+x+y+z)*)))*))"
+
+
+
+Land:
+	-Hoofdletters: enkel begin van woord
+	-enkel Latijns alfabet
+	-Spaties toegelaten, geen meerdere na elkaar
+	-Speciale tekens: - (gevolgd door letter)
+
+	"((A+B+C+D+E+F+G+H+I+J+K+L+M+N+O+P+Q+R+S+T+U+V+W+X+Y+Z)((a+b+c+d+e+f+g+h+i+j+k+l+m+n+o+p+q+r+s+t+u+v+w+x+y+z)*))(((( +-)(A+B+C+D+E+F+G+H+I+J+K+L+M+N+O+P+Q+R+S+T+U+V+W+X+Y+Z+a+b+c+d+e+f+g+h+i+j+k+l+m+n+o+p+q+r+s+t+u+v+w+x+y+z))((A+B+C+D+E+F+G+H+I+J+K+L+M+N+O+P+Q+R+S+T+U+V+W+X+Y+Z+a+b+c+d+e+f+g+h+i+j+k+l+m+n+o+p+q+r+s+t+u+v+w+x+y+z)*))*)"
+
+
+
+Telefoonnr:
+	-van de vorm xxx/xx.xx.xx (waarbij x een cijfer is, één of meerdere / en . kunnen weggelaten worden)
+
+	"((((((((((0(0+1+2+3+4+5+6+7+8+9))(0+1+2+3+4+5+6+7+8+9))(/+<))(0+1+2+3+4+5+6+7+8+9))(0+1+2+3+4+5+6+7+8+9))(.+<))(0+1+2+3+4+5+6+7+8+9))(0+1+2+3+4+5+6+7+8+9))(.+<))(0+1+2+3+4+5+6+7+8+9))(0+1+2+3+4+5+6+7+8+9)"
+
+
+
+GSMnummer:
+
+	-Van de vorm 04xx/xx.xx.xx of +32xx/xx.xx.xx (één of meerde +, / en . kunnen weggelaten worden)
+
+	"((((((((((((0+((#+<)(32)))(0+1+2+3+4+5+6+7+8+9))(0+1+2+3+4+5+6+7+8+9))(0+1+2+3+4+5+6+7+8+9))(/+<))(0+1+2+3+4+5+6+7+8+9))(0+1+2+3+4+5+6+7+8+9))(.+<))(0+1+2+3+4+5+6+7+8+9))(0+1+2+3+4+5+6+7+8+9))(.+<))(0+1+2+3+4+5+6+7+8+9))(0+1+2+3+4+5+6+7+8+9)"
+
+
+
+E-mailadres:
+	-Eerste deel: Latijns alfabet, cijfers, #, $, %, &, ', +, -, *, /, =, ?, ^, _, `, {, }, |, ~, .
+	-@
+	-Tweede deel: kleine letters, cijfers, -, .
+	-.
+	-Derde deel: kleine letters en .
+
+		"(((((((A+B+C+D+E+F+G+H+I+J+K+L+M+N+O+P+Q+R+S+T+U+V+W+X+Y+Z+a+b+c+d+e+f+g+h+i+j+k+l+m+n+o+p+q+r+s+t+u+v+w+x+y+z+0+1+2+3+4+5+6+7+8+9+!+#+$+%+&+'+-+/+=+?+^+_+`+{+}+|+~+.)((A+B+C+D+E+F+G+H+I+J+K+L+M+N+O+P+Q+R+S+T+U+V+W+X+Y+Z+a+b+c+d+e+f+g+h+i+j+k+l+m+n+o+p+q+r+s+t+u+v+w+x+y+z+0+1+2+3+4+5+6+7+8+9+!+#+$+%+&+'+-+/+=+?+^+_+`+{+}+|+~+.)*))@)(a+b+c+d+e+f+g+h+i+j+k+l+m+n+o+p+q+r+s+t+u+v+w+x+y+z+0+1+2+3+4+5+6+7+8+9+-+.))((a+b+c+d+e+f+g+h+i+j+k+l+m+n+o+p+q+r+s+t+u+v+w+x+y+z+0+1+2+3+4+5+6+7+8+9+-+.)*)).)(a+b+c+d+e+f+g+h+i+j+k+l+m+n+o+p+q+r+s+t+u+v+w+x+y+z+.))((a+b+c+d+e+f+g+h+i+j+k+l+m+n+o+p+q+r+s+t+u+v+w+x+y+z+.)*)"
+

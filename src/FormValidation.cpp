@@ -228,9 +228,9 @@ int main(int argc, char* argv[]) {
 	std::cout << "Result for dc: " << inputNFA2.process("dc") << std::endl;
 	std::cout << "Result for dd: " << inputNFA2.process("dd") << std::endl;
 
-	FA::eNFA *enfa13 = FA::regexToNFA("(((0+(10))*)((1+(01))*))(0+_)");
+	FA::eNFA *enfa13 = FA::regexToNFA("(((0+(10))*)((1+(01))*))(0+<)");
 	//std::cout << *enfa13 << std::endl;
-	std::cout << "Regex '(0+10)*(1+01)*(0+_)'" << std::endl;
+	std::cout << "Regex '(0+10)*(1+01)*(0+<)'" << std::endl;
 	std::cout << "Result for empty: " << enfa13->process("") << std::endl;
 	std::cout << "Result for 0: " << enfa13->process("0") << std::endl;
 	std::cout << "Result for 1: " << enfa13->process("1") << std::endl;
@@ -269,6 +269,47 @@ int main(int argc, char* argv[]) {
 	std::cout << "Result for ababababababc: " << enfa14->process("abababababababc") << std::endl;
 	std::cout << "Result for cdcdcdcdcdcd: " << enfa14->process("cdcdcdcdcdcd") << std::endl;*/
 
+	//FA::eNFA inputNFA = FA::generateNFA("NFAexample.txt");
+
+
+	FA::eNFA *firstNameNFA = FA::regexToNFA("((A+B+C+D+E+F+G+H+I+J+K+L+M+N+O+P+Q+R+S+T+U+V+W+X+Y+Z)((a+b+c+d+e+f+g+h+i+j+k+l+m+n+o+p+q+r+s+t+u+v+w+x+y+z)*))(((<+((-(A+B+C+D+E+F+G+H+I+J+K+L+M+N+O+P+Q+R+S+T+U+V+W+X+Y+Z))((a+b+c+d+e+f+g+h+i+j+k+l+m+n+o+p+q+r+s+t+u+v+w+x+y+z)*)))*)+((((.+(.-))(A+B+C+D+E+F+G+H+I+J+K+L+M+N+O+P+Q+R+S+T+U+V+W+X+Y+Z))*)(.+<)))");
+	firstNameNFA->toFile("FirstNameNFA.txt");
+
+
+	FA::eNFA *nameNFA = FA::regexToNFA("((((A+B+C+D+E+F+G+H+I+J+K+L+M+N+O+P+Q+R+S+T+U+V+W+X+Y+Z+a+b+c+d+e+f+g+h+i+j+k+l+m+n+o+p+q+r+s+t+u+v+w+x+y+z)((a+b+c+d+e+f+g+h+i+j+k+l+m+n+o+p+q+r+s+t+u+v+w+x+y+z)*))(((<+((-(A+B+C+D+E+F+G+H+I+J+K+L+M+N+O+P+Q+R+S+T+U+V+W+X+Y+Z))((a+b+c+d+e+f+g+h+i+j+k+l+m+n+o+p+q+r+s+t+u+v+w+x+y+z)*)))*)+((((.+(.-))(A+B+C+D+E+F+G+H+I+J+K+L+M+N+O+P+Q+R+S+T+U+V+W+X+Y+Z))*)(.+<))))+<)(( (((A+B+C+D+E+F+G+H+I+J+K+L+M+N+O+P+Q+R+S+T+U+V+W+X+Y+Z+a+b+c+d+e+f+g+h+i+j+k+l+m+n+o+p+q+r+s+t+u+v+w+x+y+z)((a+b+c+d+e+f+g+h+i+j+k+l+m+n+o+p+q+r+s+t+u+v+w+x+y+z)*))(((<+((-(A+B+C+D+E+F+G+H+I+J+K+L+M+N+O+P+Q+R+S+T+U+V+W+X+Y+Z))((a+b+c+d+e+f+g+h+i+j+k+l+m+n+o+p+q+r+s+t+u+v+w+x+y+z)*)))*)+((((.+(.-))(A+B+C+D+E+F+G+H+I+J+K+L+M+N+O+P+Q+R+S+T+U+V+W+X+Y+Z))*)(.+<)))))*)");
+	nameNFA->toFile("LastNameNFA.txt");
+
+	FA::eNFA *streetNFA = FA::regexToNFA("((((A+B+C+D+E+F+G+H+I+J+K+L+M+N+O+P+Q+R+S+T+U+V+W+X+Y+Z+a+b+c+d+e+f+g+h+i+j+k+l+m+n+o+p+q+r+s+t+u+v+w+x+y+z+0+1+2+3+4+5+6+7+8+9)((A+B+C+D+E+F+G+H+I+J+K+L+M+N+O+P+Q+R+S+T+U+V+W+X+Y+Z+a+b+c+d+e+f+g+h+i+j+k+l+m+n+o+p+q+r+s+t+u+v+w+x+y+z+0+1+2+3+4+5+6+7+8+9)*))(((<+((-(A+B+C+D+E+F+G+H+I+J+K+L+M+N+O+P+Q+R+S+T+U+V+W+X+Y+Z+a+b+c+d+e+f+g+h+i+j+k+l+m+n+o+p+q+r+s+t+u+v+w+x+y+z+0+1+2+3+4+5+6+7+8+9))((A+B+C+D+E+F+G+H+I+J+K+L+M+N+O+P+Q+R+S+T+U+V+W+X+Y+Z+a+b+c+d+e+f+g+h+i+j+k+l+m+n+o+p+q+r+s+t+u+v+w+x+y+z+0+1+2+3+4+5+6+7+8+9)*)))*)+((((.(<+-+ ))(A+B+C+D+E+F+G+H+I+J+K+L+M+N+O+P+Q+R+S+T+U+V+W+X+Y+Z))*)(.+<))))+<)(( (((A+B+C+D+E+F+G+H+I+J+K+L+M+N+O+P+Q+R+S+T+U+V+W+X+Y+Z+a+b+c+d+e+f+g+h+i+j+k+l+m+n+o+p+q+r+s+t+u+v+w+x+y+z+0+1+2+3+4+5+6+7+8+9)((A+B+C+D+E+F+G+H+I+J+K+L+M+N+O+P+Q+R+S+T+U+V+W+X+Y+Z+a+b+c+d+e+f+g+h+i+j+k+l+m+n+o+p+q+r+s+t+u+v+w+x+y+z+0+1+2+3+4+5+6+7+8+9)*))(((<+((-(A+B+C+D+E+F+G+H+I+J+K+L+M+N+O+P+Q+R+S+T+U+V+W+X+Y+Z+a+b+c+d+e+f+g+h+i+j+k+l+m+n+o+p+q+r+s+t+u+v+w+x+y+z+0+1+2+3+4+5+6+7+8+9))((A+B+C+D+E+F+G+H+I+J+K+L+M+N+O+P+Q+R+S+T+U+V+W+X+Y+Z+a+b+c+d+e+f+g+h+i+j+k+l+m+n+o+p+q+r+s+t+u+v+w+x+y+z+0+1+2+3+4+5+6+7+8+9)*)))*)+((((.(<+-+ ))(A+B+C+D+E+F+G+H+I+J+K+L+M+N+O+P+Q+R+S+T+U+V+W+X+Y+Z))*)(.+<)))))*)");
+	streetNFA->toFile("streetNFA.txt");
+
+	FA::eNFA *numberNFA = FA::regexToNFA("((0+1+2+3+4+5+6+7+8+9)((0+1+2+3+4+5+6+7+8+9)*))(a+b+c+d+e+f+g+h+i+j+k+l+m+n+o+p+q+r+s+t+u+v+w+x+y+z+A+B+C+D+E+F+G+H+I+J+K+L+M+N+O+P+Q+R+S+T+U+V+W+X+Y+Z+<)");
+	numberNFA->toFile("NumberNFA.txt");
+
+	FA::eNFA *busNFA = FA::regexToNFA("(0+1+2+3+4+5+6+7+8+9)((0+1+2+3+4+5+6+7+8+9)*)");
+	busNFA->toFile("BusNFA.txt");
+
+	FA::eNFA *postalCodeNFA = FA::regexToNFA("(((0+1+2+3+4+5+6+7+8+9)(0+1+2+3+4+5+6+7+8+9))(0+1+2+3+4+5+6+7+8+9))(0+1+2+3+4+5+6+7+8+9)");
+	postalCodeNFA->toFile("PostalCodeNFA.txt");
+
+	FA::eNFA *townNFA = FA::regexToNFA("((A+B+C+D+E+F+G+H+I+J+K+L+M+N+O+P+Q+R+S+T+U+V+W+X+Y+Z)((a+b+c+d+e+f+g+h+i+j+k+l+m+n+o+p+q+r+s+t+u+v+w+x+y+z)*))(<+(((-+ +')((A+B+C+D+E+F+G+H+I+J+K+L+M+N+O+P+Q+R+S+T+U+V+W+X+Y+Z+a+b+c+d+e+f+g+h+i+j+k+l+m+n+o+p+q+r+s+t+u+v+w+x+y+z)((a+b+c+d+e+f+g+h+i+j+k+l+m+n+o+p+q+r+s+t+u+v+w+x+y+z)*)))*))");
+	townNFA->toFile("townNFA.txt");
+
+	FA::eNFA *countryNFA = FA::regexToNFA("((A+B+C+D+E+F+G+H+I+J+K+L+M+N+O+P+Q+R+S+T+U+V+W+X+Y+Z)((a+b+c+d+e+f+g+h+i+j+k+l+m+n+o+p+q+r+s+t+u+v+w+x+y+z)*))(((( +-)(A+B+C+D+E+F+G+H+I+J+K+L+M+N+O+P+Q+R+S+T+U+V+W+X+Y+Z+a+b+c+d+e+f+g+h+i+j+k+l+m+n+o+p+q+r+s+t+u+v+w+x+y+z))((A+B+C+D+E+F+G+H+I+J+K+L+M+N+O+P+Q+R+S+T+U+V+W+X+Y+Z+a+b+c+d+e+f+g+h+i+j+k+l+m+n+o+p+q+r+s+t+u+v+w+x+y+z)*))*)");
+	countryNFA->toFile("countryNFA.txt");
+
+	FA::eNFA *phoneNFA = FA::regexToNFA("((((((((((0(0+1+2+3+4+5+6+7+8+9))(0+1+2+3+4+5+6+7+8+9))(/+<))(0+1+2+3+4+5+6+7+8+9))(0+1+2+3+4+5+6+7+8+9))(.+<))(0+1+2+3+4+5+6+7+8+9))(0+1+2+3+4+5+6+7+8+9))(.+<))(0+1+2+3+4+5+6+7+8+9))(0+1+2+3+4+5+6+7+8+9)");
+	phoneNFA->toFile("phoneNFA.txt");
+
+	FA::eNFA *mobileNFA = FA::regexToNFA("((((((((((((0+((#+<)(32)))(0+1+2+3+4+5+6+7+8+9))(0+1+2+3+4+5+6+7+8+9))(0+1+2+3+4+5+6+7+8+9))(/+<))(0+1+2+3+4+5+6+7+8+9))(0+1+2+3+4+5+6+7+8+9))(.+<))(0+1+2+3+4+5+6+7+8+9))(0+1+2+3+4+5+6+7+8+9))(.+<))(0+1+2+3+4+5+6+7+8+9))(0+1+2+3+4+5+6+7+8+9)");
+	mobileNFA->toFile("mobileNFA.txt");
+
+
+	FA::eNFA *emailNFA = FA::regexToNFA("(((((((A+B+C+D+E+F+G+H+I+J+K+L+M+N+O+P+Q+R+S+T+U+V+W+X+Y+Z+a+b+c+d+e+f+g+h+i+j+k+l+m+n+o+p+q+r+s+t+u+v+w+x+y+z+0+1+2+3+4+5+6+7+8+9+!+#+$+%+&+'+-+/+=+?+^+_+`+{+}+|+~+.)((A+B+C+D+E+F+G+H+I+J+K+L+M+N+O+P+Q+R+S+T+U+V+W+X+Y+Z+a+b+c+d+e+f+g+h+i+j+k+l+m+n+o+p+q+r+s+t+u+v+w+x+y+z+0+1+2+3+4+5+6+7+8+9+!+#+$+%+&+'+-+/+=+?+^+_+`+{+}+|+~+.)*))@)(a+b+c+d+e+f+g+h+i+j+k+l+m+n+o+p+q+r+s+t+u+v+w+x+y+z+0+1+2+3+4+5+6+7+8+9+-+.))((a+b+c+d+e+f+g+h+i+j+k+l+m+n+o+p+q+r+s+t+u+v+w+x+y+z+0+1+2+3+4+5+6+7+8+9+-+.)*)).)(a+b+c+d+e+f+g+h+i+j+k+l+m+n+o+p+q+r+s+t+u+v+w+x+y+z+.))((a+b+c+d+e+f+g+h+i+j+k+l+m+n+o+p+q+r+s+t+u+v+w+x+y+z+.)*)");
+	emailNFA->toFile("emailNFA.txt");
+
+
+
+	/*
 
 	if (argc != 1) {
 		FA::eNFA *enfaArg = FA::regexToNFA(argv[1]);
@@ -304,6 +345,6 @@ int main(int argc, char* argv[]) {
 			//if (response == 'n' || response == 'N')
 			//	cont = false;
 		}
-	}
+	}*/
 
 }

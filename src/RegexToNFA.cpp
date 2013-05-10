@@ -19,19 +19,19 @@ eNFA* regexToNFA(regex regEx) {
 	bool hasEpsilon = false;                   //is epsilon part of the regex?
 	std::string::iterator regexit = regEx.begin();
 	while (regexit != regEx.end()) {            //generate alphabet
-		if (*regexit != '(' && *regexit != ')' && *regexit != '+' && *regexit != '.' && *regexit != '*' && *regexit != '_'
+		if (*regexit != '(' && *regexit != ')' && *regexit != '+' && *regexit != '*' && *regexit != '<'
 			&& sigma.find((char)*regexit) == sigma.end())
 			sigma.insert((char)*regexit);
-		else if (*regexit == '_')
+		else if (*regexit == '<')
 			hasEpsilon = true;
 		regexit++;
 	}
 	q0 = regexToNFAInternal(regEx, Q, delta, F, 0);      //generate other four parts of the eNFA
 
-	if (hasEpsilon) {    //Replaces all '_' with epsilon
+	if (hasEpsilon) {    //Replaces all '<' with epsilon
 		transitions::iterator transit = delta.begin();
 		while (transit != delta.end()) {
-			transitionsInternal::iterator transintit = transit->second.find('_');
+			transitionsInternal::iterator transintit = transit->second.find('<');
 			if (transintit != transit->second.end()) {
 				std::swap(transit->second[0], transintit->second);
 				transit->second.erase(transintit);
@@ -69,7 +69,7 @@ state* regexToNFAInternal(regex regEx, states& Q, transitions& delta, acceptingS
 	char char2;
 	char regExOperator;
 	while (regexit != regEx.end()) {
-		if (*regexit != '(' && *regexit != ')' && *regexit != '+' && *regexit != '.' && *regexit != '*' && !upcomingConcat) {
+		if (*regexit != '(' && *regexit != ')' && *regexit != '+' && *regexit != '*' && !upcomingConcat) {
 			char1 = (char) *regexit;    //Not a special sign, so a character part of the alphabet
 			regexit++;
 		}
@@ -102,7 +102,7 @@ state* regexToNFAInternal(regex regEx, states& Q, transitions& delta, acceptingS
 		else
 			char1 = (char) 0;      //Left side of +.* is not a char
 		if (regexit != regEx.end() ) {
-			if ((*regexit != '+' && *regexit != '.' && *regexit != '*') || upcomingConcat)
+			if ((*regexit != '+' && *regexit != '*') || upcomingConcat)
 				regExOperator = '.';      //If previous loop noticed a following concatenation
 			else {
 				regExOperator = (char) *regexit;
@@ -153,7 +153,7 @@ state* regexToNFAInternal(regex regEx, states& Q, transitions& delta, acceptingS
 		if (regexit != regEx.end())
 			regexit++;
 		//std::cout << regEx << " " << *regexit << " " << (regexit == regEx.end()) << std::endl;
-		if (*regexit != ')' && *regexit != '+' && *regexit != '.' && *regexit != '*')
+		if (*regexit != ')' && *regexit != '+' && *regexit != '*')
 			upcomingConcat = 1;
 
 
