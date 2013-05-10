@@ -3,7 +3,7 @@
 #include "eNFA.h"
 #include "RegexToNFA.h"
 
-int main() {
+int main(int argc, char* argv[]) {
 	/*FA::alphabet sigma;
 	sigma.insert('a'); sigma.insert('b'); sigma.insert('c'); sigma.insert('d'); sigma.insert('e');
 	FA::transitions delta;
@@ -269,26 +269,41 @@ int main() {
 	std::cout << "Result for ababababababc: " << enfa14->process("abababababababc") << std::endl;
 	std::cout << "Result for cdcdcdcdcdcd: " << enfa14->process("cdcdcdcdcdcd") << std::endl;*/
 
-	std::cout << "Please enter a regular expression" << std::endl;
-	FA::regex regEx;
-	std::cin >> regEx;
-	FA::eNFA *enfaCin = FA::regexToNFA(regEx);
-	//bool cont = true;
-	while (true) {
-		std::cout << "Please enter a string" << std::endl;
-		std::string str;
-		std::cin >> str;
-		bool accepted = enfaCin->process(str);
-		if (accepted)
-			std::cout << "This string belongs to the language expressed by the given regex" << std::endl;
-		else
-			std::cout << "This string does not belong to the language expressed by the given regex" << std::endl;
-		//std::cout << "Would you like to enter another string (Y/n): " << std::endl;
-		//char response;
-		//std::cin >> response;
-		//if (response == 'n' || response == 'N')
-		//	cont = false;
-	}
 
+	if (argc != 1) {
+		FA::eNFA *enfaArg = FA::regexToNFA(argv[1]);
+		std::cout << "Regex: " << argv[1] << std::endl;
+		int i = 2;
+		while (i != argc) {
+			std::cout << argv[i] << " was ";
+			if (!enfaArg->process(argv[i]))
+				std::cout << "NOT ";
+			std::cout << "accepted." << std::endl;
+			i++;
+		}
+
+	}
+	else {
+		std::cout << "Please enter a regular expression" << std::endl;
+		FA::regex regEx;
+		std::cin >> regEx;
+		FA::eNFA *enfaCin = FA::regexToNFA(regEx);
+		//bool cont = true;
+		while (true) {
+			std::cout << "Please enter a string" << std::endl;
+			std::string str;
+			std::cin >> str;
+			bool accepted = enfaCin->process(str);
+			if (accepted)
+				std::cout << "This string belongs to the language expressed by the given regex" << std::endl;
+			else
+				std::cout << "This string does not belong to the language expressed by the given regex" << std::endl;
+			//std::cout << "Would you like to enter another string (Y/n): " << std::endl;
+			//char response;
+			//std::cin >> response;
+			//if (response == 'n' || response == 'N')
+			//	cont = false;
+		}
+	}
 
 }
