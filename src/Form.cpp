@@ -227,7 +227,6 @@ bool Form::load(std::string file){
 					}
 
 					this->add(name, type, length, required);
-					std::cout << "Added " << name << " a " << type << " field with length: " << length << " and required: " << required << std::endl;
 				}
 
 				make = false;
@@ -267,7 +266,6 @@ bool Form::load(std::string file){
 		}
 
 		this->add(name, type, length, required);
-		std::cout << "Added " << name << " a " << type << " field with length: " << length << " and required: " << required << std::endl;
 	}
 
 }
