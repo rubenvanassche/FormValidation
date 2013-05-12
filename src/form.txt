@@ -1,16 +1,9 @@
-Email Adres
-:t:Email
+Stad
+:t:CityVL
 :r:yes
-:l:3
-Naam
-:t:Name
-:l:3
-Naam 2
-:t:Name
-Naam 3
-Naam 4
-:t:Name
+Postcode
+:t:PostCodeVL
 :r:yes
-Naam 5
-:t:Name
-:r:no
+Postcode2
+:t:PostCodeVL
+:r:yes
