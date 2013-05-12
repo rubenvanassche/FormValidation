@@ -117,7 +117,40 @@ void Form::process(){
 
 		std::string input;
 		std::cin >> input;
-		it->process(input);
+		bool accepted = it->process(input);
+
+		if(accepted == false){
+			// try to find another field where we can put the value in
+			std::vector<Field>::iterator it2;
+			for(it2 = fields.begin();it2 != fields.end();it2++){
+				if(it2->check(input)){
+					std::cout << std::endl << std::endl << "Deze waarde is fout maar kan wel in het veld " << it2->getName() << " gezet worden." << std::endl;
+					std::cout << "A) Doen" << std::endl << "B) Niet Doen" << std::endl;
+
+					bool stop = true;
+
+					while(true){
+						std::string option;
+						std::cin >> option;
+						if(option == "A" or option == "a"){
+							it2->process(input);
+							break;
+						}else if(option == "B" or option == "b"){
+							stop = false;
+							break;
+						}else{
+							std::cout << "De ingevulde optie is fout, gelieve opnieuw te proberen : " << std::endl;
+						}
+					}
+
+					if(stop == true){
+						break;
+					}
+
+				}
+			}
+		}
+
 	}
 
 	if(this->ok() == false){

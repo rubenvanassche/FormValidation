@@ -26,6 +26,9 @@ public:
 
 	std::string makeLabel();
 	bool process(std::string value);
+	// checks if value is correct + if so set the fValue variable
+	bool check(std::string value);
+	// checks if value is corretc
 	bool isAccepted();
 	// true : if field is filled in + not required
 	bool isFilledIn();

@@ -81,6 +81,24 @@ bool Field::process(std::string value){
 	}
 }
 
+bool Field::check(std::string value){
+	if(this->isFilledIn()){
+		return false;
+	}
+
+	if(this->fLength != 0){
+		if(value.size() < this->fLength){
+			return false;
+		}
+	}
+
+	if(this->fType->process(value)){
+		return true;
+	}else{
+		return false;
+	}
+}
+
 bool Field::isAccepted(){
 	if(this->fValue.size() == 0){
 		if(this->isRequired() == false){
