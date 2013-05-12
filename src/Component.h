@@ -9,6 +9,9 @@
 #define COMPONENT_H_
 
 #include <string>
+#include <fstream>
+#include <algorithm>
+#include <vector>
 #include "eNFA.h"
 #include "RegexToNFA.h"
 
@@ -17,9 +20,12 @@ namespace FA {
 class Component {
 public:
 	Component(std::string type);
-	void regex(std::string value);
-	void db(std::string file);
-	void ENFA(std::string file);
+	bool regex(std::string value);
+	bool db(std::string file);
+	bool db(std::string file, bool corrector);
+	bool ENFA(std::string file);
+
+	std::string DBcorrector(std::string value);
 
 	bool process(std::string);
 
@@ -30,6 +36,8 @@ public:
 private:
 	eNFA* fENFA;
 	std::string fType;
+	std::vector<std::string> fDB;
+	bool fDBcorrector; // Do we need to check if strings are almost correct and equivalent to the ones in the db?
 };
 
 } /* namespace FA */

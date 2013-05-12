@@ -75,6 +75,9 @@ bool Form::addComponents(std::string file){
     		}else if(line[1] == 'd'){
     			// db file
     			component.db(line.substr(3));
+    		}else if(line[1] == 'c'){
+				// db file with corrector
+				component.db(line.substr(3), true);
     		}else if(line[1] == 'e'){
     			// eNFA
     			component.ENFA(line.substr(3));
