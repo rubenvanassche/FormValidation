@@ -4,46 +4,90 @@ Talen en Automaten: Fase 1
 Door: Jakob Struye & Ruben Van Assche
 
 
+WAT
+---
+Systeem om te controleren of formulieren correct zijn ingevoerd.
 
-Ondersteunde functionaliteit
-----------------------------
+HOE
+---
+Via terminal momenteel maar het is makkelijk om de bibliotheek uit te breiden naar bijvoorbeeld een grafische interface.
 
--Reguliere Expressies
--ε-NFA's
--DFA's
--Omzetten van reguliere expressie naar ε-NFA
--Omzetten van ε-NFA naar DFA(enkel als code, niet in de applicatie)
--ε-NFA opslaan als bestand en ε-NFA uitlezen uit bestand
+Compilen:
 
-Merk op dat binnen het programma (concreet: argument van FA::regexToNFA(regex) en bestanden met ε-NFA) de ε dient voorgesteld te worden door het teken '_'. Dit betekent dus ook dat reguliere expressies geen '_' kunnen bevatten. Indien dit toch gewenst zou zijn, is dit in de code nog aan te passen.
+$ make
+$ FA (voor standaard form.txt bestand)
+of
+$ FA formbestand.txt
+
+Form Betsanden
+--------------
+form.txt:
+
+Email Adres <- naam veld
+:t:Email <- type veld(zie componenten)
+:r:yes <- vereist om veld in te vullen
+:l:20 <- minimum lengte waaraan de waarde in een veld moet aan voldoen
+
+Het is mogelijk om meerder velden aan te maken in één form.
+Tevens is het ook mogelijk om bepaalde eigenschappen weg te laten:
+:r: indien niet aanwezig : veld is niet vereist
+:l: indien niet aanwezig : lengte waarde in een veld maakt niet uit
+
+! De naam van het veld + het type moeten altijd meegegeven worden.
+
+Component.txt
+-------------
+Hierin zitten de componenten(type velden).
+Een component kan:
+- Een reguliere expressie zijn(:r:)
+- Een eNFA bestand zijn(:e:)
+- Een database zijn(:d:)
+- Een database met correctie(waarden worden d.m.v. algoritme makkelijker aanvaard als er een foutje in zit) zijn(:c:)
+
+Deze :*: codes worden gevolgd door oftewel een reguliere expressie of de naam van een bestand.
+
+In components.txt is volgende syntax vereist:
+Numeric <- Type Component
+:r:0+1+2+3+4+5+6+7+8+9)(0+1+2+3+4+5+6+7+8+9)* <- Reguliere expressie
+CityVL <- Type Component
+:c:DB/citys.txt <- Bestand met database
+
+Databases
+---------
+Databases zijn .txt bestanden waarbij elke waarde wordt aangegeven d.m.v een backspace.
+Dus bijvoorbeeld een database met tv zenders is:
+één
+Canvas
+VTM
+Vier
+Vijf
+2Be
+
+Wanneer een item aanwezig is in de database en de gebruiker vult dat item in, dan wordt het veld als juist beschouwd.
+
+Database Correctie
+------------------
+Voorbeeld:
+
+database.txt:
+Zuid-Afrika
+België
+
+Gewone database koppeling:
+Zuid-Afrika <- aanvaardt
+België <- aanvaardt
+Zuid Afrika <- niet aanvaardt
+Belgie <- niet aanvaardt
+zuid afrika <- niet aanvaardt
+belgie <- niet aanvaardt
+
+Correctie database koppeling:
+Zuid-Afrika <- aanvaardt
+België <- aanvaardt
+Zuid Afrika <- aanvaardt
+Belgie <- aanvaardt
+zuid afrika <- aanvaardt
+belgie <- aanvaardt
 
 
-Een reguliere expressie kan naar een ε-NFA worden omgezet met de functie FA::regexToNFA(regex)
-waarbij de reguliere expresssie als string wordt meegegeven.
-De functie geeft dan de ε-NFA terug.
-De memberfunctie process(string) van de ε-NFA dient om te controleren of een bepaalde string behoort tot de taal die door de ε-NFA wordt uitgedrukt. Dit wordt weergegeven door de teruggegeven boolean.
 
-Merk op dat bij het ingeven van een reguliere expressie de volgende voorwaarden strikt moeten worden gerespecteerd:
-    -Alle bewerkingen hebben dezelfde prioriteit, de volgorde van de bewerkingen is dus van links naar rechts. Dit betekent bv. dat a+bc wordt geïnterpreteerd als (a+b)c.
-    -Bij elke concatenatie waarbij linker- of rechterdeel uit meer dan één teken bestaat, is het ten zeerste aangeraden beide delen tussen haakjes te plaatsen (als dit nog niet het geval was). Vooral een rechterdeel zonder haakjes kan voor problemen zorgen.
-    -Plaats niet meer haakjes dan nodig om de reguliere expressie uit te drukken (maar respecteer natuurlijk de bovenstaande regels). Zorg dat er zeker niets als "((...))" in je reguliere expressie voorkomt. Expressies als "((ab))" en "(((a+b)c))*(ab)" zullen tot problemen leiden.
-
-
-ε-NFA's opgeslagen als bestand, hebben de volgende structuur:
-
-"Het alfabet, met elk teken gescheiden door één spatie, geen spatie op het einde"
-"witregel"
-"De namen van de staten, zonder aanhalingstekens, gescheiden door één spatie, geen spatie op het einde"
-"witregel"
-"Alle transities, één transitie per regel, geen witregels tussenin, met de volgende structuur: staatnaam(van) via teken to staatnaam(naar)1 staatnaam(naar)2 ...
-Wederom zonder spatie op het einde"
-"witregel"
-"Naam van startstaat, zonder aanhalingstekens"
-"witregel"
-"Namen van eindstaten, zonder aanhalingstekens, gescheiden door één spatie, geen spatie op het einde"
-
-
-
-Inputbestanden dienen zich te bevinden in dezelfde map als de binary.
-
-Er is voor ε-NFA's een overload voor << voorzien. Deze is in de eerste plaats voor ontwikkelingsdoeleinden voorzien. De functie is nog steeds beschikbaar voor gebruikers, maar merk op dat er niet al te veel aandacht is besteed aan een heel overzichtelijke output.
