@@ -52,6 +52,18 @@ std::string Field::makeLabel(){
 	std::string label;
 	label = "- ";
 	label += this->getName();
+
+	if(this->fLength != 0){
+		label += " ";
+		label += "(minimum-lengte: ";
+		label += this->fLength;
+		label += ")";
+	}
+
+	if(this->fRequired == true){
+		label += " *";
+	}
+
 	label += "\n";
 
 	return label;

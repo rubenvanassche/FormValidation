@@ -1,0 +1,9 @@
+Stad
+:t:CityVL
+:r:yes
+Postcode
+:t:PostCodeVL
+:r:yes
+Postcode2
+:t:PostCodeVL
+:r:yes

@@ -6,19 +6,17 @@ int main(int argc, char* argv[]) {
 	FA::Form form("Test Form");
 
 	if(form.addComponents("components.txt") == false){
-		std::cout << "bla";
+		std::cout << "No components.txt file";
 	}
 
-	/*
-	if(form.add("Naam", "Name", true) == false){
-		std::cout << "blaname";
+	if(argc == 1){
+		form.load("form.txt");
+	}else if(argc == 2){
+		std::cout << argv[1] << " geladen." << std::endl;
+		form.load(argv[1]);
+	}else{
+		std::cout << "form [formfile.txt]";
 	}
-
-	if(form.add("Email", "Email", true) == false){
-		std::cout << "blaemail";
-	}*/
-
-	form.load("form.txt");
 
 	form.build();
 

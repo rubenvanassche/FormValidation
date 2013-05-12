@@ -1,9 +1,21 @@
-Stad
+Email Adres
+:t:Email
+:r:yes
+Postcode(Vlaanderen)
+:t:PostCodeVL
+:r:yes
+Stad(Vlaanderen)
 :t:CityVL
 :r:yes
-Postcode
-:t:PostCodeVL
+Land
+:t:CountyNL
 :r:yes
-Postcode2
-:t:PostCodeVL
+Voornaam
+:t:FirstName
+:r:yes
+Achternaam
+:t:LastName
+:r:yes
+Telefoonnummer
+:t:PhoneNumber
 :r:yes
