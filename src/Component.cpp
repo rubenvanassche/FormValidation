@@ -68,23 +68,30 @@ std::string Component::DBcorrector(std::string value){
 	for(it = value.begin();it != value.end();it++){
 		*it = std::tolower(*it);
 
+		std::stringstream ss;
+		std::string check;
+
+		ss << *it;
+		ss >> check;
+
+
 		if(*it == ' ' or *it == '-'){
 			value.erase(it);
 		}
 
-		if(*it == '�'){
+		if(check == "é"){
 			*it = 'e';
 		}
 
-		if(*it == '�'){
+		if(check == "è"){
 			*it = 'e';
 		}
 
-		if(*it == '�'){
+		if(check == "ë"){
 			*it = 'e';
 		}
 
-		if(*it == '�'){
+		if(check == "à"){
 			*it = 'a';
 		}
 

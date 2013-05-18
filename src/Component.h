@@ -14,6 +14,7 @@
 #include <vector>
 #include "eNFA.h"
 #include "RegexToNFA.h"
+#include <sstream>
 
 namespace FA {
 
