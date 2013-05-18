@@ -25,7 +25,7 @@ bool eNFA::process(std::string str) const {
 	std::vector<state*> currentStates;
 	std::vector<state*> oldStates;
 	currentStates.push_back(q0);
-	transitionsInternal initialTransitions = delta.find(q0)->second;
+	transitionsInternal initialTransitions = (delta.find(q0))->second;
 	if (initialTransitions.find((char) 0) != initialTransitions.end()) {       //e-transitions from q0?
 		stateset::iterator stateit = initialTransitions[(char) 0].begin();
 		while (stateit != initialTransitions[(char) 0].end()) {

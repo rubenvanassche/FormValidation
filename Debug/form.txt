@@ -1,16 +1,21 @@
 Email Adres
 :t:Email
 :r:yes
-:l:3
-Naam
-:t:Name
-:l:3
-Naam 2
-:t:Name
-Naam 3
-Naam 4
-:t:Name
+Postcode(Vlaanderen)
+:t:PostCodeVL
 :r:yes
-Naam 5
-:t:Name
-:r:no
+Stad(Vlaanderen)
+:t:CityVL
+:r:yes
+Land
+:t:CountyNL
+:r:yes
+Voornaam
+:t:FirstName
+:r:yes
+Achternaam
+:t:LastName
+:r:yes
+Telefoonnummer
+:t:PhoneNumber
+:r:yes
