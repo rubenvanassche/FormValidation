@@ -82,7 +82,7 @@ public:
 	std::string DBcorrector(std::string value);
 
 
-	/*
+	/**
 	 * @brief check if string is accepted by component
 	 *
 	 * @return true if accepted
