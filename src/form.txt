@@ -1,4 +1,4 @@
-Email Adres
+Emailadres
 :t:Email
 :r:yes
 Postcode(Vlaanderen)
