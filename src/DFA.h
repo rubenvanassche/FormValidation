@@ -19,12 +19,25 @@
 
 namespace FA {
 
+
+/**
+ * @brief struct to represent state of DFA
+ */
 struct DFAstate{
 	std::string label;
 	std::map<char, DFAstate*> DFAtransitions;
 	bool isAccepting;
 	stateset multiStates;
 
+
+	/**
+	 * @brief Adds a new transition
+	 *
+	 * @param symbol The input symbol
+	 * @param state Pointer to the target state
+	 *
+	 * @return True if the transition was added
+	 */
 	bool transition(char symbol, DFAstate* state){
 		if(DFAtransitions.find(symbol) == DFAtransitions.end()){
 			DFAtransitions[symbol] = state;
@@ -34,6 +47,12 @@ struct DFAstate{
 		}
 	}
 
+
+	/**
+	 * @brief returns pointer to target
+	 *
+	 * @return pointer to target
+	 */
 	DFAstate* go(char symbol){
 		std::map<char, DFAstate*>::iterator it;
 		for(it = DFAtransitions.begin(); it != DFAtransitions.end();it++){
@@ -43,6 +62,16 @@ struct DFAstate{
 		}
 		return NULL;
 	}
+
+	/**
+	 * @brief Finds target states for transition with certain symbol
+	 *
+	 * @param symbol The input symbol
+	 * @param delta The transitions
+	 * @param automata The automaton of which the state is a part
+	 *
+	 * @return Set containing all the target states
+	 */
 
 	stateset makeTransitions(char symbol, transitions delta, eNFA automata){
 		stateset destiny;
@@ -77,7 +106,13 @@ struct DFAstate{
 
 	}
 
-	// check wheter the states in the stateset are also in this DFAstate
+	/**
+	 * @brief check whether the states in the stateset are also in this DFAstate
+	 *
+	 * @param checkSet the stateset to be checked
+	 *
+	 * @return true if all states are in the DFAstate
+	 */
 	bool corresponds(stateset checkSet){
 		unsigned int counter = 0;
 		stateset controlset = multiStates;
@@ -98,7 +133,13 @@ struct DFAstate{
 		}
 	}
 
-	// check wheter this state is in this DFAstate
+	/**
+	 * @brief check whether a state is part of the DFAstate
+	 *
+	 * @param checkState the state to be checked
+	 *
+	 * @return true if state is part of DFAstate
+	 */
 	bool isState(state* checkState){
 		for(int i = 0;i < multiStates.size();i++){
 			if(multiStates.at(i) == checkState){
@@ -109,12 +150,22 @@ struct DFAstate{
 		return false;
 	}
 
+	/**
+	 * @brief constructor
+	 *
+	 * @param name Name of the state
+	 * @param accepting true if state is accepting state
+	 */
 	DFAstate(std::string name, bool accepting){
 		isAccepting = accepting;
 		label = name;
 		multiStates.push_back(&label);
 	}
 
+	/**
+	 * @brief constructor
+	 * @param name Name of the state
+	 */
 
 	DFAstate(std::string name){
 		isAccepting = false;
@@ -122,6 +173,12 @@ struct DFAstate{
 		multiStates.push_back(&label);
 	}
 
+
+	/**
+	 * @brief Constructor
+	 *
+	 * @param states States that belong to the DFAstate
+	 */
 	DFAstate(stateset states){
 		isAccepting = false;
 		for(unsigned int i = 0;i < states.size();i++){
@@ -135,24 +192,57 @@ struct DFAstate{
 
 typedef std::vector<DFAstate> DFAstates;
 
+
+/**
+ * @brief Class representing a DFA
+ */
 class DFA {
 public:
+	/**
+	 * @brief constructor
+	 *
+	 * @param alphabet_ The alphabet of the DFA
+	 * @param states_ The states of the DFA
+	 * @param start_ Number of start state
+	 */
 	DFA(alphabet, DFAstates, int);
 
+	/**
+	 * @brief getter for Q (the states)
+	 *
+	 * @return the states
+	 */
 	DFAstates& getQ() {
 		return Q;
 	}
 
+	/**
+	 * @brief getter for q0 (start state)
+	 *
+	 * @return the start state
+	 */
 	DFAstate* getQ0() {
 		return &(Q.at(q0));
 	}
 
+	/**
+	 * @brief getter for sigma (the alphabet)
+	 *
+	 * @return the alphabet
+	 */
 	alphabet& getSigma() {
 		return sigma;
 	}
-
+	/**
+	 * @brief Check if string is part of the DFA
+	 *
+	 * @param str The input string
+	 */
 	bool process(std::string);
 
+	/**
+	 * @brief << overloader for DFA
+	 */
 	friend std::ostream& operator<<(std::ostream&, DFA&);
 
 	virtual ~DFA();

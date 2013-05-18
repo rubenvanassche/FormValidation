@@ -15,10 +15,16 @@
 
 namespace FA {
 
-
+/**
+ * @brief Generates eNFA describing same language as a regex
+ *
+ * @param regex The regex to be transformed into eNFA
+ *
+ * @return pointer to the eNFA
+ */
 eNFA* regexToNFA(regex);
 
-
+//Following functions are only to be used by the regexToNFA(regex) function
 state* regexToNFAInternal(regex, states&, transitions&, acceptingStates&, bool=1);
 
 

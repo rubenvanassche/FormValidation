@@ -7,6 +7,13 @@
 
 namespace FA {
 
+	/**
+	 * @brief Generate DFA describing same language as an eNFA
+	 *
+	 * @param automata the eNFA
+	 *
+	 * @return the DFA
+	 */
 	DFA eNFAtoDFA(eNFA&);
 
 }
