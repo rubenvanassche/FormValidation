@@ -45,7 +45,7 @@ stateset DFAstate::makeTransitions(char symbol, transitions delta, eNFA automata
 		// Now apply eclose to this transitions
 		for(unsigned int i = 0;i < tempStates.size();i++){
 			stateset tempEcloseStates = automata.eclose(tempStates.at(i));
-			for(int k = 0;k < tempEcloseStates.size();k++){
+			for(unsigned k = 0;k < tempEcloseStates.size();k++){
 				transStates.push_back(tempEcloseStates.at(k));
 			}
 		}
@@ -87,7 +87,7 @@ bool DFAstate::corresponds(stateset checkSet){
 }
 
 bool DFAstate::isState(state* checkState){
-	for(int i = 0;i < multiStates.size();i++){
+	for(unsigned i = 0;i < multiStates.size();i++){
 		if(multiStates.at(i) == checkState){
 			return true;
 		}
@@ -214,7 +214,7 @@ std::ostream& operator<<(std::ostream& os, DFA& dfa) {
 
 	os << "\nAccepting states: \n";
 	int counter;
-	for(int i = 0;i < states.size();i++){
+	for(unsigned i = 0;i < states.size();i++){
 		if(states.at(i).accepts()){
 			os << states.at(i).getLabel() << "\n";
 			counter++;

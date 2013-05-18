@@ -37,7 +37,7 @@ bool Component::db(std::string file, bool corrector){
 	const char *filename = file.c_str();
 
 	std::ifstream stream(filename);
-	if(stream == false){
+	if(!stream.good()){
 		// File doesn't exists
 		return false;
 	}
@@ -58,7 +58,7 @@ bool Component::ENFA(std::string file){
 		// There is a DB present
 		return false;
 	}
-
+	return true;
 	//this->fENFA = enfa;
 }
 
@@ -101,7 +101,7 @@ bool Component::process(std::string value){
 		if(this->fDBcorrector == true){
 			// yes
 			value = this->DBcorrector(value);
-			for(int i = 0; i < fDB.size();i++){
+			for(unsigned i = 0; i < fDB.size();i++){
 				if(this->DBcorrector(fDB.at(i)) == value){
 					return true;
 				}

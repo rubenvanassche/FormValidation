@@ -13,7 +13,7 @@ namespace FA{
 		}
 
 		// Now let's add to each newState his transitions
-		for(int i = 0;i < newStates.size();i++){
+		for(unsigned i = 0;i < newStates.size();i++){
 			alphabet sigma = automata.getSigma();
 			std::set<symbol>::iterator alphabetIt;
 
@@ -24,7 +24,7 @@ namespace FA{
 				stateset destiny = newStates.at(i).makeTransitions(*alphabetIt, automata.getDelta(), automata);
 				// now let's find out which state we're searching
 
-				for(int j = 0;j < newStates.size();j++){
+				for(unsigned j = 0;j < newStates.size();j++){
 					if(newStates.at(j).corresponds(destiny)){
 						// Yeey this is the state we want our transition to go to
 						newStates.at(i).transition(*alphabetIt, &(newStates.at(j)));
@@ -38,7 +38,7 @@ namespace FA{
 		std::set<state*>::iterator acceptingIt;
 
 		for(acceptingIt = acceptors.begin();acceptingIt != acceptors.end();acceptingIt++){
-			for(int i = 0;i < newStates.size();i++){
+			for(unsigned i = 0;i < newStates.size();i++){
 				if(newStates.at(i).isState(*acceptingIt)){
 					newStates.at(i).makeAccept();
 				}
@@ -48,7 +48,7 @@ namespace FA{
 		// What is our start state?
 		stateset startStateSet = automata.eclose(automata.getQ0());
 		int startstate;
-		for(int i = 0; i < newStates.size();i++){
+		for(unsigned i = 0; i < newStates.size();i++){
 			if(newStates.at(i).corresponds(startStateSet)){
 				startstate = i;
 			}

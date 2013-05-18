@@ -32,9 +32,9 @@ bool eNFA::process(std::string str) const {
 			currentStates.push_back(*stateit);
 			stateit++;
 		}
-		int size = currentStates.size();
+		unsigned size = currentStates.size();
 		bool moreEpsilon = 1;
-		int i = 1;
+		unsigned i = 1;
 		while (moreEpsilon) {              //more e-transitions to go?
 			moreEpsilon = 0;
 			stateit = currentStates.begin() + i;    //dont't check twice

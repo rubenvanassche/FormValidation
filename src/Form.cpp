@@ -46,7 +46,7 @@ bool Form::addComponents(std::string file){
 	const char *filename = file.c_str();
 
 	std::ifstream stream(filename);
-	if(stream == false){
+	if(!stream.good()){
 		// File doesn't exists
 		return false;
 	}
@@ -98,7 +98,7 @@ bool Form::addComponents(std::string file){
 
 void Form::build(){
 	std::cout << this->fName << std::endl;
-	for(int i = 0;i < this->fName.size();i++){
+	for(unsigned i = 0;i < this->fName.size();i++){
 		std::cout << "-";
 	}
 	std::cout << std::endl << std::endl;
@@ -170,7 +170,7 @@ void Form::process(){
 bool Form::ok(){
 	bool go = true;
 
-	for(int i = 0;i < fields.size();i++){
+	for(unsigned i = 0;i < fields.size();i++){
 		if(fields.at(i).isAccepted() == false){
 			go = false;
 			break;
@@ -195,7 +195,7 @@ bool Form::load(std::string file){
 	const char *filename = file.c_str();
 
 	std::ifstream stream(filename);
-	if(stream == false){
+	if(!stream.good()){
 		// File doesn't exists
 		return false;
 	}
@@ -267,7 +267,7 @@ bool Form::load(std::string file){
 
 		this->add(name, type, length, required);
 	}
-
+	return true;
 }
 
 Component* Form::getComponent(std::string type){
