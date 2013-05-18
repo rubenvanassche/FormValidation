@@ -19,16 +19,40 @@
 
 namespace FA {
 
-
 /**
  * @brief struct to represent state of DFA
  */
-struct DFAstate{
-	std::string label;
-	std::map<char, DFAstate*> DFAtransitions;
-	bool isAccepting;
+class DFAstate{
+public:
 	stateset multiStates;
 
+	/**
+	 * @brief constructor
+	 *
+	 * @param name Name of the state
+	 * @param accepting true if state is accepting state
+	 */
+	DFAstate(std::string name, bool accepting);
+
+	/**
+	 * @brief constructor
+	 * @param name Name of the state
+	 */
+	DFAstate(std::string name);
+
+	/**
+	 * @brief Constructor
+	 *
+	 * @param states States that belong to the DFAstate
+	 */
+	DFAstate(stateset states);
+
+	/**
+	 * @brief returns pointer to target
+	 *
+	 * @return pointer to target
+	 */
+	DFAstate* go(char symbol);
 
 	/**
 	 * @brief Adds a new transition
@@ -38,30 +62,7 @@ struct DFAstate{
 	 *
 	 * @return True if the transition was added
 	 */
-	bool transition(char symbol, DFAstate* state){
-		if(DFAtransitions.find(symbol) == DFAtransitions.end()){
-			DFAtransitions[symbol] = state;
-			return true;
-		}else{
-		  return false;
-		}
-	}
-
-
-	/**
-	 * @brief returns pointer to target
-	 *
-	 * @return pointer to target
-	 */
-	DFAstate* go(char symbol){
-		std::map<char, DFAstate*>::iterator it;
-		for(it = DFAtransitions.begin(); it != DFAtransitions.end();it++){
-			if(symbol == it->first){
-				return it->second;
-			}
-		}
-		return NULL;
-	}
+	bool transition(char symbol, DFAstate* state);
 
 	/**
 	 * @brief Finds target states for transition with certain symbol
@@ -72,39 +73,24 @@ struct DFAstate{
 	 *
 	 * @return Set containing all the target states
 	 */
+	stateset makeTransitions(char symbol, transitions delta, eNFA automata);
 
-	stateset makeTransitions(char symbol, transitions delta, eNFA automata){
-		stateset destiny;
-		for(unsigned int j = 0;j < multiStates.size();j++){
-			// iterate over each state so we can check the transition
-			transitionsInternal transInt = delta.find(multiStates.at(j))->second; // transitions from the current state
-			stateset tempStates = transInt.find(symbol)->second; // States it is going to without eclose applied to it
-			stateset transStates; // Final states
+	/**
+	 * @brief returns pointer to target
+	 *
+	 * @param c The input symbol
+	 *
+	 * @return pointer to target
+	 */
+	DFAstate* getTransition(char c);
 
-
-			// Now apply eclose to this transitions
-			for(unsigned int i = 0;i < tempStates.size();i++){
-				stateset tempEcloseStates = automata.eclose(tempStates.at(i));
-				for(int k = 0;k < tempEcloseStates.size();k++){
-					transStates.push_back(tempEcloseStates.at(k));
-				}
-			}
-
-			// we've got all the states now check if we must place them in destiny
-			std::vector<state*>::iterator stateSetIt;
-			for(unsigned int i = 0;i < transStates.size();i++){
-				stateSetIt = std::find(destiny.begin(), destiny.end(), transStates.at(i));
-				if(stateSetIt == destiny.end()){
-					// jeej the state is not yet in destiny so add it to that vector
-					destiny.push_back(transStates.at(i));
-				}
-			}
-		}
-		// now get the state corresponding to destiny
-
-		return destiny;
-
-	}
+	/**
+	 * @brief returns map with transitions from this state to others
+	 *
+	 *
+	 * @return map with symbol and state pointer
+	 */
+	std::map<char, DFAstate*> getTransitions();
 
 	/**
 	 * @brief check whether the states in the stateset are also in this DFAstate
@@ -113,25 +99,7 @@ struct DFAstate{
 	 *
 	 * @return true if all states are in the DFAstate
 	 */
-	bool corresponds(stateset checkSet){
-		unsigned int counter = 0;
-		stateset controlset = multiStates;
-
-		for(unsigned int i = 0;i < controlset.size();i++){
-			std::vector<state*>::iterator stateIt;
-			stateIt = std::find(checkSet.begin(), checkSet.end(), controlset.at(i));
-			if(stateIt != checkSet.end()){
-				checkSet.erase(stateIt);
-				counter++;
-			}
-		}
-
-		if(controlset.size() == counter and checkSet.size() == 0){
-			return true;
-		}else{
-			return false;
-		}
-	}
+	bool corresponds(stateset checkSet);
 
 	/**
 	 * @brief check whether a state is part of the DFAstate
@@ -140,58 +108,43 @@ struct DFAstate{
 	 *
 	 * @return true if state is part of DFAstate
 	 */
-	bool isState(state* checkState){
-		for(int i = 0;i < multiStates.size();i++){
-			if(multiStates.at(i) == checkState){
-				return true;
-			}
-		}
-
-		return false;
-	}
+	bool isState(state* checkState);
 
 	/**
-	 * @brief constructor
+	 * @brief returns the label of this state
 	 *
-	 * @param name Name of the state
-	 * @param accepting true if state is accepting state
+	 * @return string with the label
 	 */
-	DFAstate(std::string name, bool accepting){
-		isAccepting = accepting;
-		label = name;
-		multiStates.push_back(&label);
-	}
+	std::string getLabel();
 
 	/**
-	 * @brief constructor
-	 * @param name Name of the state
-	 */
-
-	DFAstate(std::string name){
-		isAccepting = false;
-		label = name;
-		multiStates.push_back(&label);
-	}
-
-
-	/**
-	 * @brief Constructor
+	 * @brief returns the label of this state
 	 *
-	 * @param states States that belong to the DFAstate
+	 * @return true if state is accepting
 	 */
-	DFAstate(stateset states){
-		isAccepting = false;
-		for(unsigned int i = 0;i < states.size();i++){
-			label += *(states.at(i));
-			label += ",";
-		}
-		multiStates = states;
-	}
+	bool accepts();
+
+	/**
+	 * @brief make this state accepting
+	 *
+	 */
+	void makeAccept();
+
+	/**
+	 * @brief prints information about this state to the console
+	 *
+	 */
+	void print();
+
+private:
+
+	std::string label;
+	std::map<char, DFAstate*> DFAtransitions;
+	bool isAccepting;
 };
 
 
 typedef std::vector<DFAstate> DFAstates;
-
 
 /**
  * @brief Class representing a DFA

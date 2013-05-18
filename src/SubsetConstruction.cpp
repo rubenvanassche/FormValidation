@@ -40,7 +40,7 @@ namespace FA{
 		for(acceptingIt = acceptors.begin();acceptingIt != acceptors.end();acceptingIt++){
 			for(int i = 0;i < newStates.size();i++){
 				if(newStates.at(i).isState(*acceptingIt)){
-					newStates.at(i).isAccepting = true;
+					newStates.at(i).makeAccept();
 				}
 			}
 		}

@@ -6,7 +6,6 @@
 #include "common.h"
 
 namespace FA {
-
 	/**
 	 * @brief Generate DFA describing same language as an eNFA
 	 *
