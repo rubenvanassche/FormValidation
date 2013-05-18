@@ -12,7 +12,7 @@ namespace FA {
 Component::Component(std::string type){
 	this->fType = type;
 	this->fENFA  = NULL;
-	this->fDBcorrector = false;
+	this->fDBCorrectionOn = false;
 }
 bool Component::regex(std::string value){
 	if(this->fDB.size() != 0){
@@ -48,7 +48,7 @@ bool Component::db(std::string file, bool corrector){
 		this->fDB.push_back(line);
 	}
 
-	this->fDBcorrector = corrector;
+	this->fDBCorrectionOn = corrector;
 
 	return true;
 }
@@ -72,19 +72,19 @@ std::string Component::DBcorrector(std::string value){
 			value.erase(it);
 		}
 
-		if(*it == '‘'){
+		if(*it == 'ï¿½'){
 			*it = 'e';
 		}
 
-		if(*it == 'Ž'){
+		if(*it == 'ï¿½'){
 			*it = 'e';
 		}
 
-		if(*it == ''){
+		if(*it == 'ï¿½'){
 			*it = 'e';
 		}
 
-		if(*it == 'ˆ'){
+		if(*it == 'ï¿½'){
 			*it = 'a';
 		}
 
@@ -98,7 +98,7 @@ bool Component::process(std::string value){
 		return this->fENFA->process(value);
 	}else{
 		// Do we need to correct the string?
-		if(this->fDBcorrector == true){
+		if(this->fDBCorrectionOn == true){
 			// yes
 			value = this->DBcorrector(value);
 			for(unsigned i = 0; i < fDB.size();i++){

@@ -10,7 +10,7 @@
 namespace FA {
 
 Field::Field(Component* type, std::string name){
-	this->fType = type;
+	this->fComponent = type;
 	this->fName = name;
 	this->fLength = 0;
 	this->fRequired = false;
@@ -18,8 +18,9 @@ Field::Field(Component* type, std::string name){
 	this->fFilledIn = false;
 }
 
+
 Field::Field(Component* type, std::string name, unsigned int length){
-	this->fType = type;
+	this->fComponent = type;
 	this->fName = name;
 	this->fLength = length;
 	this->fRequired = false;
@@ -28,7 +29,7 @@ Field::Field(Component* type, std::string name, unsigned int length){
 }
 
 Field::Field(Component* type, std::string name, unsigned int length, bool required){
-	this->fType = type;
+	this->fComponent = type;
 	this->fName = name;
 	this->fLength = length;
 	this->fRequired = required;
@@ -85,7 +86,7 @@ bool Field::process(std::string value){
 		}
 	}
 
-	if(this->fType->process(value)){
+	if(this->fComponent->process(value)){
 		this->fValue = value;
 		return true;
 	}else{
@@ -104,7 +105,7 @@ bool Field::check(std::string value){
 		}
 	}
 
-	if(this->fType->process(value)){
+	if(this->fComponent->process(value)){
 		return true;
 	}else{
 		return false;
@@ -135,8 +136,8 @@ bool Field::isRequired(){
 	return this->fRequired;
 }
 
-Component* Field::getType(){
-	return this->fType;
+Component* Field::getComponent(){
+	return this->fComponent;
 }
 
 unsigned int Field::getLength(){

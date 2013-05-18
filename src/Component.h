@@ -103,7 +103,7 @@ private:
 	eNFA* fENFA;
 	std::string fType;
 	std::vector<std::string> fDB;
-	bool fDBcorrector; // Do we need to check if strings are almost correct and equivalent to the ones in the db?
+	bool fDBCorrectionOn; // Do we need to check if strings are almost correct and equivalent to the ones in the db?
 };
 
 } /* namespace FA */

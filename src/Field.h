@@ -121,11 +121,11 @@ public:
 	bool isRequired();
 
 	/**
-	 * @brief Gets the type of field (the component)
+	 * @brief Gets the component of the field
 	 *
 	 * @return pointer to the component
 	 */
-	Component* getType();
+	Component* getComponent();
 
 	/**
 	 * @brief gets the minimal length of the input
@@ -150,7 +150,7 @@ public:
 private:
 	unsigned int fLength;
 	bool fRequired;
-	Component* fType;
+	Component* fComponent;
 	std::string fName;
 
 	bool fFilledIn;
