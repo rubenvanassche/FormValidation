@@ -346,7 +346,7 @@ eNFA generateNFA(std::string filename) {          //Input file to eNFA
 		}
 		lineit++;
 		if (*lineit != '<' && sigma.find(*lineit) == sigma.end()) {
-			std::cout << "Character not in alphabet" << std::endl;
+			std::cout << "Character " << *lineit <<  "not in alphabet" << std::endl;
 			return eNFA();
 		}
 		char c = *lineit;

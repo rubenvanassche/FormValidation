@@ -10,6 +10,9 @@
 
 #include <string>
 #include <iostream>
+#include "common.h"
+#include "eNFA.h"
+#include "RegexToNFA.h"
 
 namespace FA {
 
@@ -29,6 +32,8 @@ public:
 
 	bool expectTrue(bool val);
 	bool expectFalse(bool val);
+
+	int runAllTests();
 
 	virtual ~Test();
 private:
