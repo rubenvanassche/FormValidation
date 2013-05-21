@@ -79,19 +79,19 @@ std::string Component::DBcorrector(std::string value){
 			value.erase(it);
 		}
 
-		if(check == "ë"){
+		if(check == "È"){
 			*it = 'e';
 		}
 
-		if(check == "è"){
+		if(check == "èË"){
 			*it = 'e';
 		}
 
-		if(check == "é"){
+		if(check == "Î"){
 			*it = 'e';
 		}
 
-		if(check == "à"){
+		if(check == "‡"){
 			*it = 'a';
 		}
 
