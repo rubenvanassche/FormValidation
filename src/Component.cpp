@@ -65,9 +65,9 @@ bool Component::ENFA(std::string file){
 std::string Component::DBcorrector(std::string value){
 	std::string::iterator it;
 
-	for(it = value.begin();it != value.end();it++){
-		*it = std::tolower(*it);
+	transform(value.begin(), value.end(), value.begin(), ::tolower);
 
+	for(it = value.begin();it != value.end();it++){
 		std::stringstream ss;
 		std::string check;
 
@@ -79,19 +79,19 @@ std::string Component::DBcorrector(std::string value){
 			value.erase(it);
 		}
 
-		if(check == "√©"){
+		if(check == "ë"){
 			*it = 'e';
 		}
 
-		if(check == "√®"){
+		if(check == "è"){
 			*it = 'e';
 		}
 
-		if(check == "√´"){
+		if(check == "é"){
 			*it = 'e';
 		}
 
-		if(check == "√†"){
+		if(check == "à"){
 			*it = 'a';
 		}
 
