@@ -1,7 +1,7 @@
 all: FA
 
-FA: common.o FormValidation.o eNFA.o RegexToNFA.o DFA.o SubsetConstruction.o Component.o Field.o Form.o Test.o
-	g++ -pedantic -Wall  FormValidation.o eNFA.o RegexToNFA.o DFA.o SubsetConstruction.o Component.o Field.o Form.o Test.o -o FA
+FA: common.o FormValidation.o eNFA.o RegexToNFA.o DFA.o SubsetConstruction.o Component.o Field.o Form.o Test.o FormTest.o
+	g++ -pedantic -Wall  FormValidation.o eNFA.o RegexToNFA.o DFA.o SubsetConstruction.o Component.o Field.o Form.o Test.o FormTest.o -o FA
 
 FormValidation.o: FormValidation.cpp
 	g++ -c -pedantic -Wall  FormValidation.cpp
@@ -29,6 +29,9 @@ Field.o: Field.cpp
 
 Form.o: Form.cpp
 	g++ -c -pedantic -Wall  Form.cpp
+
+FormTest.o: FormTest.cpp
+	g++ -c -pedantic -Wall  FormTest.cpp
 
 Test.o: Test.cpp
 	g++ -c -pedantic -Wall Test.cpp
