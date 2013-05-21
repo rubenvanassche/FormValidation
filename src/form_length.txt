@@ -1,0 +1,12 @@
+Email Adres
+:t:Email
+:r:yes
+:l:20
+Postcode
+:t:PostCodeVL
+:r:no
+:l:0
+Stad
+:t:CityVL
+:r:yes
+:l:8
