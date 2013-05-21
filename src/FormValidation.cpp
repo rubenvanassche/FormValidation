@@ -3,7 +3,7 @@
 #include <string>
 #include <cstring>
 #include "Test.h"
-#include "FormTest.cpp"
+#include "FormTest.h"
 
 int main(int argc, char* argv[]) {
 	FA::Form form("Test Form");

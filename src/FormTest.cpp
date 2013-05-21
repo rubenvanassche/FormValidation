@@ -4,12 +4,7 @@
  *  Created on: 18 mei 2013
  *      Author: Ruben
  */
-#include "Test.h"
-#include "Form.h"
-#include "Field.h"
-#include "Component.h"
-#include <map>
-#include <iostream>
+#include "FormTest.h"
 
 void FormTest(){
 	FA::Test t("Form");
