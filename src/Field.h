@@ -10,6 +10,7 @@
 
 #include "Component.h"
 #include <string>
+#include <sstream>
 
 namespace FA {
 

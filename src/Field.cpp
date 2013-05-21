@@ -55,9 +55,12 @@ std::string Field::makeLabel(){
 	label += this->getName();
 
 	if(this->fLength != 0){
+		std::stringstream ss;
+		ss << this->fLength;
+
 		label += " ";
 		label += "(minimum-lengte: ";
-		label += this->fLength;
+		label += ss.str();
 		label += ")";
 	}
 
@@ -97,6 +100,10 @@ bool Field::process(std::string value){
 bool Field::check(std::string value){
 	if(this->isFilledIn()){
 		return false;
+	}
+
+	if(this->fRequired == false and value.size() == 0){
+		return true;
 	}
 
 	if(this->fLength != 0){
