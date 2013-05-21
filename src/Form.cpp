@@ -164,6 +164,12 @@ void Form::process(){
 		std::cout << std::endl << std::endl << std::endl;
 		std::cout << "-------------------------------------------" << std::endl;
 		std::cout << "Dank u voor het invullen van dit formulier." << std::endl;
+
+		std::map<std::string, std::string>::iterator valuesIt;
+		std::map<std::string, std::string> values = this->getData();
+		for(valuesIt = values.begin(); valuesIt != values.end();valuesIt++){
+			std::cout << valuesIt->first << " => " << valuesIt->second << std::endl;
+		}
 	}
 }
 
