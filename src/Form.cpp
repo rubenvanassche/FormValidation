@@ -116,7 +116,7 @@ void Form::process(){
 		std::cout << it->makeLabel();
 
 		std::string input;
-		std::cin >> input;
+		std::getline(std::cin, input);
 		bool accepted = it->process(input);
 
 		if(accepted == false){
