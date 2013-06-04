@@ -42,7 +42,10 @@ bool Form::add(std::string name, std::string type, unsigned int length, bool req
 	return true;
 }
 
-bool Form::addComponents(std::string file){
+bool Form::addComponents(std::string file, const std::vector<std::string>& usedComps){
+	bool checkUsage = false;
+	if (usedComps.size())
+		checkUsage = true;
 	const char *filename = file.c_str();
 
 	std::ifstream stream(filename);
@@ -58,9 +61,12 @@ bool Form::addComponents(std::string file){
 
     while(std::getline(stream, line)){
     	if(line[0] != ':' and line[2] != ':'){
-    		// we've got the type of the comonent
+    		// we've got the type of the component
     		type = line;
     		make = true;
+    		if (checkUsage)
+    			if (std::find(usedComps.begin(), usedComps.end(), type) == usedComps.end())
+    				make = false;
     	}else{
     		if(make == false){
     			continue;
@@ -131,7 +137,7 @@ void Form::process(){
 
 					while(true){
 						std::string option;
-						std::cin >> option;
+						std::getline(std::cin, option);
 						if(option == "A" or option == "a"){
 							it2->process(input);
 							break;
@@ -284,6 +290,18 @@ Component* Form::getComponent(std::string type){
 	}
 
 	return NULL;
+}
+
+void Form::readComponents(std::string file, std::vector<std::string>& comps) {
+	const char *filename = file.c_str();
+
+	std::ifstream stream(filename);
+	std::string line;
+    while(std::getline(stream, line))
+    	if (line.substr(0,3) == ":t:")
+    		comps.push_back(line.substr(3));
+
+
 }
 
 Form::~Form() {

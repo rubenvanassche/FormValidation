@@ -7,12 +7,12 @@
 
 int main(int argc, char* argv[]) {
 	FA::Form form("Test Form");
-
-	if(form.addComponents("components.txt") == false){
-		std::cout << "No components.txt file";
-	}
+	std::vector<std::string> usedComponents;
 
 	if(argc == 1){
+		form.readComponents("form.txt", usedComponents);
+		if(form.addComponents("components.txt", usedComponents) == false)
+			std::cout << "No components.txt file";
 		form.load("form.txt");
 	}else if(!std::strcmp(argv[1], "test")) {
 		FA::Test tester("Regex");
@@ -21,6 +21,9 @@ int main(int argc, char* argv[]) {
 		FieldTest();
 		ComponentTest();
 	}else if(argc == 2){
+		form.readComponents(argv[1], usedComponents);
+		if(form.addComponents("components.txt", usedComponents) == false)
+			std::cout << "No components.txt file";
 		std::cout << argv[1] << " geladen." << std::endl;
 		form.load(argv[1]);
 	}else{
@@ -28,5 +31,6 @@ int main(int argc, char* argv[]) {
 	}
 	if (argc == 1 || std::strcmp(argv[1], "test"))
 		form.build();
+
 
 }
