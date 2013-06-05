@@ -8,201 +8,333 @@
 #ifndef DFA_H_
 #define DFA_H_
 
-#include <map>
-#include <string>
-#include <set>
-#include <vector>
+#include <Vector>
+#include <String>
 #include <iostream>
-#include <algorithm>
-#include "common.h"
-#include "eNFA.h"
 
 namespace FA {
 
+class Arc;
+
 /**
- * @brief struct to represent state of DFA
+ * @brief Class representing a state
  */
-class DFAstate{
+class State{
 public:
-	stateset multiStates;
 
-	/**
-	 * @brief constructor
-	 *
-	 * @param name Name of the state
-	 * @param accepting true if state is accepting state
-	 */
-	DFAstate(std::string name, bool accepting);
-
-	/**
-	 * @brief constructor
-	 * @param name Name of the state
-	 */
-	DFAstate(std::string name);
+	friend std::ostream& operator<<(std::ostream &out, State &state);
 
 	/**
 	 * @brief Constructor
 	 *
-	 * @param states States that belong to the DFAstate
+	 * @param bool is this an accepting state
 	 */
-	DFAstate(stateset states);
+	State(bool ending);
 
 	/**
-	 * @brief returns pointer to target
+	 * @brief Constructor
 	 *
-	 * @return pointer to target
+	 * @param bool is this an accepting state
+	 * @param bool is this an starting state
 	 */
-	DFAstate* go(char symbol);
+	State(bool ending,bool starting);
 
 	/**
-	 * @brief Adds a new transition
+	 * @brief Get the label of the state
 	 *
-	 * @param symbol The input symbol
-	 * @param state Pointer to the target state
-	 *
-	 * @return True if the transition was added
-	 */
-	bool transition(char symbol, DFAstate* state);
-
-	/**
-	 * @brief Finds target states for transition with certain symbol
-	 *
-	 * @param symbol The input symbol
-	 * @param delta The transitions
-	 * @param automata The automaton of which the state is a part
-	 *
-	 * @return Set containing all the target states
-	 */
-	stateset makeTransitions(char symbol, transitions delta, eNFA automata);
-
-	/**
-	 * @brief returns pointer to target
-	 *
-	 * @param c The input symbol
-	 *
-	 * @return pointer to target
-	 */
-	DFAstate* getTransition(char c);
-
-	/**
-	 * @brief returns map with transitions from this state to others
-	 *
-	 *
-	 * @return map with symbol and state pointer
-	 */
-	std::map<char, DFAstate*> getTransitions();
-
-	/**
-	 * @brief check whether the states in the stateset are also in this DFAstate
-	 *
-	 * @param checkSet the stateset to be checked
-	 *
-	 * @return true if all states are in the DFAstate
-	 */
-	bool corresponds(stateset checkSet);
-
-	/**
-	 * @brief check whether a state is part of the DFAstate
-	 *
-	 * @param checkState the state to be checked
-	 *
-	 * @return true if state is part of DFAstate
-	 */
-	bool isState(state* checkState);
-
-	/**
-	 * @brief returns the label of this state
-	 *
-	 * @return string with the label
+	 * @return the state's label
 	 */
 	std::string getLabel();
 
 	/**
-	 * @brief returns the label of this state
+	 * @brief Get the labels of the state(if there are more)
 	 *
-	 * @return true if state is accepting
+	 * @return vector The state's labels
 	 */
-	bool accepts();
+	std::vector<std::string> getLabels();
 
 	/**
-	 * @brief make this state accepting
+	 * @brief Get the name of the state
 	 *
+	 * @return string All the labels of the state concatenated
 	 */
-	void makeAccept();
+	std::string getName();
 
 	/**
-	 * @brief prints information about this state to the console
+	 * @brief Add's a label
+	 *
+	 * @param string the State's label
+	 *
+	 * @return bool When succes
+	 */
+	bool addLabel(std::string label);
+
+	/**
+	 * @brief Add's a labels
+	 *
+	 * @param vector the State's labels
+	 *
+	 * @return bool When succes
+	 */
+	bool addLabels(std::vector<std::string> labels);
+
+	/**
+	 * @brief Add's an arc
+	 *
+	 * @param arc the State's arc
+	 *
+	 * @return bool When succes
+	 */
+	bool addArc(Arc arc);
+
+	/**
+	 * @brief Add's an transition to another state
+	 *
+	 * @param char The symbol for the transition
+	 * @param State* The state this transition goes to
+	 *
+	 * @return bool When succes
+	 */
+	bool addTransition(char symbol, State* destination);
+
+	/**
+	 * @brief Check if a state is accepting
+	 *
+	 * @return bool true if this state is accepting
+	 */
+	bool isEnding();
+
+	/**
+	 * @brief Check if a state is starting
+	 *
+	 * @return bool true if this state is starting
+	 */
+	bool isStarting();
+
+	/**
+	 * @brief Check if a state's arcs have legitimate symbols from an alphabet
+	 *
+	 * @param vector The alphabet
+	 *
+	 * @return bool true if this state is legitimate
+	 */
+	bool checkAlphabet(std::vector<char> &alphabet);
+
+	/*
+	 * @brief Check if a state has a specified label
+	 *
+	 * @param string The label
+	 *
+	 * @return bool true if this state has the label
+	 */
+	bool hasLabel(std::string label);
+
+	/*
+	 * @brief Let's this state become an accepting state
 	 *
 	 */
-	void print();
+	void makeEnding();
 
+	/**
+	 * @brief Get the state when we process a symbol
+	 *
+	 * @param char The symbol
+	 *
+	 * @return State Or Null if there is no such transition
+	 */
+	State* process(char symbol);
 private:
-
-	std::string label;
-	std::map<char, DFAstate*> DFAtransitions;
-	bool isAccepting;
+	bool fIsEnding;
+	bool fIsStarting;
+	std::vector<std::string> fLabels;
+	std::vector<Arc> fArcs;
 };
 
+/**
+ * @brief Class representing an arc
+ */
+class Arc{
+public:
+	friend std::ostream& operator<<(std::ostream &out, Arc &arc);
 
-typedef std::vector<DFAstate> DFAstates;
+	/**
+	 * @brief Constructor
+	 *
+	 * @param State* The State this arc is going to
+	 */
+	Arc(State* destination);
+
+	/**
+	 * @brief Add a symbol to the arc
+	 *
+	 * @param symbol The symbol
+	 *
+	 * @return bool True if succes
+	 */
+	bool addSymbol(char symbol);
+
+	/**
+	 * @brief Add symbols to the arc
+	 *
+	 * @param vector The symbols
+	 *
+	 * @return bool True if succes
+	 */
+	bool addSymbols(std::vector<char> symbols);
+
+	/**
+	 * @brief Check if the symbols in the arc are legitimate by the alphabet
+	 *
+	 * @param alphabet The alphabet
+	 *
+	 * @return bool True if the symbols are legitimate
+	 */
+	bool checkAlphabet(std::vector<char> &alphabet);
+
+	/**
+	 * @brief Process a symbol
+	 *
+	 * @param symbol The symbol
+	 *
+	 * @return state Or if there is no such symbol in the arc NULL
+	 */
+	State* process(char symbol);
+
+	/**
+	 * @brief Get the state this arc is going to
+	 *
+	 * @return state The state
+	 */
+	State* getDestination();
+private:
+	std::vector<char> fSymbols;
+	State* fDestination;
+};
 
 /**
  * @brief Class representing a DFA
  */
-class DFA {
+class DFA{
 public:
-	/**
-	 * @brief constructor
-	 *
-	 * @param alphabet_ The alphabet of the DFA
-	 * @param states_ The states of the DFA
-	 * @param start_ Number of start state
-	 */
-	DFA(alphabet, DFAstates, int);
+
+	friend std::ostream& operator<<(std::ostream &out, DFA &dfa);
 
 	/**
-	 * @brief getter for Q (the states)
-	 *
-	 * @return the states
+	 * @brief Constructor
 	 */
-	DFAstates& getQ() {
-		return Q;
-	}
+	DFA();
 
 	/**
-	 * @brief getter for q0 (start state)
+	 * @brief Process a string
 	 *
-	 * @return the start state
+	 * @param string The string
+	 *
+	 * @return bool True if string is accepted
 	 */
-	DFAstate* getQ0() {
-		return &(Q.at(q0));
-	}
+	bool process(std::string string);
 
 	/**
-	 * @brief getter for sigma (the alphabet)
+	 * @brief Process a symbol
 	 *
-	 * @return the alphabet
-	 */
-	alphabet& getSigma() {
-		return sigma;
-	}
-	/**
-	 * @brief Check if string is part of the DFA
+	 * @param symbol The symbol
 	 *
-	 * @param str The input string
+	 * @return bool True if symbol is accepted
 	 */
-	bool process(std::string);
+	State* process(char symbol);
 
 	/**
-	 * @brief << overloader for DFA
+	 * @brief Process a symbol at a specified state
+	 *
+	 * @param symbol The symbol
+	 * @param state* The state to process
+	 *
+	 * @return bool True if symbol is accepted
 	 */
-	friend std::ostream& operator<<(std::ostream&, DFA&);
+	State* process(char symbol, State* currentState);
 
-	virtual ~DFA();
+	/**
+	 * @brief Add a state to the DFA
+	 *
+	 * @param state The state
+	 *
+	 * @return bool True if success
+	 */
+	bool addState(State state);
+
+	/**
+	 * @brief Add states to the DFA
+	 *
+	 * @param vector The states
+	 *
+	 * @return bool True if success
+	 */
+	bool addStates(std::vector<State> states);
+
+	/**
+	 * @brief Add a symbol to the DFA's alphabet
+	 *
+	 * @param char The symbol
+	 *
+	 * @return bool True if success
+	 */
+	bool addAlphabet(char symbol);
+
+	/**
+	 * @brief Add symbols to the DFA's alphabet
+	 *
+	 * @param vector The symbols
+	 *
+	 * @return bool True if success
+	 */
+	bool addAlphabet(std::vector<char> symbols);
+
+	/**
+	 * @brief Check if symbol is in the Dfa's alphabet
+	 *
+	 * @param char The symbol
+	 *
+	 * @return bool True if symbol is in the alphabet
+	 */
+	bool isInAlphabet(char symbol);
+
+	/**
+	 * @brief Check if a DFA has a start state
+	 *
+	 * @return bool True if there is a start state
+	 */
+	bool hasStartState();
+
+	/**
+	 * @brief Get the states in the DFA
+	 *
+	 * @return vector The states
+	 */
+	std::vector<State> getStates();
+
+	/**
+	 * @brief Get the alphabet in the DFA
+	 *
+	 * @return vector The states
+	 */
+	std::vector<char> getAlphabet();
+
+	/**
+	 * @brief Removes all the states in the DFA
+	 */
+	void clearStates();
+
+	std::vector<State> fStates;
 private:
-	alphabet sigma;
-	DFAstates Q;
-	int q0;
+	/**
+	 * @brief Find a start state in the vector of states
+	 *
+	 * @return state Or NULL if there is no start state found
+	 */
+	State* findStartState();
+
+	std::vector<char> fAlphabet;
+
+	State* fStartState;
 };
 
 } /* namespace FA */
