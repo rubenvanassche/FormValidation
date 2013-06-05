@@ -4,6 +4,7 @@
 #include "DFA.h"
 #include "eNFA.h"
 #include "common.h"
+#include <algorithm>
 
 namespace FA {
 /*
@@ -24,9 +25,6 @@ public:
 	 * @return DFA The generated DFA
 	 */
 	DFA* getDFA();
-
-	void printTable();
-	bool correspondingStates(std::vector<std::string> first, std::vector<std::string> second);
 private:
 	eNFA* fENFA;
 	DFA fDFA;
@@ -52,19 +50,54 @@ private:
 	 */
 	bool makeTransitions();
 
+	/**
+	 * @brief Add the transitions from the eNFA to a specified state
+	 *
+	 * @param State* the state
+	 *
+	 * @return bool If succes true
+	 */
 	bool makeTransition(State* worker);
 
+	/**
+	 * @brief Add the start state to the DFA from the eNFA
+	 *
+	 * @return bool If succes true
+	 */
 	bool makeStartState();
 
+	/**
+	 * @brief Builds a table for each state in the eNFA where it's going to + eclose
+	 *
+	 * @return bool If succes true
+	 */
 	bool makeTable();
 
+	/**
+	 * @brief Add the accepting states to the DFA from the eNFA
+	 *
+	 * @return bool If succes true
+	 */
 	bool makeEndingStates();
 
+	/**
+	 * @brief Performs an eclose on a stateset
+	 *
+	 * @param stateset The stateset
+	 *
+	 * @return vector the states eclosed
+	 */
 	std::vector<std::string> stateSetEclose(stateset stateSet);
 
+	/**
+	 * @brief Merges two label vectors so there are no duplicate labels
+	 *
+	 * @param vector the first vector
+	 * @param vector the second vector
+	 *
+	 * @return vector the merged vector
+	 */
 	std::vector<std::string> mergeLabels(std::vector<std::string>, std::vector<std::string>);
-
-
 
 	/**
 	 * @brief Find a state with corresponding labels from a vector
@@ -74,6 +107,16 @@ private:
 	 * @return state* Or Null if there is no such state
 	 */
 	State* findState(std::vector<std::string> labels);
+
+	/**
+	 * @brief checks if two vectors with labels are the same
+	 *
+	 * @param vector the first vector
+	 * @param vector the second vector
+	 *
+	 * @return bool True if the vectors are the same
+	 */
+	bool correspondingStates(std::vector<std::string> first, std::vector<std::string> second);
 
 	std::map<std::string, std::map<char, std::vector<std::string> > > fTable;
 

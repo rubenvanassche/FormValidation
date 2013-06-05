@@ -8,9 +8,10 @@
 #ifndef DFA_H_
 #define DFA_H_
 
-#include <Vector>
-#include <String>
+#include <vector>
+#include <string>
 #include <iostream>
+#include <algorithm>
 
 namespace FA {
 

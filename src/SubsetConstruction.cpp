@@ -213,6 +213,7 @@ std::vector<std::string> SubsetConstruction::mergeLabels(std::vector<std::string
 	return out;
 }
 
+/*
 void SubsetConstruction::printTable(){
 	std::cout << "DFA Table" << std::endl << "--------------" << std::endl;
 
@@ -233,6 +234,7 @@ void SubsetConstruction::printTable(){
 		}
 	}
 }
+*/
 
 std::vector<std::string> SubsetConstruction::stateSetEclose(stateset stateSet){
 	std::vector<std::string> out;
