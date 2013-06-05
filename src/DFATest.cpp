@@ -1,0 +1,323 @@
+/*
+ * DFATest.cpp
+ *
+ *  Created on: 4 jun. 2013
+ *      Author: Ruben
+ */
+
+#include "DFATest.h"
+
+void stringControlTest(){
+	// States
+	FA::State q0(true, true);
+	q0.addLabel("q0");
+
+	FA::State q1(false);
+	q1.addLabel("q1");
+
+	FA::State q2(true);
+	q2.addLabel("q2");
+
+	// Transitions
+	q0.addTransition('a', &q1);
+	q0.addTransition('b', &q2);
+
+	q1.addTransition('a', &q1);
+	q1.addTransition('b', &q0);
+
+	q2.addTransition('a', &q0);
+	q2.addTransition('b', &q1);
+
+	// DFA
+	FA::DFA dfa;
+	std::cout << dfa.addAlphabet('a') << std::endl;
+	std::cout << dfa.addAlphabet('b') << std::endl;
+
+	std::cout << dfa.addState(q0) << std::endl;
+	std::cout << dfa.addState(q1) << std::endl;
+	std::cout << dfa.addState(q2) << std::endl;
+
+	std::cout << dfa;
+
+	/*
+	std::cout << "a" << std::endl;
+	std::cout << dfa.process("a") << std::endl;
+	std::cout << "b" << std::endl;
+	std::cout << dfa.process("b") << std::endl;
+
+	std::cout << "ab" << std::endl;
+	std::cout << dfa.process("ab") << std::endl;
+	std::cout << "ba" << std::endl;
+	std::cout << dfa.process("ba") << std::endl;
+	std::cout << "aa" << std::endl;
+	std::cout << dfa.process("aa") << std::endl;
+	std::cout << "bb" << std::endl;
+	std::cout << dfa.process("bb") << std::endl;
+
+	std::cout << "aaa" << std::endl;
+	std::cout << dfa.process("aaa") << std::endl;
+	std::cout << "aab" << std::endl;
+	std::cout << dfa.process("aab") << std::endl;
+	std::cout << "aba" << std::endl;
+	std::cout << dfa.process("aba") << std::endl;
+	std::cout << "abb" << std::endl;
+	std::cout << dfa.process("abb") << std::endl;
+	std::cout << "bbb" << std::endl;
+	std::cout << dfa.process("bbb") << std::endl;
+	std::cout << "bba" << std::endl;
+	std::cout << dfa.process("bba") << std::endl;
+	std::cout << "bab" << std::endl;
+	std::cout << dfa.process("bab") << std::endl;
+	std::cout << "baa" << std::endl;
+	std::cout << dfa.process("baa") << std::endl;
+
+	std::cout << "" << std::endl;
+	std::cout << dfa.process("") << std::endl;
+	std::cout << "c" << std::endl;
+	std::cout << dfa.process("c") << std::endl;
+	std::cout << "ac" << std::endl;
+	std::cout << dfa.process("ac") << std::endl;
+	std::cout << "abc" << std::endl;
+	std::cout << dfa.process("abc") << std::endl;
+	*/
+}
+
+void subsetConstructionTest(){
+	using namespace FA;
+
+	FA::Test t("SubsetConstruction");
+
+	/*Convert regexes to dfa and test if the dfa works right*/
+	eNFA *enfa1 = regexToNFA("a+b");    //a+b
+	SubsetConstruction sc1(enfa1);
+	DFA* dfa1 = (sc1.getDFA());
+	t.expectTrue(dfa1->process("a"));
+	t.expectTrue(dfa1->process("b"));
+	t.expectFalse(dfa1->process(""));
+	t.expectFalse(dfa1->process("ab"));
+	t.expectFalse(dfa1->process("ba"));
+
+	eNFA *enfa1b = regexToNFA("a+b+c+d+e+f");    //a+b+c+d+e+f
+	SubsetConstruction sc2(enfa1b);
+	DFA* dfa1b = (sc2.getDFA());
+	t.expectTrue(dfa1b->process("a"));
+	t.expectTrue(dfa1b->process("b"));
+	t.expectTrue(dfa1b->process("c"));
+	t.expectTrue(dfa1b->process("d"));
+	t.expectTrue(dfa1b->process("e"));
+	t.expectTrue(dfa1b->process("f"));
+	t.expectFalse(dfa1b->process(""));
+	t.expectFalse(dfa1b->process("ab"));
+	t.expectFalse(dfa1b->process("ba"));
+
+	eNFA *enfa2 = regexToNFA("ab");    //ab
+	SubsetConstruction sc3(enfa2);
+	DFA* dfa2 = (sc3.getDFA());
+	t.expectFalse(dfa2->process("a"));
+	t.expectFalse(dfa2->process("b"));
+	t.expectFalse(dfa2->process(""));
+	t.expectTrue(dfa2->process("ab"));
+	t.expectFalse(dfa2->process("ba"));
+
+	eNFA *enfa2b = regexToNFA("abcdef");   //abcdef
+	SubsetConstruction sc4(enfa2b);
+	DFA* dfa2b = (sc4.getDFA());
+	t.expectFalse(dfa2b->process("a"));
+	t.expectFalse(dfa2b->process("b"));
+	t.expectFalse(dfa2b->process(""));
+	t.expectFalse(dfa2b->process("abcde"));
+	t.expectFalse(dfa2b->process("bcdef"));
+	t.expectTrue(dfa2b->process("abcdef"));
+	t.expectFalse(dfa2b->process("ba"));
+
+	eNFA *enfa3 = regexToNFA("a*");     //a*
+	SubsetConstruction sc5(enfa3);
+	DFA* dfa3 = (sc5.getDFA());
+	t.expectTrue(dfa3->process("a"));
+	t.expectFalse(dfa3->process("b"));
+	t.expectTrue(dfa3->process(""));
+	t.expectFalse(dfa3->process("ab"));
+	t.expectTrue(dfa3->process("aaaaaaaa"));
+	t.expectFalse(dfa3->process("baaaaaaaa"));
+	t.expectFalse(dfa3->process("aaabaaaaa"));
+	t.expectFalse(dfa3->process("aaaaaaaab"));
+
+	eNFA *enfa4 = regexToNFA("ab+c");    //ab+c
+	SubsetConstruction sc6(enfa4);
+	DFA* dfa4 = (sc6.getDFA());
+	t.expectFalse(dfa4->process(""));
+	t.expectFalse(dfa4->process("a"));
+	t.expectFalse(dfa4->process("b"));
+	t.expectTrue(dfa4->process("c"));
+	t.expectTrue(dfa4->process("ab"));
+	t.expectFalse(dfa4->process("ba"));
+	t.expectFalse(dfa4->process("ac"));
+	t.expectFalse(dfa4->process("bc"));
+	t.expectFalse(dfa4->process("ca"));
+	t.expectFalse(dfa4->process("cb"));
+	t.expectFalse(dfa4->process("abc"));
+
+	eNFA *enfa5 = regexToNFA("a+bcd");    //(a+b)cd
+	SubsetConstruction sc7(enfa5);
+	DFA* dfa5 = (sc7.getDFA());
+	t.expectFalse(dfa5->process(""));
+	t.expectFalse(dfa5->process("a"));
+	t.expectFalse(dfa5->process("b"));
+	t.expectFalse(dfa5->process("c"));
+	t.expectFalse(dfa5->process("ab"));
+	t.expectFalse(dfa5->process("ba"));
+	t.expectFalse(dfa5->process("ac"));
+	t.expectFalse(dfa5->process("bc"));
+	t.expectFalse(dfa5->process("ca"));
+	t.expectFalse(dfa5->process("cb"));
+	t.expectFalse(dfa5->process("abc"));
+	t.expectFalse(dfa5->process("abcd"));
+	t.expectTrue(dfa5->process("acd"));
+	t.expectTrue(dfa5->process("bcd"));
+	t.expectFalse(dfa5->process("abd"));
+
+	eNFA *enfa6 = regexToNFA("a*+b");     //a*+b
+	SubsetConstruction sc8(enfa6);
+	DFA* dfa6 = (sc8.getDFA());
+	t.expectTrue(dfa6->process(""));
+	t.expectTrue(dfa6->process("a"));
+	t.expectTrue(dfa6->process("b"));
+	t.expectFalse(dfa6->process("ab"));
+	t.expectFalse(dfa6->process("aab"));
+	t.expectTrue(dfa6->process("aa"));
+	t.expectTrue(dfa6->process("aaaaaaaa"));
+
+	eNFA *enfa7 = regexToNFA("a*b");     //a*b
+	SubsetConstruction sc9(enfa7);
+	DFA* dfa7 = (sc9.getDFA());
+	t.expectFalse(dfa7->process(""));
+	t.expectFalse(dfa7->process("a"));
+	t.expectTrue(dfa7->process("b"));
+	t.expectTrue(dfa7->process("ab"));
+	t.expectTrue(dfa7->process("aab"));
+	t.expectFalse(dfa7->process("aa"));
+	t.expectFalse(dfa7->process("aaaaaaaa"));
+	t.expectTrue(dfa7->process("aaaaaaaab"));
+	t.expectFalse(dfa7->process("aaaaaaaabb"));
+
+	eNFA *enfa8 = regexToNFA("a+b*");      //a+b*
+	SubsetConstruction sc10(enfa8);
+	DFA* dfa8 = (sc10.getDFA());
+	t.expectTrue(dfa8->process(""));
+	t.expectTrue(dfa8->process("a"));
+	t.expectTrue(dfa8->process("b"));
+	t.expectFalse(dfa8->process("ab"));
+	t.expectFalse(dfa8->process("aab"));
+	t.expectFalse(dfa8->process("abb"));
+	t.expectFalse(dfa8->process("aa"));
+	t.expectFalse(dfa8->process("aaaaaaaa"));
+	t.expectFalse(dfa8->process("aaaaaaaab"));
+	t.expectFalse(dfa8->process("abbbbbbbb"));
+	t.expectTrue(dfa8->process("bbbbbbbb"));
+
+	eNFA *enfa9 = regexToNFA("ab*");      //ab*
+	SubsetConstruction sc11(enfa9);
+	DFA* dfa9 = (sc11.getDFA());
+	t.expectFalse(dfa9->process(""));
+	t.expectTrue(dfa9->process("a"));
+	t.expectFalse(dfa9->process("b"));
+	t.expectTrue(dfa9->process("ab"));
+	t.expectFalse(dfa9->process("aab"));
+	t.expectTrue(dfa9->process("abb"));
+	t.expectFalse(dfa9->process("aa"));
+	t.expectFalse(dfa9->process("aaaaaaaa"));
+	t.expectFalse(dfa9->process("aaaaaaaab"));
+	t.expectTrue(dfa9->process("abbbbbbbb"));
+	t.expectFalse(dfa9->process("bbbbbbbb"));
+
+	eNFA *enfa10 = regexToNFA("a+(bc)");      //a+(bc)*
+	SubsetConstruction sc12(enfa10);
+	DFA* dfa10 = (sc12.getDFA());
+	t.expectFalse(dfa10->process(""));
+	t.expectTrue(dfa10->process("a"));
+	t.expectFalse(dfa10->process("b"));
+	t.expectFalse(dfa10->process("ab"));
+	t.expectFalse(dfa10->process("ba"));
+	t.expectFalse(dfa10->process("ac"));
+	t.expectFalse(dfa10->process("ca"));
+	t.expectTrue(dfa10->process("bc"));
+	t.expectFalse(dfa10->process("cb"));
+	t.expectFalse(dfa10->process("abc"));
+
+	eNFA *enfa11 = regexToNFA("a(b+c)");      //a(b+c)
+	SubsetConstruction sc13(enfa11);
+	DFA* dfa11 = (sc13.getDFA());
+	t.expectFalse(dfa11->process(""));
+	t.expectFalse(dfa11->process("a"));
+	t.expectFalse(dfa11->process("b"));
+	t.expectTrue(dfa11->process("ab"));
+	t.expectFalse(dfa11->process("ba"));
+	t.expectTrue(dfa11->process("ac"));
+	t.expectFalse(dfa11->process("ca"));
+	t.expectFalse(dfa11->process("bc"));
+	t.expectFalse(dfa11->process("cb"));
+	t.expectFalse(dfa11->process("abc"));
+
+	eNFA *enfa12 = regexToNFA("(a+b)*");    //(a+b)*
+	SubsetConstruction sc14(enfa12);
+	DFA* dfa12 = (sc14.getDFA());
+	t.expectTrue(dfa12->process(""));
+	t.expectTrue(dfa12->process("a"));
+	t.expectTrue(dfa12->process("b"));
+	t.expectTrue(dfa12->process("ab"));
+	t.expectTrue(dfa12->process("aab"));
+	t.expectTrue(dfa12->process("abb"));
+	t.expectTrue(dfa12->process("aa"));
+	t.expectTrue(dfa12->process("aaaaaaaa"));
+	t.expectTrue(dfa12->process("aaaaaaaab"));
+	t.expectTrue(dfa12->process("abbbbbbbb"));
+	t.expectTrue(dfa12->process("bbbbbbbb"));
+	t.expectTrue(dfa12->process("abaabaaabbbbabbaba"));
+	t.expectFalse(dfa12->process("c"));
+	t.expectFalse(dfa12->process("ca"));
+	t.expectFalse(dfa12->process("ac"));
+
+
+
+	// crashes
+	/*
+	eNFA *enfa13 = regexToNFA("(((0+(10))*)((1+(01))*))(0+<)");    //(0+10)*(1+01)*(0+e
+	SubsetConstruction sc15(enfa13);
+	DFA* dfa13 = (sc15.getDFA());
+	t.expectTrue(dfa13->process(""));
+	t.expectTrue(dfa13->process("0"));
+	t.expectTrue(dfa13->process("1"));
+	t.expectTrue(dfa13->process("01"));
+	t.expectTrue(dfa13->process("10"));
+	t.expectTrue(dfa13->process("001"));
+	t.expectTrue(dfa13->process("0011"));
+	t.expectFalse(dfa13->process("1100"));
+	t.expectTrue(dfa13->process("110"));
+	t.expectTrue(dfa13->process("0001001011010"));
+	t.expectFalse(dfa13->process("110001001011010"));
+	t.expectFalse(dfa13->process("001011001110"));
+	t.expectTrue(dfa13->process("00101001110"));
+	t.expectTrue(dfa13->process("0000000"));
+	t.expectTrue(dfa13->process("1111111"));
+	t.expectTrue(dfa13->process("000010001001010110111011110"));
+	*/
+
+
+	eNFA *enfa14 = regexToNFA("((ab)*)+((cd)*)");    //(ab)*+(cd)*
+	SubsetConstruction sc16(enfa14);
+	DFA* dfa14 = (sc16.getDFA());
+	t.expectTrue(dfa14->process(""));
+	t.expectFalse(dfa14->process("a"));
+	t.expectFalse(dfa14->process("b"));
+	t.expectFalse(dfa14->process("c"));
+	t.expectFalse(dfa14->process("d"));
+	t.expectTrue(dfa14->process("cd"));
+	t.expectFalse(dfa14->process("dc"));
+	t.expectTrue(dfa14->process("ab"));
+	t.expectFalse(dfa14->process("abcd"));
+	t.expectTrue(dfa14->process("ababababababab"));
+	t.expectFalse(dfa14->process("abababababababc"));
+	t.expectTrue(dfa14->process("cdcdcdcdcdcd"));
+
+
+}

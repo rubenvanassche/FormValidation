@@ -86,7 +86,7 @@ public:
 	 *
 	 * @return true if success
 	 */
-	bool addComponents(std::string file, const std::vector<std::string>& = std::vector<std::string>());
+	bool addComponents(std::string file);
 
 
 	/**
@@ -120,16 +120,6 @@ public:
 	 * @param file the file name of file containing form
 	 */
 	bool load(std::string file);
-
-	/**
-	 * @brief get vector of components used by form
-	 *
-	 * @param file the file name of file containing form
-	 *
-	 * @param usedComps vector to contain the names of the components used by the form
-	 */
-
-	void readComponents(std::string file, std::vector<std::string>& usedComps);
 
 	virtual ~Form();
 private:
