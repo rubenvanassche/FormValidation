@@ -7,9 +7,6 @@ Postcode(Vlaanderen)
 Stad(Vlaanderen)
 :t:CityVL
 :r:yes
-Land
-:t:CountyNL
-:r:yes
 Voornaam
 :t:FirstName
 :r:yes

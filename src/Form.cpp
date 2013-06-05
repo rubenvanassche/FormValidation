@@ -34,6 +34,7 @@ bool Form::add(std::string name, std::string type, unsigned int length, bool req
 
 	if(fieldType == NULL){
 		// there is no such type
+		std::cout << "Component " << type << " not found, field(s) using it will be skipped" << std::endl;
 		return false;
 	}
 
@@ -51,6 +52,7 @@ bool Form::addComponents(std::string file, const std::vector<std::string>& usedC
 	std::ifstream stream(filename);
 	if(!stream.good()){
 		// File doesn't exists
+		std::cout << "Component file not found" << std::endl;
 		return false;
 	}
 
@@ -58,8 +60,9 @@ bool Form::addComponents(std::string file, const std::vector<std::string>& usedC
 
 	std::string type;
 	bool make = false;
-
+	int linecount = 0;
     while(std::getline(stream, line)){
+    	linecount++;
     	if(line[0] != ':' and line[2] != ':'){
     		// we've got the type of the component
     		type = line;
@@ -68,7 +71,8 @@ bool Form::addComponents(std::string file, const std::vector<std::string>& usedC
     			if (std::find(usedComps.begin(), usedComps.end(), type) == usedComps.end())
     				make = false;
     	}else{
-    		if(make == false){
+    		if(make == false && (std::find(usedComps.begin(), usedComps.end(), type) != usedComps.end())){
+    			std::cout <<  "Unused line in components file at line " << linecount << ", please check file validity." << std::endl;
     			continue;
     		}
 
@@ -89,6 +93,7 @@ bool Form::addComponents(std::string file, const std::vector<std::string>& usedC
     			component.ENFA(line.substr(3));
     		}else{
     			// no idea just jump to the next one
+    			std::cout << "Line " << linecount << " in component file has syntax ':letter:...', only valid letters are r, d, c and e." << std::endl;
     			make = false;
     			continue;
     		}
@@ -209,6 +214,7 @@ bool Form::load(std::string file){
 	std::ifstream stream(filename);
 	if(!stream.good()){
 		// File doesn't exists
+		std::cout << "Form file not found" << std::endl;
 		return false;
 	}
 
@@ -218,10 +224,12 @@ bool Form::load(std::string file){
 	std::string type;
 	std::string lengthS;
 	std::string requiredS;
+	int linecount = 0;
 
 	bool make = false;
 
     while(std::getline(stream, line)){
+    	linecount++;
     	if(line[0] != ':' and line[2] != ':'){
     		// It's the name
     		// Do we need to make this field?
@@ -239,8 +247,11 @@ bool Form::load(std::string file){
 					}
 
 					this->add(name, type, length, required);
+					name = "";
 				}
-
+				else if (name.size() and !type.size()) {
+					std::cout << "Field " << name << " does not have a component specified" << std::endl;
+				}
 				make = false;
 			}
 
@@ -249,7 +260,7 @@ bool Form::load(std::string file){
     		type = "";
     		lengthS = "";
     		requiredS = "";
-    	}else{
+    	}else if (name.size()){
     		// it no name but something else
     		if(line[1] == 't'){
     			type = line.substr(3);
@@ -258,8 +269,14 @@ bool Form::load(std::string file){
     		}else if(line[1] == 'r'){
     			requiredS = line.substr(3);
     		}
+    		else {
+    			std::cout << "Line " << linecount << " in form file has syntax ':letter:...', only valid letters are t, l and r." << std::endl;
+    		}
 
     		make = true;
+    	}
+    	else {
+    		std::cout << "':letter:' field at line " << linecount << " in form file is not preceded by a name for the field." << std::endl;
     	}
 
     }
@@ -278,6 +295,9 @@ bool Form::load(std::string file){
 		}
 
 		this->add(name, type, length, required);
+	}
+	else if (name.size()) {
+		std::cout << "Field " << name << " has no component specified." << std::endl;
 	}
 	return true;
 }

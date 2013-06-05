@@ -74,20 +74,20 @@ Zuid-Afrika
 België
 
 Gewone database koppeling:
-Zuid-Afrika <- aanvaardt
-België <- aanvaardt
-Zuid Afrika <- niet aanvaardt
-Belgie <- niet aanvaardt
-zuid afrika <- niet aanvaardt
-belgie <- niet aanvaardt
+Zuid-Afrika <- aanvaard
+België <- aanvaard
+Zuid Afrika <- niet aanvaard
+Belgie <- niet aanvaard
+zuid afrika <- niet aanvaard
+belgie <- niet aanvaard
 
 Correctie database koppeling:
-Zuid-Afrika <- aanvaardt
-België <- aanvaardt
-Zuid Afrika <- aanvaardt
-Belgie <- aanvaardt
-zuid afrika <- aanvaardt
-belgie <- aanvaardt
+Zuid-Afrika <- aanvaard
+België <- aanvaard
+Zuid Afrika <- aanvaard
+Belgie <- aanvaard
+zuid afrika <- aanvaard
+belgie <- aanvaard
 
 
 
