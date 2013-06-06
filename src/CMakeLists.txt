@@ -10,4 +10,4 @@ SET(sampleName FormValidation)
 # compilation in windows platform.
 # Followed by the executable name come all your source and header files.
 # All cpp fles will be clubbed into source folder and all .h files will be added to header files folder of the project.
-add_executable (FormValidation common.h Component.h Component.cpp DFA.cpp DFA.h eNFA.cpp eNFA.h Field.cpp Field.h Form.cpp Form.h FormValidation.cpp RegexToNFA.cpp RegexToNFA.h SubsetConstruction.cpp SubsetConstruction.h Test.cpp Test.h FormTest.cpp FormTest.h)
+add_executable (FormValidation common.h Component.h Component.cpp DFA.cpp DFA.h eNFA.cpp eNFA.h Field.cpp Field.h Form.cpp Form.h FormValidation.cpp RegexToNFA.cpp RegexToNFA.h SubsetConstruction.cpp SubsetConstruction.h Test.cpp Test.h FormTest.cpp FormTest.h DFATest.cpp DFATest.h)
