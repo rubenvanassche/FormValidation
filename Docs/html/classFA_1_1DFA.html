@@ -69,7 +69,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Friends</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Friends</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -86,6 +86,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="header">
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="#pub-attribs">Public Attributes</a> &#124;
 <a href="#friends">Friends</a> &#124;
 <a href="classFA_1_1DFA-members.html">List of all members</a>  </div>
   <div class="headertitle">
@@ -100,53 +101,311 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a0a716d54ea3d59580ebc6aadd79aae72"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classFA_1_1DFA.html#a0a716d54ea3d59580ebc6aadd79aae72">DFA</a> (alphabet, DFAstates, int)</td></tr>
-<tr class="memdesc:a0a716d54ea3d59580ebc6aadd79aae72"><td class="mdescLeft">&#160;</td><td class="mdescRight">constructor  <a href="#a0a716d54ea3d59580ebc6aadd79aae72">More...</a><br/></td></tr>
-<tr class="separator:a0a716d54ea3d59580ebc6aadd79aae72"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:afeb7333cd0cb7b9657a784a0ecf0ea7c"><td class="memItemLeft" align="right" valign="top">DFAstates &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classFA_1_1DFA.html#afeb7333cd0cb7b9657a784a0ecf0ea7c">getQ</a> ()</td></tr>
-<tr class="memdesc:afeb7333cd0cb7b9657a784a0ecf0ea7c"><td class="mdescLeft">&#160;</td><td class="mdescRight">getter for Q (the states)  <a href="#afeb7333cd0cb7b9657a784a0ecf0ea7c">More...</a><br/></td></tr>
-<tr class="separator:afeb7333cd0cb7b9657a784a0ecf0ea7c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa1d41d419268ba24caf63206f5224c54"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structFA_1_1DFAstate.html">DFAstate</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classFA_1_1DFA.html#aa1d41d419268ba24caf63206f5224c54">getQ0</a> ()</td></tr>
-<tr class="memdesc:aa1d41d419268ba24caf63206f5224c54"><td class="mdescLeft">&#160;</td><td class="mdescRight">getter for q0 (start state)  <a href="#aa1d41d419268ba24caf63206f5224c54">More...</a><br/></td></tr>
-<tr class="separator:aa1d41d419268ba24caf63206f5224c54"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5c0048ff6d4fc7df99c6cb0ee698b1af"><td class="memItemLeft" align="right" valign="top">alphabet &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classFA_1_1DFA.html#a5c0048ff6d4fc7df99c6cb0ee698b1af">getSigma</a> ()</td></tr>
-<tr class="memdesc:a5c0048ff6d4fc7df99c6cb0ee698b1af"><td class="mdescLeft">&#160;</td><td class="mdescRight">getter for sigma (the alphabet)  <a href="#a5c0048ff6d4fc7df99c6cb0ee698b1af">More...</a><br/></td></tr>
-<tr class="separator:a5c0048ff6d4fc7df99c6cb0ee698b1af"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab8bfad13bf047feba0b4f9a9df79e658"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classFA_1_1DFA.html#ab8bfad13bf047feba0b4f9a9df79e658">process</a> (std::string)</td></tr>
-<tr class="memdesc:ab8bfad13bf047feba0b4f9a9df79e658"><td class="mdescLeft">&#160;</td><td class="mdescRight">Check if string is part of the <a class="el" href="classFA_1_1DFA.html" title="Class representing a DFA.">DFA</a>.  <a href="#ab8bfad13bf047feba0b4f9a9df79e658">More...</a><br/></td></tr>
-<tr class="separator:ab8bfad13bf047feba0b4f9a9df79e658"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a96ba094cdfc8c20eca44f52e978674e6"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a96ba094cdfc8c20eca44f52e978674e6"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classFA_1_1DFA.html#a96ba094cdfc8c20eca44f52e978674e6">DFA</a> ()</td></tr>
+<tr class="memdesc:a96ba094cdfc8c20eca44f52e978674e6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructor. <br/></td></tr>
+<tr class="separator:a96ba094cdfc8c20eca44f52e978674e6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac064d14ca697ab4f466fecef59794150"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classFA_1_1DFA.html#ac064d14ca697ab4f466fecef59794150">process</a> (std::string string)</td></tr>
+<tr class="memdesc:ac064d14ca697ab4f466fecef59794150"><td class="mdescLeft">&#160;</td><td class="mdescRight">Process a string.  <a href="#ac064d14ca697ab4f466fecef59794150">More...</a><br/></td></tr>
+<tr class="separator:ac064d14ca697ab4f466fecef59794150"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad58c650b3fe4997560d24a6a4459dab5"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classFA_1_1State.html">State</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classFA_1_1DFA.html#ad58c650b3fe4997560d24a6a4459dab5">process</a> (char symbol)</td></tr>
+<tr class="memdesc:ad58c650b3fe4997560d24a6a4459dab5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Process a symbol.  <a href="#ad58c650b3fe4997560d24a6a4459dab5">More...</a><br/></td></tr>
+<tr class="separator:ad58c650b3fe4997560d24a6a4459dab5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a63940f64c434af04a97ff101d52b83a1"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classFA_1_1State.html">State</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classFA_1_1DFA.html#a63940f64c434af04a97ff101d52b83a1">process</a> (char symbol, <a class="el" href="classFA_1_1State.html">State</a> *currentState)</td></tr>
+<tr class="memdesc:a63940f64c434af04a97ff101d52b83a1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Process a symbol at a specified state.  <a href="#a63940f64c434af04a97ff101d52b83a1">More...</a><br/></td></tr>
+<tr class="separator:a63940f64c434af04a97ff101d52b83a1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4f83314cd4904b8b8bef8df1d44ed311"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classFA_1_1DFA.html#a4f83314cd4904b8b8bef8df1d44ed311">addState</a> (<a class="el" href="classFA_1_1State.html">State</a> state)</td></tr>
+<tr class="memdesc:a4f83314cd4904b8b8bef8df1d44ed311"><td class="mdescLeft">&#160;</td><td class="mdescRight">Add a state to the <a class="el" href="classFA_1_1DFA.html" title="Class representing a DFA.">DFA</a>.  <a href="#a4f83314cd4904b8b8bef8df1d44ed311">More...</a><br/></td></tr>
+<tr class="separator:a4f83314cd4904b8b8bef8df1d44ed311"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a54b2fd16cd8a09b3d39267f496b3091c"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classFA_1_1DFA.html#a54b2fd16cd8a09b3d39267f496b3091c">addStates</a> (std::vector&lt; <a class="el" href="classFA_1_1State.html">State</a> &gt; states)</td></tr>
+<tr class="memdesc:a54b2fd16cd8a09b3d39267f496b3091c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Add states to the <a class="el" href="classFA_1_1DFA.html" title="Class representing a DFA.">DFA</a>.  <a href="#a54b2fd16cd8a09b3d39267f496b3091c">More...</a><br/></td></tr>
+<tr class="separator:a54b2fd16cd8a09b3d39267f496b3091c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a178995c0e4e6cd3113d689aab95dbc73"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classFA_1_1DFA.html#a178995c0e4e6cd3113d689aab95dbc73">addAlphabet</a> (char symbol)</td></tr>
+<tr class="memdesc:a178995c0e4e6cd3113d689aab95dbc73"><td class="mdescLeft">&#160;</td><td class="mdescRight">Add a symbol to the <a class="el" href="classFA_1_1DFA.html" title="Class representing a DFA.">DFA</a>'s alphabet.  <a href="#a178995c0e4e6cd3113d689aab95dbc73">More...</a><br/></td></tr>
+<tr class="separator:a178995c0e4e6cd3113d689aab95dbc73"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a27f8b400bc8d0512a8527d6c71996869"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classFA_1_1DFA.html#a27f8b400bc8d0512a8527d6c71996869">addAlphabet</a> (std::vector&lt; char &gt; symbols)</td></tr>
+<tr class="memdesc:a27f8b400bc8d0512a8527d6c71996869"><td class="mdescLeft">&#160;</td><td class="mdescRight">Add symbols to the <a class="el" href="classFA_1_1DFA.html" title="Class representing a DFA.">DFA</a>'s alphabet.  <a href="#a27f8b400bc8d0512a8527d6c71996869">More...</a><br/></td></tr>
+<tr class="separator:a27f8b400bc8d0512a8527d6c71996869"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8b9f3bbda0044b4ed8d413f5fa3cd56b"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classFA_1_1DFA.html#a8b9f3bbda0044b4ed8d413f5fa3cd56b">isInAlphabet</a> (char symbol)</td></tr>
+<tr class="memdesc:a8b9f3bbda0044b4ed8d413f5fa3cd56b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Check if symbol is in the Dfa's alphabet.  <a href="#a8b9f3bbda0044b4ed8d413f5fa3cd56b">More...</a><br/></td></tr>
+<tr class="separator:a8b9f3bbda0044b4ed8d413f5fa3cd56b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aec06d82c3ee0efdb193510d35031f36d"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classFA_1_1DFA.html#aec06d82c3ee0efdb193510d35031f36d">hasStartState</a> ()</td></tr>
+<tr class="memdesc:aec06d82c3ee0efdb193510d35031f36d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Check if a <a class="el" href="classFA_1_1DFA.html" title="Class representing a DFA.">DFA</a> has a start state.  <a href="#aec06d82c3ee0efdb193510d35031f36d">More...</a><br/></td></tr>
+<tr class="separator:aec06d82c3ee0efdb193510d35031f36d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8751b056d570391389fa8a9db459595b"><td class="memItemLeft" align="right" valign="top">std::vector&lt; <a class="el" href="classFA_1_1State.html">State</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classFA_1_1DFA.html#a8751b056d570391389fa8a9db459595b">getStates</a> ()</td></tr>
+<tr class="memdesc:a8751b056d570391389fa8a9db459595b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the states in the <a class="el" href="classFA_1_1DFA.html" title="Class representing a DFA.">DFA</a>.  <a href="#a8751b056d570391389fa8a9db459595b">More...</a><br/></td></tr>
+<tr class="separator:a8751b056d570391389fa8a9db459595b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a757d14f06b687278116d971f116cb322"><td class="memItemLeft" align="right" valign="top">std::vector&lt; char &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classFA_1_1DFA.html#a757d14f06b687278116d971f116cb322">getAlphabet</a> ()</td></tr>
+<tr class="memdesc:a757d14f06b687278116d971f116cb322"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the alphabet in the <a class="el" href="classFA_1_1DFA.html" title="Class representing a DFA.">DFA</a>.  <a href="#a757d14f06b687278116d971f116cb322">More...</a><br/></td></tr>
+<tr class="separator:a757d14f06b687278116d971f116cb322"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7319fa99113f60a2575a2b66c35341bf"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a7319fa99113f60a2575a2b66c35341bf"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classFA_1_1DFA.html#a7319fa99113f60a2575a2b66c35341bf">clearStates</a> ()</td></tr>
+<tr class="memdesc:a7319fa99113f60a2575a2b66c35341bf"><td class="mdescLeft">&#160;</td><td class="mdescRight">Removes all the states in the <a class="el" href="classFA_1_1DFA.html" title="Class representing a DFA.">DFA</a>. <br/></td></tr>
+<tr class="separator:a7319fa99113f60a2575a2b66c35341bf"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac6576dd1df2dc56199aa14f22beb09d4"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ac6576dd1df2dc56199aa14f22beb09d4"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classFA_1_1DFA.html#ac6576dd1df2dc56199aa14f22beb09d4">clear</a> ()</td></tr>
+<tr class="memdesc:ac6576dd1df2dc56199aa14f22beb09d4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Clears the states, startstate, transitions in the <a class="el" href="classFA_1_1DFA.html" title="Class representing a DFA.">DFA</a>. <br/></td></tr>
+<tr class="separator:ac6576dd1df2dc56199aa14f22beb09d4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
+Public Attributes</h2></td></tr>
+<tr class="memitem:af61fceea2141e9aed29a38dd0b3f88a7"><td class="memItemLeft" align="right" valign="top">std::vector&lt; <a class="el" href="classFA_1_1State.html">State</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classFA_1_1DFA.html#af61fceea2141e9aed29a38dd0b3f88a7">fStates</a></td></tr>
+<tr class="memdesc:af61fceea2141e9aed29a38dd0b3f88a7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Read's a <a class="el" href="classFA_1_1DFA.html" title="Class representing a DFA.">DFA</a> file and makes one based upon this file.  <a href="#af61fceea2141e9aed29a38dd0b3f88a7">More...</a><br/></td></tr>
+<tr class="separator:af61fceea2141e9aed29a38dd0b3f88a7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="friends"></a>
 Friends</h2></td></tr>
-<tr class="memitem:a12f5ded420d9784fc6192eaecb0a8a88"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a12f5ded420d9784fc6192eaecb0a8a88"></a>
-std::ostream &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classFA_1_1DFA.html#a12f5ded420d9784fc6192eaecb0a8a88">operator&lt;&lt;</a> (std::ostream &amp;, <a class="el" href="classFA_1_1DFA.html">DFA</a> &amp;)</td></tr>
-<tr class="memdesc:a12f5ded420d9784fc6192eaecb0a8a88"><td class="mdescLeft">&#160;</td><td class="mdescRight">&lt;&lt; overloader for <a class="el" href="classFA_1_1DFA.html" title="Class representing a DFA.">DFA</a> <br/></td></tr>
-<tr class="separator:a12f5ded420d9784fc6192eaecb0a8a88"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1c05c269d06f54d05bfb3bd0c88f8e9d"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a1c05c269d06f54d05bfb3bd0c88f8e9d"></a>
+std::ostream &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>operator&lt;&lt;</b> (std::ostream &amp;out, <a class="el" href="classFA_1_1DFA.html">DFA</a> &amp;dfa)</td></tr>
+<tr class="separator:a1c05c269d06f54d05bfb3bd0c88f8e9d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Class representing a <a class="el" href="classFA_1_1DFA.html" title="Class representing a DFA.">DFA</a>. </p>
-</div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
-<a class="anchor" id="a0a716d54ea3d59580ebc6aadd79aae72"></a>
+</div><h2 class="groupheader">Member Function Documentation</h2>
+<a class="anchor" id="a178995c0e4e6cd3113d689aab95dbc73"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">FA::DFA::DFA </td>
+          <td class="memname">bool FA::DFA::addAlphabet </td>
           <td>(</td>
-          <td class="paramtype">alphabet&#160;</td>
-          <td class="paramname"><em>alphabet_</em>, </td>
+          <td class="paramtype">char&#160;</td>
+          <td class="paramname"><em>symbol</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Add a symbol to the <a class="el" href="classFA_1_1DFA.html" title="Class representing a DFA.">DFA</a>'s alphabet. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">char</td><td>The symbol</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>bool True if success </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="a27f8b400bc8d0512a8527d6c71996869"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool FA::DFA::addAlphabet </td>
+          <td>(</td>
+          <td class="paramtype">std::vector&lt; char &gt;&#160;</td>
+          <td class="paramname"><em>symbols</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Add symbols to the <a class="el" href="classFA_1_1DFA.html" title="Class representing a DFA.">DFA</a>'s alphabet. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">vector</td><td>The symbols</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>bool True if success </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="a4f83314cd4904b8b8bef8df1d44ed311"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool FA::DFA::addState </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classFA_1_1State.html">State</a>&#160;</td>
+          <td class="paramname"><em>state</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Add a state to the <a class="el" href="classFA_1_1DFA.html" title="Class representing a DFA.">DFA</a>. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">state</td><td>The state</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>bool True if success </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="a54b2fd16cd8a09b3d39267f496b3091c"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool FA::DFA::addStates </td>
+          <td>(</td>
+          <td class="paramtype">std::vector&lt; <a class="el" href="classFA_1_1State.html">State</a> &gt;&#160;</td>
+          <td class="paramname"><em>states</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Add states to the <a class="el" href="classFA_1_1DFA.html" title="Class representing a DFA.">DFA</a>. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">vector</td><td>The states</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>bool True if success </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="a757d14f06b687278116d971f116cb322"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::vector&lt; char &gt; FA::DFA::getAlphabet </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Get the alphabet in the <a class="el" href="classFA_1_1DFA.html" title="Class representing a DFA.">DFA</a>. </p>
+<dl class="section return"><dt>Returns</dt><dd>vector The states </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="a8751b056d570391389fa8a9db459595b"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::vector&lt; <a class="el" href="classFA_1_1State.html">State</a> &gt; FA::DFA::getStates </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Get the states in the <a class="el" href="classFA_1_1DFA.html" title="Class representing a DFA.">DFA</a>. </p>
+<dl class="section return"><dt>Returns</dt><dd>vector The states </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="aec06d82c3ee0efdb193510d35031f36d"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool FA::DFA::hasStartState </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Check if a <a class="el" href="classFA_1_1DFA.html" title="Class representing a DFA.">DFA</a> has a start state. </p>
+<dl class="section return"><dt>Returns</dt><dd>bool True if there is a start state </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="a8b9f3bbda0044b4ed8d413f5fa3cd56b"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool FA::DFA::isInAlphabet </td>
+          <td>(</td>
+          <td class="paramtype">char&#160;</td>
+          <td class="paramname"><em>symbol</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Check if symbol is in the Dfa's alphabet. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">char</td><td>The symbol</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>bool True if symbol is in the alphabet </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="ac064d14ca697ab4f466fecef59794150"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool FA::DFA::process </td>
+          <td>(</td>
+          <td class="paramtype">std::string&#160;</td>
+          <td class="paramname"><em>string</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Process a string. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">string</td><td>The string</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>bool True if string is accepted </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="ad58c650b3fe4997560d24a6a4459dab5"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classFA_1_1State.html">State</a> * FA::DFA::process </td>
+          <td>(</td>
+          <td class="paramtype">char&#160;</td>
+          <td class="paramname"><em>symbol</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Process a symbol. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">symbol</td><td>The symbol</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>bool True if symbol is accepted </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="a63940f64c434af04a97ff101d52b83a1"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classFA_1_1State.html">State</a> * FA::DFA::process </td>
+          <td>(</td>
+          <td class="paramtype">char&#160;</td>
+          <td class="paramname"><em>symbol</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">DFAstates&#160;</td>
-          <td class="paramname"><em>states_</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">int&#160;</td>
-          <td class="paramname"><em>start_</em>&#160;</td>
+          <td class="paramtype"><a class="el" href="classFA_1_1State.html">State</a> *&#160;</td>
+          <td class="paramname"><em>currentState</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -156,118 +415,44 @@ std::ostream &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="
       </table>
 </div><div class="memdoc">
 
-<p>constructor </p>
+<p>Process a symbol at a specified state. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">alphabet_</td><td>The alphabet of the <a class="el" href="classFA_1_1DFA.html" title="Class representing a DFA.">DFA</a> </td></tr>
-    <tr><td class="paramname">states_</td><td>The states of the <a class="el" href="classFA_1_1DFA.html" title="Class representing a DFA.">DFA</a> </td></tr>
-    <tr><td class="paramname">start_</td><td>Number of start state </td></tr>
+    <tr><td class="paramname">symbol</td><td>The symbol </td></tr>
+    <tr><td class="paramname">state*</td><td>The state to process</td></tr>
   </table>
   </dd>
 </dl>
+<dl class="section return"><dt>Returns</dt><dd>bool True if symbol is accepted </dd></dl>
 
 </div>
 </div>
-<h2 class="groupheader">Member Function Documentation</h2>
-<a class="anchor" id="afeb7333cd0cb7b9657a784a0ecf0ea7c"></a>
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">DFAstates&amp; FA::DFA::getQ </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>getter for Q (the states) </p>
-<dl class="section return"><dt>Returns</dt><dd>the states </dd></dl>
-
-</div>
-</div>
-<a class="anchor" id="aa1d41d419268ba24caf63206f5224c54"></a>
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="structFA_1_1DFAstate.html">DFAstate</a>* FA::DFA::getQ0 </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>getter for q0 (start state) </p>
-<dl class="section return"><dt>Returns</dt><dd>the start state </dd></dl>
-
-</div>
-</div>
-<a class="anchor" id="a5c0048ff6d4fc7df99c6cb0ee698b1af"></a>
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">alphabet&amp; FA::DFA::getSigma </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>getter for sigma (the alphabet) </p>
-<dl class="section return"><dt>Returns</dt><dd>the alphabet </dd></dl>
-
-</div>
-</div>
-<a class="anchor" id="ab8bfad13bf047feba0b4f9a9df79e658"></a>
+<h2 class="groupheader">Member Data Documentation</h2>
+<a class="anchor" id="af61fceea2141e9aed29a38dd0b3f88a7"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">bool FA::DFA::process </td>
-          <td>(</td>
-          <td class="paramtype">std::string&#160;</td>
-          <td class="paramname"><em>str</em></td><td>)</td>
-          <td></td>
+          <td class="memname">std::vector&lt;<a class="el" href="classFA_1_1State.html">State</a>&gt; FA::DFA::fStates</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p>Check if string is part of the <a class="el" href="classFA_1_1DFA.html" title="Class representing a DFA.">DFA</a>. </p>
+<p>Read's a <a class="el" href="classFA_1_1DFA.html" title="Class representing a DFA.">DFA</a> file and makes one based upon this file. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">str</td><td>The input string </td></tr>
+    <tr><td class="paramname">string</td><td>The file to be loaded</td></tr>
   </table>
   </dd>
 </dl>
+<dl class="section return"><dt>Returns</dt><dd>bool True if success Save the <a class="el" href="classFA_1_1DFA.html" title="Class representing a DFA.">DFA</a> in a file</dd></dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">string</td><td>The filename of the file</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>bool True if success </dd></dl>
 
 </div>
 </div>
@@ -278,7 +463,7 @@ std::ostream &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Sat May 18 2013 16:49:59 for Form Validation by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Thu Jun 6 2013 12:58:15 for Form Validation by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.3.1
 </small></address>

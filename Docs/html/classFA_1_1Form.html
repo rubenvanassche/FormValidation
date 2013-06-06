@@ -69,7 +69,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Friends</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Friends</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -117,9 +117,9 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a792d137754257e45960910747f80e9e6"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classFA_1_1Form.html#a792d137754257e45960910747f80e9e6">add</a> (std::string name, std::string type, unsigned int length, bool required)</td></tr>
 <tr class="memdesc:a792d137754257e45960910747f80e9e6"><td class="mdescLeft">&#160;</td><td class="mdescRight">add field to form  <a href="#a792d137754257e45960910747f80e9e6">More...</a><br/></td></tr>
 <tr class="separator:a792d137754257e45960910747f80e9e6"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6081cf2aae76511c946721bed4a7e37f"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classFA_1_1Form.html#a6081cf2aae76511c946721bed4a7e37f">addComponents</a> (std::string file)</td></tr>
-<tr class="memdesc:a6081cf2aae76511c946721bed4a7e37f"><td class="mdescLeft">&#160;</td><td class="mdescRight">adds all of the possible components to the form  <a href="#a6081cf2aae76511c946721bed4a7e37f">More...</a><br/></td></tr>
-<tr class="separator:a6081cf2aae76511c946721bed4a7e37f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a05beb2b9ca100cd046d02aa9b41618e7"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classFA_1_1Form.html#a05beb2b9ca100cd046d02aa9b41618e7">addComponents</a> (std::string file, const std::vector&lt; std::string &gt; &amp;=std::vector&lt; std::string &gt;())</td></tr>
+<tr class="memdesc:a05beb2b9ca100cd046d02aa9b41618e7"><td class="mdescLeft">&#160;</td><td class="mdescRight">adds all of the possible components to the form  <a href="#a05beb2b9ca100cd046d02aa9b41618e7">More...</a><br/></td></tr>
+<tr class="separator:a05beb2b9ca100cd046d02aa9b41618e7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aff3263e5b4f3a8e0fe24081e20959419"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aff3263e5b4f3a8e0fe24081e20959419"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classFA_1_1Form.html#aff3263e5b4f3a8e0fe24081e20959419">build</a> ()</td></tr>
 <tr class="memdesc:aff3263e5b4f3a8e0fe24081e20959419"><td class="mdescLeft">&#160;</td><td class="mdescRight">run the form <br/></td></tr>
@@ -138,6 +138,9 @@ std::string &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el
 <tr class="memitem:ae532a76fd60e7244ae8311d2bbd1a710"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classFA_1_1Form.html#ae532a76fd60e7244ae8311d2bbd1a710">load</a> (std::string file)</td></tr>
 <tr class="memdesc:ae532a76fd60e7244ae8311d2bbd1a710"><td class="mdescLeft">&#160;</td><td class="mdescRight">load form from file  <a href="#ae532a76fd60e7244ae8311d2bbd1a710">More...</a><br/></td></tr>
 <tr class="separator:ae532a76fd60e7244ae8311d2bbd1a710"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4a0a5182c866bb4cc6010f1cbbb8e4f3"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classFA_1_1Form.html#a4a0a5182c866bb4cc6010f1cbbb8e4f3">readComponents</a> (std::string file, std::vector&lt; std::string &gt; &amp;usedComps)</td></tr>
+<tr class="memdesc:a4a0a5182c866bb4cc6010f1cbbb8e4f3"><td class="mdescLeft">&#160;</td><td class="mdescRight">get vector of components used by form  <a href="#a4a0a5182c866bb4cc6010f1cbbb8e4f3">More...</a><br/></td></tr>
+<tr class="separator:a4a0a5182c866bb4cc6010f1cbbb8e4f3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Class representing a form. </p>
@@ -384,7 +387,7 @@ std::string &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el
 
 </div>
 </div>
-<a class="anchor" id="a6081cf2aae76511c946721bed4a7e37f"></a>
+<a class="anchor" id="a05beb2b9ca100cd046d02aa9b41618e7"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
@@ -392,8 +395,18 @@ std::string &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el
           <td class="memname">bool FA::Form::addComponents </td>
           <td>(</td>
           <td class="paramtype">std::string&#160;</td>
-          <td class="paramname"><em>file</em></td><td>)</td>
+          <td class="paramname"><em>file</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
           <td></td>
+          <td class="paramtype">const std::vector&lt; std::string &gt; &amp;&#160;</td>
+          <td class="paramname"><em>usedComps</em> = <code>std::vector&lt;std::string&gt;()</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -469,6 +482,41 @@ std::string &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el
 
 </div>
 </div>
+<a class="anchor" id="a4a0a5182c866bb4cc6010f1cbbb8e4f3"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void FA::Form::readComponents </td>
+          <td>(</td>
+          <td class="paramtype">std::string&#160;</td>
+          <td class="paramname"><em>file</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::vector&lt; std::string &gt; &amp;&#160;</td>
+          <td class="paramname"><em>usedComps</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>get vector of components used by form </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">file</td><td>the file name of file containing form</td></tr>
+    <tr><td class="paramname">usedComps</td><td>vector to contain the names of the components used by the form </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
 <hr/>The documentation for this class was generated from the following files:<ul>
 <li>/home/jakob/Dropbox/UA/workspace/FormValidation/src/<a class="el" href="Form_8h_source.html">Form.h</a></li>
 <li>/home/jakob/Dropbox/UA/workspace/FormValidation/src/Form.cpp</li>
@@ -476,7 +524,7 @@ std::string &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Sat May 18 2013 16:49:59 for Form Validation by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Thu Jun 6 2013 12:58:15 for Form Validation by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.3.1
 </small></address>

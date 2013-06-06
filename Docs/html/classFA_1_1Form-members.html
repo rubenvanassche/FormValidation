@@ -69,7 +69,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Friends</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Friends</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -96,18 +96,19 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <tr class="even"><td class="entry"><a class="el" href="classFA_1_1Form.html#a819a4256afda2bebf784b93e8d69093f">add</a>(std::string name, std::string type, unsigned int length)</td><td class="entry"><a class="el" href="classFA_1_1Form.html">FA::Form</a></td><td class="entry"></td></tr>
   <tr><td class="entry"><a class="el" href="classFA_1_1Form.html#a1d0caba37f936d700d311621c9761293">add</a>(std::string name, std::string type, bool required, unsigned int length)</td><td class="entry"><a class="el" href="classFA_1_1Form.html">FA::Form</a></td><td class="entry"></td></tr>
   <tr class="even"><td class="entry"><a class="el" href="classFA_1_1Form.html#a792d137754257e45960910747f80e9e6">add</a>(std::string name, std::string type, unsigned int length, bool required)</td><td class="entry"><a class="el" href="classFA_1_1Form.html">FA::Form</a></td><td class="entry"></td></tr>
-  <tr><td class="entry"><a class="el" href="classFA_1_1Form.html#a6081cf2aae76511c946721bed4a7e37f">addComponents</a>(std::string file)</td><td class="entry"><a class="el" href="classFA_1_1Form.html">FA::Form</a></td><td class="entry"></td></tr>
+  <tr><td class="entry"><a class="el" href="classFA_1_1Form.html#a05beb2b9ca100cd046d02aa9b41618e7">addComponents</a>(std::string file, const std::vector&lt; std::string &gt; &amp;=std::vector&lt; std::string &gt;())</td><td class="entry"><a class="el" href="classFA_1_1Form.html">FA::Form</a></td><td class="entry"></td></tr>
   <tr class="even"><td class="entry"><a class="el" href="classFA_1_1Form.html#aff3263e5b4f3a8e0fe24081e20959419">build</a>()</td><td class="entry"><a class="el" href="classFA_1_1Form.html">FA::Form</a></td><td class="entry"></td></tr>
   <tr><td class="entry"><a class="el" href="classFA_1_1Form.html#a91933b8204a67dcf14f1b6ac7092e84c">Form</a>(std::string name)</td><td class="entry"><a class="el" href="classFA_1_1Form.html">FA::Form</a></td><td class="entry"></td></tr>
   <tr class="even"><td class="entry"><a class="el" href="classFA_1_1Form.html#a1768f802e54e999cb0214575f6941753">getData</a>()</td><td class="entry"><a class="el" href="classFA_1_1Form.html">FA::Form</a></td><td class="entry"></td></tr>
   <tr><td class="entry"><a class="el" href="classFA_1_1Form.html#ae532a76fd60e7244ae8311d2bbd1a710">load</a>(std::string file)</td><td class="entry"><a class="el" href="classFA_1_1Form.html">FA::Form</a></td><td class="entry"></td></tr>
   <tr class="even"><td class="entry"><a class="el" href="classFA_1_1Form.html#ae100d99ac80468b6fd4bbf4fe9bb7060">ok</a>()</td><td class="entry"><a class="el" href="classFA_1_1Form.html">FA::Form</a></td><td class="entry"></td></tr>
   <tr><td class="entry"><a class="el" href="classFA_1_1Form.html#a2e9badd806d51ecbffa08dd006dc2394">process</a>()</td><td class="entry"><a class="el" href="classFA_1_1Form.html">FA::Form</a></td><td class="entry"></td></tr>
-  <tr bgcolor="#f0f0f0" class="even"><td class="entry"><b>~Form</b>() (defined in <a class="el" href="classFA_1_1Form.html">FA::Form</a>)</td><td class="entry"><a class="el" href="classFA_1_1Form.html">FA::Form</a></td><td class="entry"><span class="mlabel">virtual</span></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="classFA_1_1Form.html#a4a0a5182c866bb4cc6010f1cbbb8e4f3">readComponents</a>(std::string file, std::vector&lt; std::string &gt; &amp;usedComps)</td><td class="entry"><a class="el" href="classFA_1_1Form.html">FA::Form</a></td><td class="entry"></td></tr>
+  <tr bgcolor="#f0f0f0"><td class="entry"><b>~Form</b>() (defined in <a class="el" href="classFA_1_1Form.html">FA::Form</a>)</td><td class="entry"><a class="el" href="classFA_1_1Form.html">FA::Form</a></td><td class="entry"><span class="mlabel">virtual</span></td></tr>
 </table></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Sat May 18 2013 16:49:59 for Form Validation by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Thu Jun 6 2013 12:58:15 for Form Validation by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.3.1
 </small></address>

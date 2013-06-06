@@ -69,7 +69,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Friends</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Friends</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -140,9 +140,9 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="clas
 <tr class="memitem:ab6df02362d7655ccf7b1844036abd7c9"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classFA_1_1Field.html#ab6df02362d7655ccf7b1844036abd7c9">isRequired</a> ()</td></tr>
 <tr class="memdesc:ab6df02362d7655ccf7b1844036abd7c9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Checks if field is required.  <a href="#ab6df02362d7655ccf7b1844036abd7c9">More...</a><br/></td></tr>
 <tr class="separator:ab6df02362d7655ccf7b1844036abd7c9"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aaade7c3ed1114decb01e0ef389002eee"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classFA_1_1Component.html">Component</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classFA_1_1Field.html#aaade7c3ed1114decb01e0ef389002eee">getType</a> ()</td></tr>
-<tr class="memdesc:aaade7c3ed1114decb01e0ef389002eee"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the type of field (the component)  <a href="#aaade7c3ed1114decb01e0ef389002eee">More...</a><br/></td></tr>
-<tr class="separator:aaade7c3ed1114decb01e0ef389002eee"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af2bc07b212dda08dbb35c0053255d73a"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classFA_1_1Component.html">Component</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classFA_1_1Field.html#af2bc07b212dda08dbb35c0053255d73a">getComponent</a> ()</td></tr>
+<tr class="memdesc:af2bc07b212dda08dbb35c0053255d73a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the component of the field.  <a href="#af2bc07b212dda08dbb35c0053255d73a">More...</a><br/></td></tr>
+<tr class="separator:af2bc07b212dda08dbb35c0053255d73a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac1f83fa1b99ca126b41b12b7d198c679"><td class="memItemLeft" align="right" valign="top">unsigned int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classFA_1_1Field.html#ac1f83fa1b99ca126b41b12b7d198c679">getLength</a> ()</td></tr>
 <tr class="memdesc:ac1f83fa1b99ca126b41b12b7d198c679"><td class="mdescLeft">&#160;</td><td class="mdescRight">gets the minimal length of the input  <a href="#ac1f83fa1b99ca126b41b12b7d198c679">More...</a><br/></td></tr>
 <tr class="separator:ac1f83fa1b99ca126b41b12b7d198c679"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -332,6 +332,24 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="clas
 
 </div>
 </div>
+<a class="anchor" id="af2bc07b212dda08dbb35c0053255d73a"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classFA_1_1Component.html">Component</a> * FA::Field::getComponent </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Gets the component of the field. </p>
+<dl class="section return"><dt>Returns</dt><dd>pointer to the component </dd></dl>
+
+</div>
+</div>
 <a class="anchor" id="ac1f83fa1b99ca126b41b12b7d198c679"></a>
 <div class="memitem">
 <div class="memproto">
@@ -365,24 +383,6 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="clas
 
 <p>gets the name of the field </p>
 <dl class="section return"><dt>Returns</dt><dd>name of the field </dd></dl>
-
-</div>
-</div>
-<a class="anchor" id="aaade7c3ed1114decb01e0ef389002eee"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="classFA_1_1Component.html">Component</a> * FA::Field::getType </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Gets the type of field (the component) </p>
-<dl class="section return"><dt>Returns</dt><dd>pointer to the component </dd></dl>
 
 </div>
 </div>
@@ -532,7 +532,7 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="clas
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Sat May 18 2013 16:49:59 for Form Validation by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Thu Jun 6 2013 12:58:15 for Form Validation by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.3.1
 </small></address>

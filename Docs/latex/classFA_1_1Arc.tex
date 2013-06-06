@@ -1,0 +1,154 @@
+\hypertarget{classFA_1_1Arc}{\section{F\-A\-:\-:Arc Class Reference}
+\label{classFA_1_1Arc}\index{F\-A\-::\-Arc@{F\-A\-::\-Arc}}
+}
+
+
+Class representing an arc.  
+
+
+
+
+{\ttfamily \#include $<$D\-F\-A.\-h$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classFA_1_1Arc_aed14dd25143634f1796d1b3866b81a39}{Arc} (\hyperlink{classFA_1_1State}{State} $\ast$destination)
+\begin{DoxyCompactList}\small\item\em Constructor. \end{DoxyCompactList}\item 
+bool \hyperlink{classFA_1_1Arc_a015600997b525562db9bc7e1ce8293f6}{add\-Symbol} (char symbol)
+\begin{DoxyCompactList}\small\item\em Add a symbol to the arc. \end{DoxyCompactList}\item 
+bool \hyperlink{classFA_1_1Arc_a4831f1b25de677667d80e6147e38cf14}{add\-Symbols} (std\-::vector$<$ char $>$ symbols)
+\begin{DoxyCompactList}\small\item\em Add symbols to the arc. \end{DoxyCompactList}\item 
+bool \hyperlink{classFA_1_1Arc_a8bd99b8e8414cb0d2384c123593617b0}{check\-Alphabet} (std\-::vector$<$ char $>$ \&alphabet)
+\begin{DoxyCompactList}\small\item\em Check if the symbols in the arc are legitimate by the alphabet. \end{DoxyCompactList}\item 
+\hyperlink{classFA_1_1State}{State} $\ast$ \hyperlink{classFA_1_1Arc_a97e6df2bfbcb08253eae0c15db40e571}{process} (char symbol)
+\begin{DoxyCompactList}\small\item\em Process a symbol. \end{DoxyCompactList}\item 
+\hyperlink{classFA_1_1State}{State} $\ast$ \hyperlink{classFA_1_1Arc_a1276923880acf8af934fea8c07dac610}{get\-Destination} ()
+\begin{DoxyCompactList}\small\item\em Get the state this arc is going to. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Friends}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classFA_1_1Arc_a7dc69e39faa869c373cc9953ffecec95}{std\-::ostream \& {\bfseries operator$<$$<$} (std\-::ostream \&out, \hyperlink{classFA_1_1Arc}{Arc} \&arc)}\label{classFA_1_1Arc_a7dc69e39faa869c373cc9953ffecec95}
+
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Class representing an arc. 
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{classFA_1_1Arc_aed14dd25143634f1796d1b3866b81a39}{\index{F\-A\-::\-Arc@{F\-A\-::\-Arc}!Arc@{Arc}}
+\index{Arc@{Arc}!FA::Arc@{F\-A\-::\-Arc}}
+\subsubsection[{Arc}]{\setlength{\rightskip}{0pt plus 5cm}F\-A\-::\-Arc\-::\-Arc (
+\begin{DoxyParamCaption}
+\item[{{\bf State} $\ast$}]{destination}
+\end{DoxyParamCaption}
+)}}\label{classFA_1_1Arc_aed14dd25143634f1796d1b3866b81a39}
+
+
+Constructor. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em State$\ast$} & The \hyperlink{classFA_1_1State}{State} this arc is going to \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{classFA_1_1Arc_a015600997b525562db9bc7e1ce8293f6}{\index{F\-A\-::\-Arc@{F\-A\-::\-Arc}!add\-Symbol@{add\-Symbol}}
+\index{add\-Symbol@{add\-Symbol}!FA::Arc@{F\-A\-::\-Arc}}
+\subsubsection[{add\-Symbol}]{\setlength{\rightskip}{0pt plus 5cm}bool F\-A\-::\-Arc\-::add\-Symbol (
+\begin{DoxyParamCaption}
+\item[{char}]{symbol}
+\end{DoxyParamCaption}
+)}}\label{classFA_1_1Arc_a015600997b525562db9bc7e1ce8293f6}
+
+
+Add a symbol to the arc. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em symbol} & The symbol\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+bool True if succes 
+\end{DoxyReturn}
+\hypertarget{classFA_1_1Arc_a4831f1b25de677667d80e6147e38cf14}{\index{F\-A\-::\-Arc@{F\-A\-::\-Arc}!add\-Symbols@{add\-Symbols}}
+\index{add\-Symbols@{add\-Symbols}!FA::Arc@{F\-A\-::\-Arc}}
+\subsubsection[{add\-Symbols}]{\setlength{\rightskip}{0pt plus 5cm}bool F\-A\-::\-Arc\-::add\-Symbols (
+\begin{DoxyParamCaption}
+\item[{std\-::vector$<$ char $>$}]{symbols}
+\end{DoxyParamCaption}
+)}}\label{classFA_1_1Arc_a4831f1b25de677667d80e6147e38cf14}
+
+
+Add symbols to the arc. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em vector} & The symbols\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+bool True if succes 
+\end{DoxyReturn}
+\hypertarget{classFA_1_1Arc_a8bd99b8e8414cb0d2384c123593617b0}{\index{F\-A\-::\-Arc@{F\-A\-::\-Arc}!check\-Alphabet@{check\-Alphabet}}
+\index{check\-Alphabet@{check\-Alphabet}!FA::Arc@{F\-A\-::\-Arc}}
+\subsubsection[{check\-Alphabet}]{\setlength{\rightskip}{0pt plus 5cm}bool F\-A\-::\-Arc\-::check\-Alphabet (
+\begin{DoxyParamCaption}
+\item[{std\-::vector$<$ char $>$ \&}]{alphabet}
+\end{DoxyParamCaption}
+)}}\label{classFA_1_1Arc_a8bd99b8e8414cb0d2384c123593617b0}
+
+
+Check if the symbols in the arc are legitimate by the alphabet. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em alphabet} & The alphabet\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+bool True if the symbols are legitimate 
+\end{DoxyReturn}
+\hypertarget{classFA_1_1Arc_a1276923880acf8af934fea8c07dac610}{\index{F\-A\-::\-Arc@{F\-A\-::\-Arc}!get\-Destination@{get\-Destination}}
+\index{get\-Destination@{get\-Destination}!FA::Arc@{F\-A\-::\-Arc}}
+\subsubsection[{get\-Destination}]{\setlength{\rightskip}{0pt plus 5cm}{\bf State} $\ast$ F\-A\-::\-Arc\-::get\-Destination (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{classFA_1_1Arc_a1276923880acf8af934fea8c07dac610}
+
+
+Get the state this arc is going to. 
+
+\begin{DoxyReturn}{Returns}
+state The state 
+\end{DoxyReturn}
+\hypertarget{classFA_1_1Arc_a97e6df2bfbcb08253eae0c15db40e571}{\index{F\-A\-::\-Arc@{F\-A\-::\-Arc}!process@{process}}
+\index{process@{process}!FA::Arc@{F\-A\-::\-Arc}}
+\subsubsection[{process}]{\setlength{\rightskip}{0pt plus 5cm}{\bf State} $\ast$ F\-A\-::\-Arc\-::process (
+\begin{DoxyParamCaption}
+\item[{char}]{symbol}
+\end{DoxyParamCaption}
+)}}\label{classFA_1_1Arc_a97e6df2bfbcb08253eae0c15db40e571}
+
+
+Process a symbol. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em symbol} & The symbol\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+state Or if there is no such symbol in the arc N\-U\-L\-L 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following files\-:\begin{DoxyCompactItemize}
+\item 
+/home/jakob/\-Dropbox/\-U\-A/workspace/\-Form\-Validation/src/D\-F\-A.\-h\item 
+/home/jakob/\-Dropbox/\-U\-A/workspace/\-Form\-Validation/src/D\-F\-A.\-cpp\end{DoxyCompactItemize}

@@ -1,0 +1,290 @@
+\hypertarget{classFA_1_1State}{\section{F\-A\-:\-:State Class Reference}
+\label{classFA_1_1State}\index{F\-A\-::\-State@{F\-A\-::\-State}}
+}
+
+
+Class representing a state.  
+
+
+
+
+{\ttfamily \#include $<$D\-F\-A.\-h$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classFA_1_1State_a0cfddd8a032f4d16ff607a13bcaeede3}{State} (bool ending)
+\begin{DoxyCompactList}\small\item\em Constructor. \end{DoxyCompactList}\item 
+\hyperlink{classFA_1_1State_aadef24da2c4060eb6a0454fda3dff3c5}{State} (bool ending, bool starting)
+\begin{DoxyCompactList}\small\item\em Constructor. \end{DoxyCompactList}\item 
+std\-::string \hyperlink{classFA_1_1State_a4ee70ad75d94d7920a40b3da6ed6a30c}{get\-Label} ()
+\begin{DoxyCompactList}\small\item\em Get the label of the state. \end{DoxyCompactList}\item 
+std\-::vector$<$ std\-::string $>$ \hyperlink{classFA_1_1State_a2934e320330f0a4b2491a1e038c9c581}{get\-Labels} ()
+\begin{DoxyCompactList}\small\item\em Get the labels of the state(if there are more) \end{DoxyCompactList}\item 
+std\-::string \hyperlink{classFA_1_1State_ab1f1008c6c6c394829cb6f8718ca5415}{get\-Name} ()
+\begin{DoxyCompactList}\small\item\em Get the name of the state. \end{DoxyCompactList}\item 
+bool \hyperlink{classFA_1_1State_a0b7dd61ef15403f6819dfb9221d865ad}{add\-Label} (std\-::string label)
+\begin{DoxyCompactList}\small\item\em Add's a label. \end{DoxyCompactList}\item 
+bool \hyperlink{classFA_1_1State_a88eafb3fcc1d0367a7822348453a4bed}{add\-Labels} (std\-::vector$<$ std\-::string $>$ labels)
+\begin{DoxyCompactList}\small\item\em Add's a labels. \end{DoxyCompactList}\item 
+bool \hyperlink{classFA_1_1State_a7e2d9168549d3cd40885d88fc51f27db}{add\-Arc} (\hyperlink{classFA_1_1Arc}{Arc} arc)
+\begin{DoxyCompactList}\small\item\em Add's an arc. \end{DoxyCompactList}\item 
+bool \hyperlink{classFA_1_1State_abea0dc69c3aec679e22b375928468f6f}{add\-Transition} (char symbol, \hyperlink{classFA_1_1State}{State} $\ast$destination)
+\begin{DoxyCompactList}\small\item\em Add's an transition to another state. \end{DoxyCompactList}\item 
+bool \hyperlink{classFA_1_1State_a5e4faae4fd5229971523feb39e7186dc}{is\-Ending} ()
+\begin{DoxyCompactList}\small\item\em Check if a state is accepting. \end{DoxyCompactList}\item 
+bool \hyperlink{classFA_1_1State_a62e1733d123a4630aa924b35e3edd958}{is\-Starting} ()
+\begin{DoxyCompactList}\small\item\em Check if a state is starting. \end{DoxyCompactList}\item 
+bool \hyperlink{classFA_1_1State_a2033665743bc46791dfa75bb288e4f21}{check\-Alphabet} (std\-::vector$<$ char $>$ \&alphabet)
+\begin{DoxyCompactList}\small\item\em Check if a state's arcs have legitimate symbols from an alphabet. \end{DoxyCompactList}\item 
+\hypertarget{classFA_1_1State_a83305d7232413989861458f91502302e}{bool {\bfseries has\-Label} (std\-::string label)}\label{classFA_1_1State_a83305d7232413989861458f91502302e}
+
+\item 
+\hypertarget{classFA_1_1State_acac3cf7e225cea6fb74d16367d480bba}{void {\bfseries make\-Ending} ()}\label{classFA_1_1State_acac3cf7e225cea6fb74d16367d480bba}
+
+\item 
+\hyperlink{classFA_1_1State}{State} $\ast$ \hyperlink{classFA_1_1State_a8f4e1fbb5a42a63db62e614b8bdc0eee}{process} (char symbol)
+\begin{DoxyCompactList}\small\item\em Get the state when we process a symbol. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Friends}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classFA_1_1State_a6d3d75de59173a9e1f48b2a38935ce8c}{std\-::ostream \& {\bfseries operator$<$$<$} (std\-::ostream \&out, \hyperlink{classFA_1_1State}{State} \&state)}\label{classFA_1_1State_a6d3d75de59173a9e1f48b2a38935ce8c}
+
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Class representing a state. 
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{classFA_1_1State_a0cfddd8a032f4d16ff607a13bcaeede3}{\index{F\-A\-::\-State@{F\-A\-::\-State}!State@{State}}
+\index{State@{State}!FA::State@{F\-A\-::\-State}}
+\subsubsection[{State}]{\setlength{\rightskip}{0pt plus 5cm}F\-A\-::\-State\-::\-State (
+\begin{DoxyParamCaption}
+\item[{bool}]{ending}
+\end{DoxyParamCaption}
+)}}\label{classFA_1_1State_a0cfddd8a032f4d16ff607a13bcaeede3}
+
+
+Constructor. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em bool} & is this an accepting state \\
+\hline
+\end{DoxyParams}
+\hypertarget{classFA_1_1State_aadef24da2c4060eb6a0454fda3dff3c5}{\index{F\-A\-::\-State@{F\-A\-::\-State}!State@{State}}
+\index{State@{State}!FA::State@{F\-A\-::\-State}}
+\subsubsection[{State}]{\setlength{\rightskip}{0pt plus 5cm}F\-A\-::\-State\-::\-State (
+\begin{DoxyParamCaption}
+\item[{bool}]{ending, }
+\item[{bool}]{starting}
+\end{DoxyParamCaption}
+)}}\label{classFA_1_1State_aadef24da2c4060eb6a0454fda3dff3c5}
+
+
+Constructor. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em bool} & is this an accepting state \\
+\hline
+{\em bool} & is this an starting state \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{classFA_1_1State_a7e2d9168549d3cd40885d88fc51f27db}{\index{F\-A\-::\-State@{F\-A\-::\-State}!add\-Arc@{add\-Arc}}
+\index{add\-Arc@{add\-Arc}!FA::State@{F\-A\-::\-State}}
+\subsubsection[{add\-Arc}]{\setlength{\rightskip}{0pt plus 5cm}bool F\-A\-::\-State\-::add\-Arc (
+\begin{DoxyParamCaption}
+\item[{{\bf Arc}}]{arc}
+\end{DoxyParamCaption}
+)}}\label{classFA_1_1State_a7e2d9168549d3cd40885d88fc51f27db}
+
+
+Add's an arc. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em arc} & the \hyperlink{classFA_1_1State}{State}'s arc\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+bool When succes 
+\end{DoxyReturn}
+\hypertarget{classFA_1_1State_a0b7dd61ef15403f6819dfb9221d865ad}{\index{F\-A\-::\-State@{F\-A\-::\-State}!add\-Label@{add\-Label}}
+\index{add\-Label@{add\-Label}!FA::State@{F\-A\-::\-State}}
+\subsubsection[{add\-Label}]{\setlength{\rightskip}{0pt plus 5cm}bool F\-A\-::\-State\-::add\-Label (
+\begin{DoxyParamCaption}
+\item[{std\-::string}]{label}
+\end{DoxyParamCaption}
+)}}\label{classFA_1_1State_a0b7dd61ef15403f6819dfb9221d865ad}
+
+
+Add's a label. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em string} & the \hyperlink{classFA_1_1State}{State}'s label\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+bool When succes 
+\end{DoxyReturn}
+\hypertarget{classFA_1_1State_a88eafb3fcc1d0367a7822348453a4bed}{\index{F\-A\-::\-State@{F\-A\-::\-State}!add\-Labels@{add\-Labels}}
+\index{add\-Labels@{add\-Labels}!FA::State@{F\-A\-::\-State}}
+\subsubsection[{add\-Labels}]{\setlength{\rightskip}{0pt plus 5cm}bool F\-A\-::\-State\-::add\-Labels (
+\begin{DoxyParamCaption}
+\item[{std\-::vector$<$ std\-::string $>$}]{labels}
+\end{DoxyParamCaption}
+)}}\label{classFA_1_1State_a88eafb3fcc1d0367a7822348453a4bed}
+
+
+Add's a labels. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em vector} & the \hyperlink{classFA_1_1State}{State}'s labels\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+bool When succes 
+\end{DoxyReturn}
+\hypertarget{classFA_1_1State_abea0dc69c3aec679e22b375928468f6f}{\index{F\-A\-::\-State@{F\-A\-::\-State}!add\-Transition@{add\-Transition}}
+\index{add\-Transition@{add\-Transition}!FA::State@{F\-A\-::\-State}}
+\subsubsection[{add\-Transition}]{\setlength{\rightskip}{0pt plus 5cm}bool F\-A\-::\-State\-::add\-Transition (
+\begin{DoxyParamCaption}
+\item[{char}]{symbol, }
+\item[{{\bf State} $\ast$}]{destination}
+\end{DoxyParamCaption}
+)}}\label{classFA_1_1State_abea0dc69c3aec679e22b375928468f6f}
+
+
+Add's an transition to another state. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em char} & The symbol for the transition \\
+\hline
+{\em State$\ast$} & The state this transition goes to\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+bool When succes 
+\end{DoxyReturn}
+\hypertarget{classFA_1_1State_a2033665743bc46791dfa75bb288e4f21}{\index{F\-A\-::\-State@{F\-A\-::\-State}!check\-Alphabet@{check\-Alphabet}}
+\index{check\-Alphabet@{check\-Alphabet}!FA::State@{F\-A\-::\-State}}
+\subsubsection[{check\-Alphabet}]{\setlength{\rightskip}{0pt plus 5cm}bool F\-A\-::\-State\-::check\-Alphabet (
+\begin{DoxyParamCaption}
+\item[{std\-::vector$<$ char $>$ \&}]{alphabet}
+\end{DoxyParamCaption}
+)}}\label{classFA_1_1State_a2033665743bc46791dfa75bb288e4f21}
+
+
+Check if a state's arcs have legitimate symbols from an alphabet. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em vector} & The alphabet\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+bool true if this state is legitimate 
+\end{DoxyReturn}
+\hypertarget{classFA_1_1State_a4ee70ad75d94d7920a40b3da6ed6a30c}{\index{F\-A\-::\-State@{F\-A\-::\-State}!get\-Label@{get\-Label}}
+\index{get\-Label@{get\-Label}!FA::State@{F\-A\-::\-State}}
+\subsubsection[{get\-Label}]{\setlength{\rightskip}{0pt plus 5cm}std\-::string F\-A\-::\-State\-::get\-Label (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{classFA_1_1State_a4ee70ad75d94d7920a40b3da6ed6a30c}
+
+
+Get the label of the state. 
+
+\begin{DoxyReturn}{Returns}
+the state's label 
+\end{DoxyReturn}
+\hypertarget{classFA_1_1State_a2934e320330f0a4b2491a1e038c9c581}{\index{F\-A\-::\-State@{F\-A\-::\-State}!get\-Labels@{get\-Labels}}
+\index{get\-Labels@{get\-Labels}!FA::State@{F\-A\-::\-State}}
+\subsubsection[{get\-Labels}]{\setlength{\rightskip}{0pt plus 5cm}std\-::vector$<$ std\-::string $>$ F\-A\-::\-State\-::get\-Labels (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{classFA_1_1State_a2934e320330f0a4b2491a1e038c9c581}
+
+
+Get the labels of the state(if there are more) 
+
+\begin{DoxyReturn}{Returns}
+vector The state's labels 
+\end{DoxyReturn}
+\hypertarget{classFA_1_1State_ab1f1008c6c6c394829cb6f8718ca5415}{\index{F\-A\-::\-State@{F\-A\-::\-State}!get\-Name@{get\-Name}}
+\index{get\-Name@{get\-Name}!FA::State@{F\-A\-::\-State}}
+\subsubsection[{get\-Name}]{\setlength{\rightskip}{0pt plus 5cm}std\-::string F\-A\-::\-State\-::get\-Name (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{classFA_1_1State_ab1f1008c6c6c394829cb6f8718ca5415}
+
+
+Get the name of the state. 
+
+\begin{DoxyReturn}{Returns}
+string All the labels of the state concatenated 
+\end{DoxyReturn}
+\hypertarget{classFA_1_1State_a5e4faae4fd5229971523feb39e7186dc}{\index{F\-A\-::\-State@{F\-A\-::\-State}!is\-Ending@{is\-Ending}}
+\index{is\-Ending@{is\-Ending}!FA::State@{F\-A\-::\-State}}
+\subsubsection[{is\-Ending}]{\setlength{\rightskip}{0pt plus 5cm}bool F\-A\-::\-State\-::is\-Ending (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{classFA_1_1State_a5e4faae4fd5229971523feb39e7186dc}
+
+
+Check if a state is accepting. 
+
+\begin{DoxyReturn}{Returns}
+bool true if this state is accepting 
+\end{DoxyReturn}
+\hypertarget{classFA_1_1State_a62e1733d123a4630aa924b35e3edd958}{\index{F\-A\-::\-State@{F\-A\-::\-State}!is\-Starting@{is\-Starting}}
+\index{is\-Starting@{is\-Starting}!FA::State@{F\-A\-::\-State}}
+\subsubsection[{is\-Starting}]{\setlength{\rightskip}{0pt plus 5cm}bool F\-A\-::\-State\-::is\-Starting (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{classFA_1_1State_a62e1733d123a4630aa924b35e3edd958}
+
+
+Check if a state is starting. 
+
+\begin{DoxyReturn}{Returns}
+bool true if this state is starting 
+\end{DoxyReturn}
+\hypertarget{classFA_1_1State_a8f4e1fbb5a42a63db62e614b8bdc0eee}{\index{F\-A\-::\-State@{F\-A\-::\-State}!process@{process}}
+\index{process@{process}!FA::State@{F\-A\-::\-State}}
+\subsubsection[{process}]{\setlength{\rightskip}{0pt plus 5cm}{\bf State} $\ast$ F\-A\-::\-State\-::process (
+\begin{DoxyParamCaption}
+\item[{char}]{symbol}
+\end{DoxyParamCaption}
+)}}\label{classFA_1_1State_a8f4e1fbb5a42a63db62e614b8bdc0eee}
+
+
+Get the state when we process a symbol. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em char} & The symbol\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\hyperlink{classFA_1_1State}{State} Or Null if there is no such transition 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following files\-:\begin{DoxyCompactItemize}
+\item 
+/home/jakob/\-Dropbox/\-U\-A/workspace/\-Form\-Validation/src/D\-F\-A.\-h\item 
+/home/jakob/\-Dropbox/\-U\-A/workspace/\-Form\-Validation/src/D\-F\-A.\-cpp\end{DoxyCompactItemize}

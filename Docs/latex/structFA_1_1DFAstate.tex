@@ -1,0 +1,197 @@
+\hypertarget{structFA_1_1DFAstate}{\section{F\-A\-:\-:D\-F\-Astate Struct Reference}
+\label{structFA_1_1DFAstate}\index{F\-A\-::\-D\-F\-Astate@{F\-A\-::\-D\-F\-Astate}}
+}
+
+
+struct to represent state of \hyperlink{classFA_1_1DFA}{D\-F\-A}  
+
+
+
+
+{\ttfamily \#include $<$D\-F\-A.\-h$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+bool \hyperlink{structFA_1_1DFAstate_a5c5ff1b409dc6868b862b027f9259826}{transition} (char symbol, \hyperlink{structFA_1_1DFAstate}{D\-F\-Astate} $\ast$state)
+\begin{DoxyCompactList}\small\item\em Checks if there is a transition from the state of a certain symbol. \end{DoxyCompactList}\item 
+\hypertarget{structFA_1_1DFAstate_a58f887da9b98411f3f446113ad5ff7a2}{\hyperlink{structFA_1_1DFAstate}{D\-F\-Astate} $\ast$ \hyperlink{structFA_1_1DFAstate_a58f887da9b98411f3f446113ad5ff7a2}{go} (char symbol)}\label{structFA_1_1DFAstate_a58f887da9b98411f3f446113ad5ff7a2}
+
+\begin{DoxyCompactList}\small\item\em returns pointer to target \end{DoxyCompactList}\item 
+stateset \hyperlink{structFA_1_1DFAstate_a312fac557966742eea52d0d702671901}{make\-Transitions} (char symbol, transitions delta, \hyperlink{classFA_1_1eNFA}{e\-N\-F\-A} automata)
+\begin{DoxyCompactList}\small\item\em Finds target states for transition with certain symbol. \end{DoxyCompactList}\item 
+bool \hyperlink{structFA_1_1DFAstate_a2a6bf513ff2806f450f1d7b97d6f1f74}{corresponds} (stateset check\-Set)
+\begin{DoxyCompactList}\small\item\em check whether the states in the stateset are also in this \hyperlink{structFA_1_1DFAstate}{D\-F\-Astate} \end{DoxyCompactList}\item 
+bool \hyperlink{structFA_1_1DFAstate_ad8ad9a3198ba5015535f0922b068007d}{is\-State} (state $\ast$check\-State)
+\begin{DoxyCompactList}\small\item\em check whether a state is part of the \hyperlink{structFA_1_1DFAstate}{D\-F\-Astate} \end{DoxyCompactList}\item 
+\hyperlink{structFA_1_1DFAstate_a3c788d56f73a70d1b5e26b25f5f532b9}{D\-F\-Astate} (std\-::string name, bool accepting)
+\begin{DoxyCompactList}\small\item\em constructor \end{DoxyCompactList}\item 
+\hyperlink{structFA_1_1DFAstate_a9eae2258c22336a90883229404c2f766}{D\-F\-Astate} (std\-::string name)
+\begin{DoxyCompactList}\small\item\em constructor \end{DoxyCompactList}\item 
+\hyperlink{structFA_1_1DFAstate_ae2b299d91adb25782fc6b9a66e982077}{D\-F\-Astate} (stateset states)
+\begin{DoxyCompactList}\small\item\em Constructor. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{structFA_1_1DFAstate_a2f1a27a8406ed381dbbadaf7d6af1395}{std\-::string {\bfseries label}}\label{structFA_1_1DFAstate_a2f1a27a8406ed381dbbadaf7d6af1395}
+
+\item 
+\hypertarget{structFA_1_1DFAstate_a139f0b3847ee10283c9a4f8b2fbb7fc6}{std\-::map$<$ char, \hyperlink{structFA_1_1DFAstate}{D\-F\-Astate} $\ast$ $>$ {\bfseries D\-F\-Atransitions}}\label{structFA_1_1DFAstate_a139f0b3847ee10283c9a4f8b2fbb7fc6}
+
+\item 
+\hypertarget{structFA_1_1DFAstate_a390500da9da96c5ec7ab4fb4d222ead6}{bool {\bfseries is\-Accepting}}\label{structFA_1_1DFAstate_a390500da9da96c5ec7ab4fb4d222ead6}
+
+\item 
+\hypertarget{structFA_1_1DFAstate_a7f4dcdcbc6be24095d0470e8f54cdd19}{stateset {\bfseries multi\-States}}\label{structFA_1_1DFAstate_a7f4dcdcbc6be24095d0470e8f54cdd19}
+
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+struct to represent state of \hyperlink{classFA_1_1DFA}{D\-F\-A} 
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{structFA_1_1DFAstate_a3c788d56f73a70d1b5e26b25f5f532b9}{\index{F\-A\-::\-D\-F\-Astate@{F\-A\-::\-D\-F\-Astate}!D\-F\-Astate@{D\-F\-Astate}}
+\index{D\-F\-Astate@{D\-F\-Astate}!FA::DFAstate@{F\-A\-::\-D\-F\-Astate}}
+\subsubsection[{D\-F\-Astate}]{\setlength{\rightskip}{0pt plus 5cm}F\-A\-::\-D\-F\-Astate\-::\-D\-F\-Astate (
+\begin{DoxyParamCaption}
+\item[{std\-::string}]{name, }
+\item[{bool}]{accepting}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{structFA_1_1DFAstate_a3c788d56f73a70d1b5e26b25f5f532b9}
+
+
+constructor 
+
+
+\begin{DoxyParams}{Parameters}
+{\em name} & Name of the state \\
+\hline
+{\em accepting} & true if state is accepting state \\
+\hline
+\end{DoxyParams}
+\hypertarget{structFA_1_1DFAstate_a9eae2258c22336a90883229404c2f766}{\index{F\-A\-::\-D\-F\-Astate@{F\-A\-::\-D\-F\-Astate}!D\-F\-Astate@{D\-F\-Astate}}
+\index{D\-F\-Astate@{D\-F\-Astate}!FA::DFAstate@{F\-A\-::\-D\-F\-Astate}}
+\subsubsection[{D\-F\-Astate}]{\setlength{\rightskip}{0pt plus 5cm}F\-A\-::\-D\-F\-Astate\-::\-D\-F\-Astate (
+\begin{DoxyParamCaption}
+\item[{std\-::string}]{name}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{structFA_1_1DFAstate_a9eae2258c22336a90883229404c2f766}
+
+
+constructor 
+
+
+\begin{DoxyParams}{Parameters}
+{\em name} & Name of the state \\
+\hline
+\end{DoxyParams}
+\hypertarget{structFA_1_1DFAstate_ae2b299d91adb25782fc6b9a66e982077}{\index{F\-A\-::\-D\-F\-Astate@{F\-A\-::\-D\-F\-Astate}!D\-F\-Astate@{D\-F\-Astate}}
+\index{D\-F\-Astate@{D\-F\-Astate}!FA::DFAstate@{F\-A\-::\-D\-F\-Astate}}
+\subsubsection[{D\-F\-Astate}]{\setlength{\rightskip}{0pt plus 5cm}F\-A\-::\-D\-F\-Astate\-::\-D\-F\-Astate (
+\begin{DoxyParamCaption}
+\item[{stateset}]{states}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{structFA_1_1DFAstate_ae2b299d91adb25782fc6b9a66e982077}
+
+
+Constructor. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em states} & States that belong to the \hyperlink{structFA_1_1DFAstate}{D\-F\-Astate} \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{structFA_1_1DFAstate_a2a6bf513ff2806f450f1d7b97d6f1f74}{\index{F\-A\-::\-D\-F\-Astate@{F\-A\-::\-D\-F\-Astate}!corresponds@{corresponds}}
+\index{corresponds@{corresponds}!FA::DFAstate@{F\-A\-::\-D\-F\-Astate}}
+\subsubsection[{corresponds}]{\setlength{\rightskip}{0pt plus 5cm}bool F\-A\-::\-D\-F\-Astate\-::corresponds (
+\begin{DoxyParamCaption}
+\item[{stateset}]{check\-Set}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{structFA_1_1DFAstate_a2a6bf513ff2806f450f1d7b97d6f1f74}
+
+
+check whether the states in the stateset are also in this \hyperlink{structFA_1_1DFAstate}{D\-F\-Astate} 
+
+
+\begin{DoxyParams}{Parameters}
+{\em check\-Set} & the stateset to be checked\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if all states are in the \hyperlink{structFA_1_1DFAstate}{D\-F\-Astate} 
+\end{DoxyReturn}
+\hypertarget{structFA_1_1DFAstate_ad8ad9a3198ba5015535f0922b068007d}{\index{F\-A\-::\-D\-F\-Astate@{F\-A\-::\-D\-F\-Astate}!is\-State@{is\-State}}
+\index{is\-State@{is\-State}!FA::DFAstate@{F\-A\-::\-D\-F\-Astate}}
+\subsubsection[{is\-State}]{\setlength{\rightskip}{0pt plus 5cm}bool F\-A\-::\-D\-F\-Astate\-::is\-State (
+\begin{DoxyParamCaption}
+\item[{state $\ast$}]{check\-State}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{structFA_1_1DFAstate_ad8ad9a3198ba5015535f0922b068007d}
+
+
+check whether a state is part of the \hyperlink{structFA_1_1DFAstate}{D\-F\-Astate} 
+
+
+\begin{DoxyParams}{Parameters}
+{\em check\-State} & the state to be checked\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if state is part of \hyperlink{structFA_1_1DFAstate}{D\-F\-Astate} 
+\end{DoxyReturn}
+\hypertarget{structFA_1_1DFAstate_a312fac557966742eea52d0d702671901}{\index{F\-A\-::\-D\-F\-Astate@{F\-A\-::\-D\-F\-Astate}!make\-Transitions@{make\-Transitions}}
+\index{make\-Transitions@{make\-Transitions}!FA::DFAstate@{F\-A\-::\-D\-F\-Astate}}
+\subsubsection[{make\-Transitions}]{\setlength{\rightskip}{0pt plus 5cm}stateset F\-A\-::\-D\-F\-Astate\-::make\-Transitions (
+\begin{DoxyParamCaption}
+\item[{char}]{symbol, }
+\item[{transitions}]{delta, }
+\item[{{\bf e\-N\-F\-A}}]{automata}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{structFA_1_1DFAstate_a312fac557966742eea52d0d702671901}
+
+
+Finds target states for transition with certain symbol. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em symbol} & The input symbol \\
+\hline
+{\em delta} & The transitions \\
+\hline
+{\em automata} & The automaton of which the state is a part\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Set containing all the target states 
+\end{DoxyReturn}
+\hypertarget{structFA_1_1DFAstate_a5c5ff1b409dc6868b862b027f9259826}{\index{F\-A\-::\-D\-F\-Astate@{F\-A\-::\-D\-F\-Astate}!transition@{transition}}
+\index{transition@{transition}!FA::DFAstate@{F\-A\-::\-D\-F\-Astate}}
+\subsubsection[{transition}]{\setlength{\rightskip}{0pt plus 5cm}bool F\-A\-::\-D\-F\-Astate\-::transition (
+\begin{DoxyParamCaption}
+\item[{char}]{symbol, }
+\item[{{\bf D\-F\-Astate} $\ast$}]{state}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{structFA_1_1DFAstate_a5c5ff1b409dc6868b862b027f9259826}
+
+
+Checks if there is a transition from the state of a certain symbol. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em symbol} & The input symbol \\
+\hline
+{\em state} & Pointer to the state\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True if there is a transition 
+\end{DoxyReturn}
+
+
+The documentation for this struct was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+/home/jakob/\-Dropbox/\-U\-A/workspace/\-Form\-Validation/src/D\-F\-A.\-h\end{DoxyCompactItemize}

@@ -69,7 +69,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Friends</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Friends</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -91,17 +91,26 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 
 <p>This is the complete list of members for <a class="el" href="classFA_1_1DFA.html">FA::DFA</a>, including all inherited members.</p>
 <table class="directory">
-  <tr class="even"><td class="entry"><a class="el" href="classFA_1_1DFA.html#a0a716d54ea3d59580ebc6aadd79aae72">DFA</a>(alphabet, DFAstates, int)</td><td class="entry"><a class="el" href="classFA_1_1DFA.html">FA::DFA</a></td><td class="entry"></td></tr>
-  <tr><td class="entry"><a class="el" href="classFA_1_1DFA.html#afeb7333cd0cb7b9657a784a0ecf0ea7c">getQ</a>()</td><td class="entry"><a class="el" href="classFA_1_1DFA.html">FA::DFA</a></td><td class="entry"><span class="mlabel">inline</span></td></tr>
-  <tr class="even"><td class="entry"><a class="el" href="classFA_1_1DFA.html#aa1d41d419268ba24caf63206f5224c54">getQ0</a>()</td><td class="entry"><a class="el" href="classFA_1_1DFA.html">FA::DFA</a></td><td class="entry"><span class="mlabel">inline</span></td></tr>
-  <tr><td class="entry"><a class="el" href="classFA_1_1DFA.html#a5c0048ff6d4fc7df99c6cb0ee698b1af">getSigma</a>()</td><td class="entry"><a class="el" href="classFA_1_1DFA.html">FA::DFA</a></td><td class="entry"><span class="mlabel">inline</span></td></tr>
-  <tr class="even"><td class="entry"><a class="el" href="classFA_1_1DFA.html#a12f5ded420d9784fc6192eaecb0a8a88">operator&lt;&lt;</a>(std::ostream &amp;, DFA &amp;)</td><td class="entry"><a class="el" href="classFA_1_1DFA.html">FA::DFA</a></td><td class="entry"><span class="mlabel">friend</span></td></tr>
-  <tr><td class="entry"><a class="el" href="classFA_1_1DFA.html#ab8bfad13bf047feba0b4f9a9df79e658">process</a>(std::string)</td><td class="entry"><a class="el" href="classFA_1_1DFA.html">FA::DFA</a></td><td class="entry"></td></tr>
-  <tr bgcolor="#f0f0f0" class="even"><td class="entry"><b>~DFA</b>() (defined in <a class="el" href="classFA_1_1DFA.html">FA::DFA</a>)</td><td class="entry"><a class="el" href="classFA_1_1DFA.html">FA::DFA</a></td><td class="entry"><span class="mlabel">virtual</span></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="classFA_1_1DFA.html#a178995c0e4e6cd3113d689aab95dbc73">addAlphabet</a>(char symbol)</td><td class="entry"><a class="el" href="classFA_1_1DFA.html">FA::DFA</a></td><td class="entry"></td></tr>
+  <tr><td class="entry"><a class="el" href="classFA_1_1DFA.html#a27f8b400bc8d0512a8527d6c71996869">addAlphabet</a>(std::vector&lt; char &gt; symbols)</td><td class="entry"><a class="el" href="classFA_1_1DFA.html">FA::DFA</a></td><td class="entry"></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="classFA_1_1DFA.html#a4f83314cd4904b8b8bef8df1d44ed311">addState</a>(State state)</td><td class="entry"><a class="el" href="classFA_1_1DFA.html">FA::DFA</a></td><td class="entry"></td></tr>
+  <tr><td class="entry"><a class="el" href="classFA_1_1DFA.html#a54b2fd16cd8a09b3d39267f496b3091c">addStates</a>(std::vector&lt; State &gt; states)</td><td class="entry"><a class="el" href="classFA_1_1DFA.html">FA::DFA</a></td><td class="entry"></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="classFA_1_1DFA.html#ac6576dd1df2dc56199aa14f22beb09d4">clear</a>()</td><td class="entry"><a class="el" href="classFA_1_1DFA.html">FA::DFA</a></td><td class="entry"></td></tr>
+  <tr><td class="entry"><a class="el" href="classFA_1_1DFA.html#a7319fa99113f60a2575a2b66c35341bf">clearStates</a>()</td><td class="entry"><a class="el" href="classFA_1_1DFA.html">FA::DFA</a></td><td class="entry"></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="classFA_1_1DFA.html#a96ba094cdfc8c20eca44f52e978674e6">DFA</a>()</td><td class="entry"><a class="el" href="classFA_1_1DFA.html">FA::DFA</a></td><td class="entry"></td></tr>
+  <tr><td class="entry"><a class="el" href="classFA_1_1DFA.html#af61fceea2141e9aed29a38dd0b3f88a7">fStates</a></td><td class="entry"><a class="el" href="classFA_1_1DFA.html">FA::DFA</a></td><td class="entry"></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="classFA_1_1DFA.html#a757d14f06b687278116d971f116cb322">getAlphabet</a>()</td><td class="entry"><a class="el" href="classFA_1_1DFA.html">FA::DFA</a></td><td class="entry"></td></tr>
+  <tr><td class="entry"><a class="el" href="classFA_1_1DFA.html#a8751b056d570391389fa8a9db459595b">getStates</a>()</td><td class="entry"><a class="el" href="classFA_1_1DFA.html">FA::DFA</a></td><td class="entry"></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="classFA_1_1DFA.html#aec06d82c3ee0efdb193510d35031f36d">hasStartState</a>()</td><td class="entry"><a class="el" href="classFA_1_1DFA.html">FA::DFA</a></td><td class="entry"></td></tr>
+  <tr><td class="entry"><a class="el" href="classFA_1_1DFA.html#a8b9f3bbda0044b4ed8d413f5fa3cd56b">isInAlphabet</a>(char symbol)</td><td class="entry"><a class="el" href="classFA_1_1DFA.html">FA::DFA</a></td><td class="entry"></td></tr>
+  <tr bgcolor="#f0f0f0" class="even"><td class="entry"><b>operator&lt;&lt;</b> (defined in <a class="el" href="classFA_1_1DFA.html">FA::DFA</a>)</td><td class="entry"><a class="el" href="classFA_1_1DFA.html">FA::DFA</a></td><td class="entry"><span class="mlabel">friend</span></td></tr>
+  <tr><td class="entry"><a class="el" href="classFA_1_1DFA.html#ac064d14ca697ab4f466fecef59794150">process</a>(std::string string)</td><td class="entry"><a class="el" href="classFA_1_1DFA.html">FA::DFA</a></td><td class="entry"></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="classFA_1_1DFA.html#ad58c650b3fe4997560d24a6a4459dab5">process</a>(char symbol)</td><td class="entry"><a class="el" href="classFA_1_1DFA.html">FA::DFA</a></td><td class="entry"></td></tr>
+  <tr><td class="entry"><a class="el" href="classFA_1_1DFA.html#a63940f64c434af04a97ff101d52b83a1">process</a>(char symbol, State *currentState)</td><td class="entry"><a class="el" href="classFA_1_1DFA.html">FA::DFA</a></td><td class="entry"></td></tr>
 </table></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Sat May 18 2013 16:49:59 for Form Validation by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Thu Jun 6 2013 12:58:15 for Form Validation by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.3.1
 </small></address>

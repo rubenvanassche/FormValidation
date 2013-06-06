@@ -1,0 +1,292 @@
+\hypertarget{classFA_1_1DFA}{\section{F\-A\-:\-:D\-F\-A Class Reference}
+\label{classFA_1_1DFA}\index{F\-A\-::\-D\-F\-A@{F\-A\-::\-D\-F\-A}}
+}
+
+
+Class representing a \hyperlink{classFA_1_1DFA}{D\-F\-A}.  
+
+
+
+
+{\ttfamily \#include $<$D\-F\-A.\-h$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classFA_1_1DFA_a96ba094cdfc8c20eca44f52e978674e6}{\hyperlink{classFA_1_1DFA_a96ba094cdfc8c20eca44f52e978674e6}{D\-F\-A} ()}\label{classFA_1_1DFA_a96ba094cdfc8c20eca44f52e978674e6}
+
+\begin{DoxyCompactList}\small\item\em Constructor. \end{DoxyCompactList}\item 
+bool \hyperlink{classFA_1_1DFA_ac064d14ca697ab4f466fecef59794150}{process} (std\-::string string)
+\begin{DoxyCompactList}\small\item\em Process a string. \end{DoxyCompactList}\item 
+\hyperlink{classFA_1_1State}{State} $\ast$ \hyperlink{classFA_1_1DFA_ad58c650b3fe4997560d24a6a4459dab5}{process} (char symbol)
+\begin{DoxyCompactList}\small\item\em Process a symbol. \end{DoxyCompactList}\item 
+\hyperlink{classFA_1_1State}{State} $\ast$ \hyperlink{classFA_1_1DFA_a63940f64c434af04a97ff101d52b83a1}{process} (char symbol, \hyperlink{classFA_1_1State}{State} $\ast$current\-State)
+\begin{DoxyCompactList}\small\item\em Process a symbol at a specified state. \end{DoxyCompactList}\item 
+bool \hyperlink{classFA_1_1DFA_a4f83314cd4904b8b8bef8df1d44ed311}{add\-State} (\hyperlink{classFA_1_1State}{State} state)
+\begin{DoxyCompactList}\small\item\em Add a state to the \hyperlink{classFA_1_1DFA}{D\-F\-A}. \end{DoxyCompactList}\item 
+bool \hyperlink{classFA_1_1DFA_a54b2fd16cd8a09b3d39267f496b3091c}{add\-States} (std\-::vector$<$ \hyperlink{classFA_1_1State}{State} $>$ states)
+\begin{DoxyCompactList}\small\item\em Add states to the \hyperlink{classFA_1_1DFA}{D\-F\-A}. \end{DoxyCompactList}\item 
+bool \hyperlink{classFA_1_1DFA_a178995c0e4e6cd3113d689aab95dbc73}{add\-Alphabet} (char symbol)
+\begin{DoxyCompactList}\small\item\em Add a symbol to the \hyperlink{classFA_1_1DFA}{D\-F\-A}'s alphabet. \end{DoxyCompactList}\item 
+bool \hyperlink{classFA_1_1DFA_a27f8b400bc8d0512a8527d6c71996869}{add\-Alphabet} (std\-::vector$<$ char $>$ symbols)
+\begin{DoxyCompactList}\small\item\em Add symbols to the \hyperlink{classFA_1_1DFA}{D\-F\-A}'s alphabet. \end{DoxyCompactList}\item 
+bool \hyperlink{classFA_1_1DFA_a8b9f3bbda0044b4ed8d413f5fa3cd56b}{is\-In\-Alphabet} (char symbol)
+\begin{DoxyCompactList}\small\item\em Check if symbol is in the Dfa's alphabet. \end{DoxyCompactList}\item 
+bool \hyperlink{classFA_1_1DFA_aec06d82c3ee0efdb193510d35031f36d}{has\-Start\-State} ()
+\begin{DoxyCompactList}\small\item\em Check if a \hyperlink{classFA_1_1DFA}{D\-F\-A} has a start state. \end{DoxyCompactList}\item 
+std\-::vector$<$ \hyperlink{classFA_1_1State}{State} $>$ \hyperlink{classFA_1_1DFA_a8751b056d570391389fa8a9db459595b}{get\-States} ()
+\begin{DoxyCompactList}\small\item\em Get the states in the \hyperlink{classFA_1_1DFA}{D\-F\-A}. \end{DoxyCompactList}\item 
+std\-::vector$<$ char $>$ \hyperlink{classFA_1_1DFA_a757d14f06b687278116d971f116cb322}{get\-Alphabet} ()
+\begin{DoxyCompactList}\small\item\em Get the alphabet in the \hyperlink{classFA_1_1DFA}{D\-F\-A}. \end{DoxyCompactList}\item 
+\hypertarget{classFA_1_1DFA_a7319fa99113f60a2575a2b66c35341bf}{void \hyperlink{classFA_1_1DFA_a7319fa99113f60a2575a2b66c35341bf}{clear\-States} ()}\label{classFA_1_1DFA_a7319fa99113f60a2575a2b66c35341bf}
+
+\begin{DoxyCompactList}\small\item\em Removes all the states in the \hyperlink{classFA_1_1DFA}{D\-F\-A}. \end{DoxyCompactList}\item 
+\hypertarget{classFA_1_1DFA_ac6576dd1df2dc56199aa14f22beb09d4}{void \hyperlink{classFA_1_1DFA_ac6576dd1df2dc56199aa14f22beb09d4}{clear} ()}\label{classFA_1_1DFA_ac6576dd1df2dc56199aa14f22beb09d4}
+
+\begin{DoxyCompactList}\small\item\em Clears the states, startstate, transitions in the \hyperlink{classFA_1_1DFA}{D\-F\-A}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+std\-::vector$<$ \hyperlink{classFA_1_1State}{State} $>$ \hyperlink{classFA_1_1DFA_af61fceea2141e9aed29a38dd0b3f88a7}{f\-States}
+\begin{DoxyCompactList}\small\item\em Read's a \hyperlink{classFA_1_1DFA}{D\-F\-A} file and makes one based upon this file. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Friends}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classFA_1_1DFA_a1c05c269d06f54d05bfb3bd0c88f8e9d}{std\-::ostream \& {\bfseries operator$<$$<$} (std\-::ostream \&out, \hyperlink{classFA_1_1DFA}{D\-F\-A} \&dfa)}\label{classFA_1_1DFA_a1c05c269d06f54d05bfb3bd0c88f8e9d}
+
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Class representing a \hyperlink{classFA_1_1DFA}{D\-F\-A}. 
+
+\subsection{Member Function Documentation}
+\hypertarget{classFA_1_1DFA_a178995c0e4e6cd3113d689aab95dbc73}{\index{F\-A\-::\-D\-F\-A@{F\-A\-::\-D\-F\-A}!add\-Alphabet@{add\-Alphabet}}
+\index{add\-Alphabet@{add\-Alphabet}!FA::DFA@{F\-A\-::\-D\-F\-A}}
+\subsubsection[{add\-Alphabet}]{\setlength{\rightskip}{0pt plus 5cm}bool F\-A\-::\-D\-F\-A\-::add\-Alphabet (
+\begin{DoxyParamCaption}
+\item[{char}]{symbol}
+\end{DoxyParamCaption}
+)}}\label{classFA_1_1DFA_a178995c0e4e6cd3113d689aab95dbc73}
+
+
+Add a symbol to the \hyperlink{classFA_1_1DFA}{D\-F\-A}'s alphabet. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em char} & The symbol\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+bool True if success 
+\end{DoxyReturn}
+\hypertarget{classFA_1_1DFA_a27f8b400bc8d0512a8527d6c71996869}{\index{F\-A\-::\-D\-F\-A@{F\-A\-::\-D\-F\-A}!add\-Alphabet@{add\-Alphabet}}
+\index{add\-Alphabet@{add\-Alphabet}!FA::DFA@{F\-A\-::\-D\-F\-A}}
+\subsubsection[{add\-Alphabet}]{\setlength{\rightskip}{0pt plus 5cm}bool F\-A\-::\-D\-F\-A\-::add\-Alphabet (
+\begin{DoxyParamCaption}
+\item[{std\-::vector$<$ char $>$}]{symbols}
+\end{DoxyParamCaption}
+)}}\label{classFA_1_1DFA_a27f8b400bc8d0512a8527d6c71996869}
+
+
+Add symbols to the \hyperlink{classFA_1_1DFA}{D\-F\-A}'s alphabet. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em vector} & The symbols\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+bool True if success 
+\end{DoxyReturn}
+\hypertarget{classFA_1_1DFA_a4f83314cd4904b8b8bef8df1d44ed311}{\index{F\-A\-::\-D\-F\-A@{F\-A\-::\-D\-F\-A}!add\-State@{add\-State}}
+\index{add\-State@{add\-State}!FA::DFA@{F\-A\-::\-D\-F\-A}}
+\subsubsection[{add\-State}]{\setlength{\rightskip}{0pt plus 5cm}bool F\-A\-::\-D\-F\-A\-::add\-State (
+\begin{DoxyParamCaption}
+\item[{{\bf State}}]{state}
+\end{DoxyParamCaption}
+)}}\label{classFA_1_1DFA_a4f83314cd4904b8b8bef8df1d44ed311}
+
+
+Add a state to the \hyperlink{classFA_1_1DFA}{D\-F\-A}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em state} & The state\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+bool True if success 
+\end{DoxyReturn}
+\hypertarget{classFA_1_1DFA_a54b2fd16cd8a09b3d39267f496b3091c}{\index{F\-A\-::\-D\-F\-A@{F\-A\-::\-D\-F\-A}!add\-States@{add\-States}}
+\index{add\-States@{add\-States}!FA::DFA@{F\-A\-::\-D\-F\-A}}
+\subsubsection[{add\-States}]{\setlength{\rightskip}{0pt plus 5cm}bool F\-A\-::\-D\-F\-A\-::add\-States (
+\begin{DoxyParamCaption}
+\item[{std\-::vector$<$ {\bf State} $>$}]{states}
+\end{DoxyParamCaption}
+)}}\label{classFA_1_1DFA_a54b2fd16cd8a09b3d39267f496b3091c}
+
+
+Add states to the \hyperlink{classFA_1_1DFA}{D\-F\-A}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em vector} & The states\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+bool True if success 
+\end{DoxyReturn}
+\hypertarget{classFA_1_1DFA_a757d14f06b687278116d971f116cb322}{\index{F\-A\-::\-D\-F\-A@{F\-A\-::\-D\-F\-A}!get\-Alphabet@{get\-Alphabet}}
+\index{get\-Alphabet@{get\-Alphabet}!FA::DFA@{F\-A\-::\-D\-F\-A}}
+\subsubsection[{get\-Alphabet}]{\setlength{\rightskip}{0pt plus 5cm}std\-::vector$<$ char $>$ F\-A\-::\-D\-F\-A\-::get\-Alphabet (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{classFA_1_1DFA_a757d14f06b687278116d971f116cb322}
+
+
+Get the alphabet in the \hyperlink{classFA_1_1DFA}{D\-F\-A}. 
+
+\begin{DoxyReturn}{Returns}
+vector The states 
+\end{DoxyReturn}
+\hypertarget{classFA_1_1DFA_a8751b056d570391389fa8a9db459595b}{\index{F\-A\-::\-D\-F\-A@{F\-A\-::\-D\-F\-A}!get\-States@{get\-States}}
+\index{get\-States@{get\-States}!FA::DFA@{F\-A\-::\-D\-F\-A}}
+\subsubsection[{get\-States}]{\setlength{\rightskip}{0pt plus 5cm}std\-::vector$<$ {\bf State} $>$ F\-A\-::\-D\-F\-A\-::get\-States (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{classFA_1_1DFA_a8751b056d570391389fa8a9db459595b}
+
+
+Get the states in the \hyperlink{classFA_1_1DFA}{D\-F\-A}. 
+
+\begin{DoxyReturn}{Returns}
+vector The states 
+\end{DoxyReturn}
+\hypertarget{classFA_1_1DFA_aec06d82c3ee0efdb193510d35031f36d}{\index{F\-A\-::\-D\-F\-A@{F\-A\-::\-D\-F\-A}!has\-Start\-State@{has\-Start\-State}}
+\index{has\-Start\-State@{has\-Start\-State}!FA::DFA@{F\-A\-::\-D\-F\-A}}
+\subsubsection[{has\-Start\-State}]{\setlength{\rightskip}{0pt plus 5cm}bool F\-A\-::\-D\-F\-A\-::has\-Start\-State (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{classFA_1_1DFA_aec06d82c3ee0efdb193510d35031f36d}
+
+
+Check if a \hyperlink{classFA_1_1DFA}{D\-F\-A} has a start state. 
+
+\begin{DoxyReturn}{Returns}
+bool True if there is a start state 
+\end{DoxyReturn}
+\hypertarget{classFA_1_1DFA_a8b9f3bbda0044b4ed8d413f5fa3cd56b}{\index{F\-A\-::\-D\-F\-A@{F\-A\-::\-D\-F\-A}!is\-In\-Alphabet@{is\-In\-Alphabet}}
+\index{is\-In\-Alphabet@{is\-In\-Alphabet}!FA::DFA@{F\-A\-::\-D\-F\-A}}
+\subsubsection[{is\-In\-Alphabet}]{\setlength{\rightskip}{0pt plus 5cm}bool F\-A\-::\-D\-F\-A\-::is\-In\-Alphabet (
+\begin{DoxyParamCaption}
+\item[{char}]{symbol}
+\end{DoxyParamCaption}
+)}}\label{classFA_1_1DFA_a8b9f3bbda0044b4ed8d413f5fa3cd56b}
+
+
+Check if symbol is in the Dfa's alphabet. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em char} & The symbol\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+bool True if symbol is in the alphabet 
+\end{DoxyReturn}
+\hypertarget{classFA_1_1DFA_ac064d14ca697ab4f466fecef59794150}{\index{F\-A\-::\-D\-F\-A@{F\-A\-::\-D\-F\-A}!process@{process}}
+\index{process@{process}!FA::DFA@{F\-A\-::\-D\-F\-A}}
+\subsubsection[{process}]{\setlength{\rightskip}{0pt plus 5cm}bool F\-A\-::\-D\-F\-A\-::process (
+\begin{DoxyParamCaption}
+\item[{std\-::string}]{string}
+\end{DoxyParamCaption}
+)}}\label{classFA_1_1DFA_ac064d14ca697ab4f466fecef59794150}
+
+
+Process a string. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em string} & The string\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+bool True if string is accepted 
+\end{DoxyReturn}
+\hypertarget{classFA_1_1DFA_ad58c650b3fe4997560d24a6a4459dab5}{\index{F\-A\-::\-D\-F\-A@{F\-A\-::\-D\-F\-A}!process@{process}}
+\index{process@{process}!FA::DFA@{F\-A\-::\-D\-F\-A}}
+\subsubsection[{process}]{\setlength{\rightskip}{0pt plus 5cm}{\bf State} $\ast$ F\-A\-::\-D\-F\-A\-::process (
+\begin{DoxyParamCaption}
+\item[{char}]{symbol}
+\end{DoxyParamCaption}
+)}}\label{classFA_1_1DFA_ad58c650b3fe4997560d24a6a4459dab5}
+
+
+Process a symbol. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em symbol} & The symbol\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+bool True if symbol is accepted 
+\end{DoxyReturn}
+\hypertarget{classFA_1_1DFA_a63940f64c434af04a97ff101d52b83a1}{\index{F\-A\-::\-D\-F\-A@{F\-A\-::\-D\-F\-A}!process@{process}}
+\index{process@{process}!FA::DFA@{F\-A\-::\-D\-F\-A}}
+\subsubsection[{process}]{\setlength{\rightskip}{0pt plus 5cm}{\bf State} $\ast$ F\-A\-::\-D\-F\-A\-::process (
+\begin{DoxyParamCaption}
+\item[{char}]{symbol, }
+\item[{{\bf State} $\ast$}]{current\-State}
+\end{DoxyParamCaption}
+)}}\label{classFA_1_1DFA_a63940f64c434af04a97ff101d52b83a1}
+
+
+Process a symbol at a specified state. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em symbol} & The symbol \\
+\hline
+{\em state$\ast$} & The state to process\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+bool True if symbol is accepted 
+\end{DoxyReturn}
+
+
+\subsection{Member Data Documentation}
+\hypertarget{classFA_1_1DFA_af61fceea2141e9aed29a38dd0b3f88a7}{\index{F\-A\-::\-D\-F\-A@{F\-A\-::\-D\-F\-A}!f\-States@{f\-States}}
+\index{f\-States@{f\-States}!FA::DFA@{F\-A\-::\-D\-F\-A}}
+\subsubsection[{f\-States}]{\setlength{\rightskip}{0pt plus 5cm}std\-::vector$<${\bf State}$>$ F\-A\-::\-D\-F\-A\-::f\-States}}\label{classFA_1_1DFA_af61fceea2141e9aed29a38dd0b3f88a7}
+
+
+Read's a \hyperlink{classFA_1_1DFA}{D\-F\-A} file and makes one based upon this file. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em string} & The file to be loaded\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+bool True if success Save the \hyperlink{classFA_1_1DFA}{D\-F\-A} in a file
+\end{DoxyReturn}
+
+\begin{DoxyParams}{Parameters}
+{\em string} & The filename of the file\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+bool True if success 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following files\-:\begin{DoxyCompactItemize}
+\item 
+/home/jakob/\-Dropbox/\-U\-A/workspace/\-Form\-Validation/src/D\-F\-A.\-h\item 
+/home/jakob/\-Dropbox/\-U\-A/workspace/\-Form\-Validation/src/D\-F\-A.\-cpp\end{DoxyCompactItemize}

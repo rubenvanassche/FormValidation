@@ -1,0 +1,209 @@
+\hypertarget{classFA_1_1eNFA}{\section{F\-A\-:\-:e\-N\-F\-A Class Reference}
+\label{classFA_1_1eNFA}\index{F\-A\-::e\-N\-F\-A@{F\-A\-::e\-N\-F\-A}}
+}
+
+
+Class representing the \hyperlink{classFA_1_1eNFA}{e\-N\-F\-A}.  
+
+
+
+
+{\ttfamily \#include $<$e\-N\-F\-A.\-h$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classFA_1_1eNFA_af93b9f2a5814595aaea7a498678f61c7}{\hyperlink{classFA_1_1eNFA_af93b9f2a5814595aaea7a498678f61c7}{e\-N\-F\-A} ()}\label{classFA_1_1eNFA_af93b9f2a5814595aaea7a498678f61c7}
+
+\begin{DoxyCompactList}\small\item\em constructor for empty \hyperlink{classFA_1_1eNFA}{e\-N\-F\-A} \end{DoxyCompactList}\item 
+\hyperlink{classFA_1_1eNFA_a68c12a639d585778c1fd354230a90145}{e\-N\-F\-A} (alphabet, states, transitions, state $\ast$, accepting\-States)
+\begin{DoxyCompactList}\small\item\em constructor \end{DoxyCompactList}\item 
+const transitions \& \hyperlink{classFA_1_1eNFA_add867593442ff1f1f78f0adabb62383d}{get\-Delta} () const 
+\begin{DoxyCompactList}\small\item\em getter for delta (the transitions) \end{DoxyCompactList}\item 
+const accepting\-States \& \hyperlink{classFA_1_1eNFA_ac3dcbe3e615312ec1f1d4e826a1bfb36}{get\-F} () const 
+\begin{DoxyCompactList}\small\item\em getter for F (the accepting states) \end{DoxyCompactList}\item 
+const states \& \hyperlink{classFA_1_1eNFA_aa11a17ac63deed8fb605b993e0971c85}{get\-Q} () const 
+\begin{DoxyCompactList}\small\item\em getter for Q (the states) \end{DoxyCompactList}\item 
+state $\ast$ \hyperlink{classFA_1_1eNFA_ae54015ed6c95f0f58b792599315da8de}{get\-Q0} () const 
+\begin{DoxyCompactList}\small\item\em getter for Q0 (the start state) \end{DoxyCompactList}\item 
+const alphabet \& \hyperlink{classFA_1_1eNFA_aad2759b9b0b1ff3ff66b4d2a7a5fe984}{get\-Sigma} () const 
+\begin{DoxyCompactList}\small\item\em getter for sigma (the alphabet) \end{DoxyCompactList}\item 
+bool \hyperlink{classFA_1_1eNFA_a9f3cae2ce7da666b24401fd582cfcd9a}{process} (std\-::string) const 
+\begin{DoxyCompactList}\small\item\em checks if string is part of language defined by \hyperlink{classFA_1_1eNFA}{e\-N\-F\-A} \end{DoxyCompactList}\item 
+void \hyperlink{classFA_1_1eNFA_ac59b890fcc3922ad6ad90c10b07f249d}{to\-File} (std\-::string)
+\begin{DoxyCompactList}\small\item\em generates File version of \hyperlink{classFA_1_1eNFA}{e\-N\-F\-A} (can be read again) \end{DoxyCompactList}\item 
+stateset \hyperlink{classFA_1_1eNFA_a75fece30a1340561511e588aec03366b}{eclose} (state $\ast$)
+\begin{DoxyCompactList}\small\item\em generate eclose of state \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Friends}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{classFA_1_1eNFA_a38d9ec3d3ebfd32d6bddc6b08c126e23}{std\-::ostream \& \hyperlink{classFA_1_1eNFA_a38d9ec3d3ebfd32d6bddc6b08c126e23}{operator$<$$<$} (std\-::ostream \&, const \hyperlink{classFA_1_1eNFA}{e\-N\-F\-A} \&)}\label{classFA_1_1eNFA_a38d9ec3d3ebfd32d6bddc6b08c126e23}
+
+\begin{DoxyCompactList}\small\item\em $<$$<$ overloader for \hyperlink{classFA_1_1eNFA}{e\-N\-F\-A} \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Class representing the \hyperlink{classFA_1_1eNFA}{e\-N\-F\-A}. 
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{classFA_1_1eNFA_a68c12a639d585778c1fd354230a90145}{\index{F\-A\-::e\-N\-F\-A@{F\-A\-::e\-N\-F\-A}!e\-N\-F\-A@{e\-N\-F\-A}}
+\index{e\-N\-F\-A@{e\-N\-F\-A}!FA::eNFA@{F\-A\-::e\-N\-F\-A}}
+\subsubsection[{e\-N\-F\-A}]{\setlength{\rightskip}{0pt plus 5cm}F\-A\-::e\-N\-F\-A\-::e\-N\-F\-A (
+\begin{DoxyParamCaption}
+\item[{alphabet}]{alphabet\-\_\-, }
+\item[{states}]{states\-\_\-, }
+\item[{transitions}]{transitions\-\_\-, }
+\item[{state $\ast$}]{start\-\_\-, }
+\item[{accepting\-States}]{accepting\-\_\-}
+\end{DoxyParamCaption}
+)}}\label{classFA_1_1eNFA_a68c12a639d585778c1fd354230a90145}
+
+
+constructor 
+
+
+\begin{DoxyParams}{Parameters}
+{\em alphabet\-\_\-} & the alphabet \\
+\hline
+{\em states\-\_\-} & the states \\
+\hline
+{\em transitions\-\_\-} & the transitions \\
+\hline
+{\em start\-\_\-} & pointer to start state \\
+\hline
+{\em accepting\-States} & the accepting states \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{classFA_1_1eNFA_a75fece30a1340561511e588aec03366b}{\index{F\-A\-::e\-N\-F\-A@{F\-A\-::e\-N\-F\-A}!eclose@{eclose}}
+\index{eclose@{eclose}!FA::eNFA@{F\-A\-::e\-N\-F\-A}}
+\subsubsection[{eclose}]{\setlength{\rightskip}{0pt plus 5cm}stateset F\-A\-::e\-N\-F\-A\-::eclose (
+\begin{DoxyParamCaption}
+\item[{state $\ast$}]{working\-State}
+\end{DoxyParamCaption}
+)}}\label{classFA_1_1eNFA_a75fece30a1340561511e588aec03366b}
+
+
+generate eclose of state 
+
+
+\begin{DoxyParams}{Parameters}
+{\em working\-State} & pointer to state to generate eclose of\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the eclose 
+\end{DoxyReturn}
+\hypertarget{classFA_1_1eNFA_add867593442ff1f1f78f0adabb62383d}{\index{F\-A\-::e\-N\-F\-A@{F\-A\-::e\-N\-F\-A}!get\-Delta@{get\-Delta}}
+\index{get\-Delta@{get\-Delta}!FA::eNFA@{F\-A\-::e\-N\-F\-A}}
+\subsubsection[{get\-Delta}]{\setlength{\rightskip}{0pt plus 5cm}const transitions\& F\-A\-::e\-N\-F\-A\-::get\-Delta (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{classFA_1_1eNFA_add867593442ff1f1f78f0adabb62383d}
+
+
+getter for delta (the transitions) 
+
+\begin{DoxyReturn}{Returns}
+the transitions 
+\end{DoxyReturn}
+\hypertarget{classFA_1_1eNFA_ac3dcbe3e615312ec1f1d4e826a1bfb36}{\index{F\-A\-::e\-N\-F\-A@{F\-A\-::e\-N\-F\-A}!get\-F@{get\-F}}
+\index{get\-F@{get\-F}!FA::eNFA@{F\-A\-::e\-N\-F\-A}}
+\subsubsection[{get\-F}]{\setlength{\rightskip}{0pt plus 5cm}const accepting\-States\& F\-A\-::e\-N\-F\-A\-::get\-F (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{classFA_1_1eNFA_ac3dcbe3e615312ec1f1d4e826a1bfb36}
+
+
+getter for F (the accepting states) 
+
+\begin{DoxyReturn}{Returns}
+the accepting states 
+\end{DoxyReturn}
+\hypertarget{classFA_1_1eNFA_aa11a17ac63deed8fb605b993e0971c85}{\index{F\-A\-::e\-N\-F\-A@{F\-A\-::e\-N\-F\-A}!get\-Q@{get\-Q}}
+\index{get\-Q@{get\-Q}!FA::eNFA@{F\-A\-::e\-N\-F\-A}}
+\subsubsection[{get\-Q}]{\setlength{\rightskip}{0pt plus 5cm}const states\& F\-A\-::e\-N\-F\-A\-::get\-Q (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{classFA_1_1eNFA_aa11a17ac63deed8fb605b993e0971c85}
+
+
+getter for Q (the states) 
+
+\begin{DoxyReturn}{Returns}
+the states 
+\end{DoxyReturn}
+\hypertarget{classFA_1_1eNFA_ae54015ed6c95f0f58b792599315da8de}{\index{F\-A\-::e\-N\-F\-A@{F\-A\-::e\-N\-F\-A}!get\-Q0@{get\-Q0}}
+\index{get\-Q0@{get\-Q0}!FA::eNFA@{F\-A\-::e\-N\-F\-A}}
+\subsubsection[{get\-Q0}]{\setlength{\rightskip}{0pt plus 5cm}state$\ast$ F\-A\-::e\-N\-F\-A\-::get\-Q0 (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{classFA_1_1eNFA_ae54015ed6c95f0f58b792599315da8de}
+
+
+getter for Q0 (the start state) 
+
+\begin{DoxyReturn}{Returns}
+the start state (pointer) 
+\end{DoxyReturn}
+\hypertarget{classFA_1_1eNFA_aad2759b9b0b1ff3ff66b4d2a7a5fe984}{\index{F\-A\-::e\-N\-F\-A@{F\-A\-::e\-N\-F\-A}!get\-Sigma@{get\-Sigma}}
+\index{get\-Sigma@{get\-Sigma}!FA::eNFA@{F\-A\-::e\-N\-F\-A}}
+\subsubsection[{get\-Sigma}]{\setlength{\rightskip}{0pt plus 5cm}const alphabet\& F\-A\-::e\-N\-F\-A\-::get\-Sigma (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{classFA_1_1eNFA_aad2759b9b0b1ff3ff66b4d2a7a5fe984}
+
+
+getter for sigma (the alphabet) 
+
+\begin{DoxyReturn}{Returns}
+the alphabet 
+\end{DoxyReturn}
+\hypertarget{classFA_1_1eNFA_a9f3cae2ce7da666b24401fd582cfcd9a}{\index{F\-A\-::e\-N\-F\-A@{F\-A\-::e\-N\-F\-A}!process@{process}}
+\index{process@{process}!FA::eNFA@{F\-A\-::e\-N\-F\-A}}
+\subsubsection[{process}]{\setlength{\rightskip}{0pt plus 5cm}bool F\-A\-::e\-N\-F\-A\-::process (
+\begin{DoxyParamCaption}
+\item[{std\-::string}]{str}
+\end{DoxyParamCaption}
+) const}}\label{classFA_1_1eNFA_a9f3cae2ce7da666b24401fd582cfcd9a}
+
+
+checks if string is part of language defined by \hyperlink{classFA_1_1eNFA}{e\-N\-F\-A} 
+
+
+\begin{DoxyParams}{Parameters}
+{\em str} & the string to be processed\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if string belongs to \hyperlink{classFA_1_1eNFA}{e\-N\-F\-A} 
+\end{DoxyReturn}
+\hypertarget{classFA_1_1eNFA_ac59b890fcc3922ad6ad90c10b07f249d}{\index{F\-A\-::e\-N\-F\-A@{F\-A\-::e\-N\-F\-A}!to\-File@{to\-File}}
+\index{to\-File@{to\-File}!FA::eNFA@{F\-A\-::e\-N\-F\-A}}
+\subsubsection[{to\-File}]{\setlength{\rightskip}{0pt plus 5cm}void F\-A\-::e\-N\-F\-A\-::to\-File (
+\begin{DoxyParamCaption}
+\item[{std\-::string}]{filename}
+\end{DoxyParamCaption}
+)}}\label{classFA_1_1eNFA_ac59b890fcc3922ad6ad90c10b07f249d}
+
+
+generates File version of \hyperlink{classFA_1_1eNFA}{e\-N\-F\-A} (can be read again) 
+
+
+\begin{DoxyParams}{Parameters}
+{\em filename} & name of the file \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following files\-:\begin{DoxyCompactItemize}
+\item 
+/home/jakob/\-Dropbox/\-U\-A/workspace/\-Form\-Validation/src/e\-N\-F\-A.\-h\item 
+/home/jakob/\-Dropbox/\-U\-A/workspace/\-Form\-Validation/src/e\-N\-F\-A.\-cpp\end{DoxyCompactItemize}

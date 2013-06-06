@@ -1,0 +1,314 @@
+\hypertarget{classFA_1_1Field}{\section{F\-A\-:\-:Field Class Reference}
+\label{classFA_1_1Field}\index{F\-A\-::\-Field@{F\-A\-::\-Field}}
+}
+
+
+Class representing a field of a form.  
+
+
+
+
+{\ttfamily \#include $<$Field.\-h$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classFA_1_1Field_ad8622732894cbeb5fd66e49dde180de9}{Field} (\hyperlink{classFA_1_1Component}{Component} $\ast$type, std\-::string name)
+\begin{DoxyCompactList}\small\item\em constructor \end{DoxyCompactList}\item 
+\hyperlink{classFA_1_1Field_a850c2ff25b76a0586c1fc65f7dc69960}{Field} (\hyperlink{classFA_1_1Component}{Component} $\ast$type, std\-::string name, unsigned int \hyperlink{classFA_1_1Field_a00c0f9f593c80e171f8b5d18cfd4e224}{length})
+\begin{DoxyCompactList}\small\item\em constructor \end{DoxyCompactList}\item 
+\hyperlink{classFA_1_1Field_a106ae367ebb20e776b996f4ff471474d}{Field} (\hyperlink{classFA_1_1Component}{Component} $\ast$type, std\-::string name, unsigned int \hyperlink{classFA_1_1Field_a00c0f9f593c80e171f8b5d18cfd4e224}{length}, bool \hyperlink{classFA_1_1Field_afe4be7775382eaae2bf0f37bd6f701f7}{required})
+\begin{DoxyCompactList}\small\item\em constructor \end{DoxyCompactList}\item 
+\hypertarget{classFA_1_1Field_afe4be7775382eaae2bf0f37bd6f701f7}{void \hyperlink{classFA_1_1Field_afe4be7775382eaae2bf0f37bd6f701f7}{required} ()}\label{classFA_1_1Field_afe4be7775382eaae2bf0f37bd6f701f7}
+
+\begin{DoxyCompactList}\small\item\em sets field to required \end{DoxyCompactList}\item 
+\hypertarget{classFA_1_1Field_a3b156487cab3492e0e7100561acee9e5}{void \hyperlink{classFA_1_1Field_a3b156487cab3492e0e7100561acee9e5}{not\-Required} ()}\label{classFA_1_1Field_a3b156487cab3492e0e7100561acee9e5}
+
+\begin{DoxyCompactList}\small\item\em sets field to not required \end{DoxyCompactList}\item 
+void \hyperlink{classFA_1_1Field_a00c0f9f593c80e171f8b5d18cfd4e224}{length} (unsigned int value)
+\begin{DoxyCompactList}\small\item\em set minimal length of input \end{DoxyCompactList}\item 
+void \hyperlink{classFA_1_1Field_a4cdb41d73148c0083c2dfe8994c0d810}{default\-Value} (std\-::string value)
+\begin{DoxyCompactList}\small\item\em set default value for field \end{DoxyCompactList}\item 
+std\-::string \hyperlink{classFA_1_1Field_a09bed0fa968eb80a8282527b22398c50}{make\-Label} ()
+\begin{DoxyCompactList}\small\item\em generates a label for the field \end{DoxyCompactList}\item 
+bool \hyperlink{classFA_1_1Field_ae14533f11add52c7e1d846676ca54805}{process} (std\-::string value)
+\begin{DoxyCompactList}\small\item\em check if input should be accepted into the field and if so\-: set the field's value to input \end{DoxyCompactList}\item 
+bool \hyperlink{classFA_1_1Field_a986ffd34fb6d553cbe829d686687c975}{check} (std\-::string value)
+\begin{DoxyCompactList}\small\item\em check if input should be accepted into the field \end{DoxyCompactList}\item 
+bool \hyperlink{classFA_1_1Field_a01be4e9f90b9c2f4f67b619570e8583d}{is\-Accepted} ()
+\begin{DoxyCompactList}\small\item\em Checks if field is filled in (or empty if not required) \end{DoxyCompactList}\item 
+bool \hyperlink{classFA_1_1Field_a678ddbfa901a9d5f88cc43eccd82ff91}{is\-Filled\-In} ()
+\begin{DoxyCompactList}\small\item\em Checks if field is filled in. \end{DoxyCompactList}\item 
+bool \hyperlink{classFA_1_1Field_ab6df02362d7655ccf7b1844036abd7c9}{is\-Required} ()
+\begin{DoxyCompactList}\small\item\em Checks if field is required. \end{DoxyCompactList}\item 
+\hyperlink{classFA_1_1Component}{Component} $\ast$ \hyperlink{classFA_1_1Field_af2bc07b212dda08dbb35c0053255d73a}{get\-Component} ()
+\begin{DoxyCompactList}\small\item\em Gets the component of the field. \end{DoxyCompactList}\item 
+unsigned int \hyperlink{classFA_1_1Field_ac1f83fa1b99ca126b41b12b7d198c679}{get\-Length} ()
+\begin{DoxyCompactList}\small\item\em gets the minimal length of the input \end{DoxyCompactList}\item 
+std\-::string \hyperlink{classFA_1_1Field_a89af06f8866706aafa39e04ca3ab7cfc}{get\-Name} ()
+\begin{DoxyCompactList}\small\item\em gets the name of the field \end{DoxyCompactList}\item 
+std\-::string \hyperlink{classFA_1_1Field_aeb5018b7d7152c880ba2270ddeffc43a}{get\-Value} ()
+\begin{DoxyCompactList}\small\item\em gets the value filled in \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Class representing a field of a form. 
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{classFA_1_1Field_ad8622732894cbeb5fd66e49dde180de9}{\index{F\-A\-::\-Field@{F\-A\-::\-Field}!Field@{Field}}
+\index{Field@{Field}!FA::Field@{F\-A\-::\-Field}}
+\subsubsection[{Field}]{\setlength{\rightskip}{0pt plus 5cm}F\-A\-::\-Field\-::\-Field (
+\begin{DoxyParamCaption}
+\item[{{\bf Component} $\ast$}]{type, }
+\item[{std\-::string}]{name}
+\end{DoxyParamCaption}
+)}}\label{classFA_1_1Field_ad8622732894cbeb5fd66e49dde180de9}
+
+
+constructor 
+
+
+\begin{DoxyParams}{Parameters}
+{\em type} & Pointer to the component \\
+\hline
+{\em name} & Name of the field \\
+\hline
+\end{DoxyParams}
+\hypertarget{classFA_1_1Field_a850c2ff25b76a0586c1fc65f7dc69960}{\index{F\-A\-::\-Field@{F\-A\-::\-Field}!Field@{Field}}
+\index{Field@{Field}!FA::Field@{F\-A\-::\-Field}}
+\subsubsection[{Field}]{\setlength{\rightskip}{0pt plus 5cm}F\-A\-::\-Field\-::\-Field (
+\begin{DoxyParamCaption}
+\item[{{\bf Component} $\ast$}]{type, }
+\item[{std\-::string}]{name, }
+\item[{unsigned int}]{length}
+\end{DoxyParamCaption}
+)}}\label{classFA_1_1Field_a850c2ff25b76a0586c1fc65f7dc69960}
+
+
+constructor 
+
+
+\begin{DoxyParams}{Parameters}
+{\em type} & Pointer to the component \\
+\hline
+{\em name} & Name of the field \\
+\hline
+{\em length} & Minimal length of input \\
+\hline
+\end{DoxyParams}
+\hypertarget{classFA_1_1Field_a106ae367ebb20e776b996f4ff471474d}{\index{F\-A\-::\-Field@{F\-A\-::\-Field}!Field@{Field}}
+\index{Field@{Field}!FA::Field@{F\-A\-::\-Field}}
+\subsubsection[{Field}]{\setlength{\rightskip}{0pt plus 5cm}F\-A\-::\-Field\-::\-Field (
+\begin{DoxyParamCaption}
+\item[{{\bf Component} $\ast$}]{type, }
+\item[{std\-::string}]{name, }
+\item[{unsigned int}]{length, }
+\item[{bool}]{required}
+\end{DoxyParamCaption}
+)}}\label{classFA_1_1Field_a106ae367ebb20e776b996f4ff471474d}
+
+
+constructor 
+
+
+\begin{DoxyParams}{Parameters}
+{\em type} & Pointer to the component \\
+\hline
+{\em name} & Name of the field \\
+\hline
+{\em length} & Minimal length of input \\
+\hline
+{\em required} & True if field has to be filled in \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{classFA_1_1Field_a986ffd34fb6d553cbe829d686687c975}{\index{F\-A\-::\-Field@{F\-A\-::\-Field}!check@{check}}
+\index{check@{check}!FA::Field@{F\-A\-::\-Field}}
+\subsubsection[{check}]{\setlength{\rightskip}{0pt plus 5cm}bool F\-A\-::\-Field\-::check (
+\begin{DoxyParamCaption}
+\item[{std\-::string}]{value}
+\end{DoxyParamCaption}
+)}}\label{classFA_1_1Field_a986ffd34fb6d553cbe829d686687c975}
+
+
+check if input should be accepted into the field 
+
+
+\begin{DoxyParams}{Parameters}
+{\em value} & value to be checked\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if accepted 
+\end{DoxyReturn}
+\hypertarget{classFA_1_1Field_a4cdb41d73148c0083c2dfe8994c0d810}{\index{F\-A\-::\-Field@{F\-A\-::\-Field}!default\-Value@{default\-Value}}
+\index{default\-Value@{default\-Value}!FA::Field@{F\-A\-::\-Field}}
+\subsubsection[{default\-Value}]{\setlength{\rightskip}{0pt plus 5cm}void F\-A\-::\-Field\-::default\-Value (
+\begin{DoxyParamCaption}
+\item[{std\-::string}]{value}
+\end{DoxyParamCaption}
+)}}\label{classFA_1_1Field_a4cdb41d73148c0083c2dfe8994c0d810}
+
+
+set default value for field 
+
+
+\begin{DoxyParams}{Parameters}
+{\em value} & the default value \\
+\hline
+\end{DoxyParams}
+\hypertarget{classFA_1_1Field_af2bc07b212dda08dbb35c0053255d73a}{\index{F\-A\-::\-Field@{F\-A\-::\-Field}!get\-Component@{get\-Component}}
+\index{get\-Component@{get\-Component}!FA::Field@{F\-A\-::\-Field}}
+\subsubsection[{get\-Component}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Component} $\ast$ F\-A\-::\-Field\-::get\-Component (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{classFA_1_1Field_af2bc07b212dda08dbb35c0053255d73a}
+
+
+Gets the component of the field. 
+
+\begin{DoxyReturn}{Returns}
+pointer to the component 
+\end{DoxyReturn}
+\hypertarget{classFA_1_1Field_ac1f83fa1b99ca126b41b12b7d198c679}{\index{F\-A\-::\-Field@{F\-A\-::\-Field}!get\-Length@{get\-Length}}
+\index{get\-Length@{get\-Length}!FA::Field@{F\-A\-::\-Field}}
+\subsubsection[{get\-Length}]{\setlength{\rightskip}{0pt plus 5cm}unsigned int F\-A\-::\-Field\-::get\-Length (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{classFA_1_1Field_ac1f83fa1b99ca126b41b12b7d198c679}
+
+
+gets the minimal length of the input 
+
+\begin{DoxyReturn}{Returns}
+minimal length of the input 
+\end{DoxyReturn}
+\hypertarget{classFA_1_1Field_a89af06f8866706aafa39e04ca3ab7cfc}{\index{F\-A\-::\-Field@{F\-A\-::\-Field}!get\-Name@{get\-Name}}
+\index{get\-Name@{get\-Name}!FA::Field@{F\-A\-::\-Field}}
+\subsubsection[{get\-Name}]{\setlength{\rightskip}{0pt plus 5cm}std\-::string F\-A\-::\-Field\-::get\-Name (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{classFA_1_1Field_a89af06f8866706aafa39e04ca3ab7cfc}
+
+
+gets the name of the field 
+
+\begin{DoxyReturn}{Returns}
+name of the field 
+\end{DoxyReturn}
+\hypertarget{classFA_1_1Field_aeb5018b7d7152c880ba2270ddeffc43a}{\index{F\-A\-::\-Field@{F\-A\-::\-Field}!get\-Value@{get\-Value}}
+\index{get\-Value@{get\-Value}!FA::Field@{F\-A\-::\-Field}}
+\subsubsection[{get\-Value}]{\setlength{\rightskip}{0pt plus 5cm}std\-::string F\-A\-::\-Field\-::get\-Value (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{classFA_1_1Field_aeb5018b7d7152c880ba2270ddeffc43a}
+
+
+gets the value filled in 
+
+\begin{DoxyReturn}{Returns}
+the filled in value 
+\end{DoxyReturn}
+\hypertarget{classFA_1_1Field_a01be4e9f90b9c2f4f67b619570e8583d}{\index{F\-A\-::\-Field@{F\-A\-::\-Field}!is\-Accepted@{is\-Accepted}}
+\index{is\-Accepted@{is\-Accepted}!FA::Field@{F\-A\-::\-Field}}
+\subsubsection[{is\-Accepted}]{\setlength{\rightskip}{0pt plus 5cm}bool F\-A\-::\-Field\-::is\-Accepted (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{classFA_1_1Field_a01be4e9f90b9c2f4f67b619570e8583d}
+
+
+Checks if field is filled in (or empty if not required) 
+
+\begin{DoxyReturn}{Returns}
+true if field doesn't have to be filled in anymore 
+\end{DoxyReturn}
+\hypertarget{classFA_1_1Field_a678ddbfa901a9d5f88cc43eccd82ff91}{\index{F\-A\-::\-Field@{F\-A\-::\-Field}!is\-Filled\-In@{is\-Filled\-In}}
+\index{is\-Filled\-In@{is\-Filled\-In}!FA::Field@{F\-A\-::\-Field}}
+\subsubsection[{is\-Filled\-In}]{\setlength{\rightskip}{0pt plus 5cm}bool F\-A\-::\-Field\-::is\-Filled\-In (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{classFA_1_1Field_a678ddbfa901a9d5f88cc43eccd82ff91}
+
+
+Checks if field is filled in. 
+
+\begin{DoxyReturn}{Returns}
+true if field is filled in 
+\end{DoxyReturn}
+\hypertarget{classFA_1_1Field_ab6df02362d7655ccf7b1844036abd7c9}{\index{F\-A\-::\-Field@{F\-A\-::\-Field}!is\-Required@{is\-Required}}
+\index{is\-Required@{is\-Required}!FA::Field@{F\-A\-::\-Field}}
+\subsubsection[{is\-Required}]{\setlength{\rightskip}{0pt plus 5cm}bool F\-A\-::\-Field\-::is\-Required (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{classFA_1_1Field_ab6df02362d7655ccf7b1844036abd7c9}
+
+
+Checks if field is required. 
+
+\begin{DoxyReturn}{Returns}
+true if required 
+\end{DoxyReturn}
+\hypertarget{classFA_1_1Field_a00c0f9f593c80e171f8b5d18cfd4e224}{\index{F\-A\-::\-Field@{F\-A\-::\-Field}!length@{length}}
+\index{length@{length}!FA::Field@{F\-A\-::\-Field}}
+\subsubsection[{length}]{\setlength{\rightskip}{0pt plus 5cm}void F\-A\-::\-Field\-::length (
+\begin{DoxyParamCaption}
+\item[{unsigned int}]{value}
+\end{DoxyParamCaption}
+)}}\label{classFA_1_1Field_a00c0f9f593c80e171f8b5d18cfd4e224}
+
+
+set minimal length of input 
+
+
+\begin{DoxyParams}{Parameters}
+{\em value} & the minimal length \\
+\hline
+\end{DoxyParams}
+\hypertarget{classFA_1_1Field_a09bed0fa968eb80a8282527b22398c50}{\index{F\-A\-::\-Field@{F\-A\-::\-Field}!make\-Label@{make\-Label}}
+\index{make\-Label@{make\-Label}!FA::Field@{F\-A\-::\-Field}}
+\subsubsection[{make\-Label}]{\setlength{\rightskip}{0pt plus 5cm}std\-::string F\-A\-::\-Field\-::make\-Label (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{classFA_1_1Field_a09bed0fa968eb80a8282527b22398c50}
+
+
+generates a label for the field 
+
+\begin{DoxyReturn}{Returns}
+the label 
+\end{DoxyReturn}
+\hypertarget{classFA_1_1Field_ae14533f11add52c7e1d846676ca54805}{\index{F\-A\-::\-Field@{F\-A\-::\-Field}!process@{process}}
+\index{process@{process}!FA::Field@{F\-A\-::\-Field}}
+\subsubsection[{process}]{\setlength{\rightskip}{0pt plus 5cm}bool F\-A\-::\-Field\-::process (
+\begin{DoxyParamCaption}
+\item[{std\-::string}]{value}
+\end{DoxyParamCaption}
+)}}\label{classFA_1_1Field_ae14533f11add52c7e1d846676ca54805}
+
+
+check if input should be accepted into the field and if so\-: set the field's value to input 
+
+
+\begin{DoxyParams}{Parameters}
+{\em value} & the input to be checked\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if accepted and set 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following files\-:\begin{DoxyCompactItemize}
+\item 
+/home/jakob/\-Dropbox/\-U\-A/workspace/\-Form\-Validation/src/Field.\-h\item 
+/home/jakob/\-Dropbox/\-U\-A/workspace/\-Form\-Validation/src/Field.\-cpp\end{DoxyCompactItemize}

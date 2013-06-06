@@ -68,6 +68,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
     <ul class="tablist">
       <li><a href="functions.html"><span>All</span></a></li>
       <li class="current"><a href="functions_func.html"><span>Functions</span></a></li>
+      <li><a href="functions_vars.html"><span>Variables</span></a></li>
       <li><a href="functions_rela.html"><span>Related&#160;Functions</span></a></li>
     </ul>
   </div>
@@ -80,6 +81,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
       <li><a href="#index_e"><span>e</span></a></li>
       <li><a href="#index_f"><span>f</span></a></li>
       <li><a href="#index_g"><span>g</span></a></li>
+      <li><a href="#index_h"><span>h</span></a></li>
       <li><a href="#index_i"><span>i</span></a></li>
       <li><a href="#index_l"><span>l</span></a></li>
       <li><a href="#index_m"><span>m</span></a></li>
@@ -87,6 +89,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
       <li><a href="#index_o"><span>o</span></a></li>
       <li><a href="#index_p"><span>p</span></a></li>
       <li><a href="#index_r"><span>r</span></a></li>
+      <li><a href="#index_s"><span>s</span></a></li>
       <li><a href="#index_t"><span>t</span></a></li>
     </ul>
   </div>
@@ -96,7 +99,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Friends</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Friends</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -112,8 +115,38 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <li>add()
 : <a class="el" href="classFA_1_1Form.html#a1ead0d4f240193e7192ccd5c7e2d6023">FA::Form</a>
 </li>
+<li>addAlphabet()
+: <a class="el" href="classFA_1_1DFA.html#a178995c0e4e6cd3113d689aab95dbc73">FA::DFA</a>
+</li>
+<li>addArc()
+: <a class="el" href="classFA_1_1State.html#a7e2d9168549d3cd40885d88fc51f27db">FA::State</a>
+</li>
 <li>addComponents()
-: <a class="el" href="classFA_1_1Form.html#a6081cf2aae76511c946721bed4a7e37f">FA::Form</a>
+: <a class="el" href="classFA_1_1Form.html#a05beb2b9ca100cd046d02aa9b41618e7">FA::Form</a>
+</li>
+<li>addLabel()
+: <a class="el" href="classFA_1_1State.html#a0b7dd61ef15403f6819dfb9221d865ad">FA::State</a>
+</li>
+<li>addLabels()
+: <a class="el" href="classFA_1_1State.html#a88eafb3fcc1d0367a7822348453a4bed">FA::State</a>
+</li>
+<li>addState()
+: <a class="el" href="classFA_1_1DFA.html#a4f83314cd4904b8b8bef8df1d44ed311">FA::DFA</a>
+</li>
+<li>addStates()
+: <a class="el" href="classFA_1_1DFA.html#a54b2fd16cd8a09b3d39267f496b3091c">FA::DFA</a>
+</li>
+<li>addSymbol()
+: <a class="el" href="classFA_1_1Arc.html#a015600997b525562db9bc7e1ce8293f6">FA::Arc</a>
+</li>
+<li>addSymbols()
+: <a class="el" href="classFA_1_1Arc.html#a4831f1b25de677667d80e6147e38cf14">FA::Arc</a>
+</li>
+<li>addTransition()
+: <a class="el" href="classFA_1_1State.html#abea0dc69c3aec679e22b375928468f6f">FA::State</a>
+</li>
+<li>Arc()
+: <a class="el" href="classFA_1_1Arc.html#aed14dd25143634f1796d1b3866b81a39">FA::Arc</a>
 </li>
 </ul>
 
@@ -129,11 +162,18 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <li>check()
 : <a class="el" href="classFA_1_1Field.html#a986ffd34fb6d553cbe829d686687c975">FA::Field</a>
 </li>
+<li>checkAlphabet()
+: <a class="el" href="classFA_1_1State.html#a2033665743bc46791dfa75bb288e4f21">FA::State</a>
+, <a class="el" href="classFA_1_1Arc.html#a8bd99b8e8414cb0d2384c123593617b0">FA::Arc</a>
+</li>
+<li>clear()
+: <a class="el" href="classFA_1_1DFA.html#ac6576dd1df2dc56199aa14f22beb09d4">FA::DFA</a>
+</li>
+<li>clearStates()
+: <a class="el" href="classFA_1_1DFA.html#a7319fa99113f60a2575a2b66c35341bf">FA::DFA</a>
+</li>
 <li>Component()
 : <a class="el" href="classFA_1_1Component.html#a34aa58bbe772f397e019d090bd4f4d1d">FA::Component</a>
-</li>
-<li>corresponds()
-: <a class="el" href="structFA_1_1DFAstate.html#a2a6bf513ff2806f450f1d7b97d6f1f74">FA::DFAstate</a>
 </li>
 </ul>
 
@@ -149,10 +189,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 : <a class="el" href="classFA_1_1Field.html#a4cdb41d73148c0083c2dfe8994c0d810">FA::Field</a>
 </li>
 <li>DFA()
-: <a class="el" href="classFA_1_1DFA.html#a0a716d54ea3d59580ebc6aadd79aae72">FA::DFA</a>
-</li>
-<li>DFAstate()
-: <a class="el" href="structFA_1_1DFAstate.html#ae2b299d91adb25782fc6b9a66e982077">FA::DFAstate</a>
+: <a class="el" href="classFA_1_1DFA.html#a96ba094cdfc8c20eca44f52e978674e6">FA::DFA</a>
 </li>
 </ul>
 
@@ -161,11 +198,11 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <li>eclose()
 : <a class="el" href="classFA_1_1eNFA.html#a75fece30a1340561511e588aec03366b">FA::eNFA</a>
 </li>
-<li>ENFA()
-: <a class="el" href="classFA_1_1Component.html#adbc44ec06fb79de8375e7cab47792cc7">FA::Component</a>
-</li>
 <li>eNFA()
 : <a class="el" href="classFA_1_1eNFA.html#a68c12a639d585778c1fd354230a90145">FA::eNFA</a>
+</li>
+<li>ENFA()
+: <a class="el" href="classFA_1_1Component.html#adbc44ec06fb79de8375e7cab47792cc7">FA::Component</a>
 </li>
 </ul>
 
@@ -181,42 +218,64 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 
 
 <h3><a class="anchor" id="index_g"></a>- g -</h3><ul>
+<li>getAlphabet()
+: <a class="el" href="classFA_1_1DFA.html#a757d14f06b687278116d971f116cb322">FA::DFA</a>
+</li>
+<li>getComponent()
+: <a class="el" href="classFA_1_1Field.html#af2bc07b212dda08dbb35c0053255d73a">FA::Field</a>
+</li>
 <li>getData()
 : <a class="el" href="classFA_1_1Form.html#a1768f802e54e999cb0214575f6941753">FA::Form</a>
 </li>
 <li>getDelta()
 : <a class="el" href="classFA_1_1eNFA.html#add867593442ff1f1f78f0adabb62383d">FA::eNFA</a>
 </li>
+<li>getDestination()
+: <a class="el" href="classFA_1_1Arc.html#a1276923880acf8af934fea8c07dac610">FA::Arc</a>
+</li>
+<li>getDFA()
+: <a class="el" href="classFA_1_1SubsetConstruction.html#a99186253ed12fd00325fd62ef2f2fb1f">FA::SubsetConstruction</a>
+</li>
 <li>getF()
 : <a class="el" href="classFA_1_1eNFA.html#ac3dcbe3e615312ec1f1d4e826a1bfb36">FA::eNFA</a>
+</li>
+<li>getLabel()
+: <a class="el" href="classFA_1_1State.html#a4ee70ad75d94d7920a40b3da6ed6a30c">FA::State</a>
+</li>
+<li>getLabels()
+: <a class="el" href="classFA_1_1State.html#a2934e320330f0a4b2491a1e038c9c581">FA::State</a>
 </li>
 <li>getLength()
 : <a class="el" href="classFA_1_1Field.html#ac1f83fa1b99ca126b41b12b7d198c679">FA::Field</a>
 </li>
 <li>getName()
-: <a class="el" href="classFA_1_1Field.html#a89af06f8866706aafa39e04ca3ab7cfc">FA::Field</a>
+: <a class="el" href="classFA_1_1State.html#ab1f1008c6c6c394829cb6f8718ca5415">FA::State</a>
+, <a class="el" href="classFA_1_1Field.html#a89af06f8866706aafa39e04ca3ab7cfc">FA::Field</a>
 </li>
 <li>getQ()
-: <a class="el" href="classFA_1_1DFA.html#afeb7333cd0cb7b9657a784a0ecf0ea7c">FA::DFA</a>
-, <a class="el" href="classFA_1_1eNFA.html#aa11a17ac63deed8fb605b993e0971c85">FA::eNFA</a>
+: <a class="el" href="classFA_1_1eNFA.html#aa11a17ac63deed8fb605b993e0971c85">FA::eNFA</a>
 </li>
 <li>getQ0()
-: <a class="el" href="classFA_1_1DFA.html#aa1d41d419268ba24caf63206f5224c54">FA::DFA</a>
-, <a class="el" href="classFA_1_1eNFA.html#ae54015ed6c95f0f58b792599315da8de">FA::eNFA</a>
+: <a class="el" href="classFA_1_1eNFA.html#ae54015ed6c95f0f58b792599315da8de">FA::eNFA</a>
 </li>
 <li>getSigma()
-: <a class="el" href="classFA_1_1DFA.html#a5c0048ff6d4fc7df99c6cb0ee698b1af">FA::DFA</a>
-, <a class="el" href="classFA_1_1eNFA.html#aad2759b9b0b1ff3ff66b4d2a7a5fe984">FA::eNFA</a>
+: <a class="el" href="classFA_1_1eNFA.html#aad2759b9b0b1ff3ff66b4d2a7a5fe984">FA::eNFA</a>
+</li>
+<li>getStates()
+: <a class="el" href="classFA_1_1DFA.html#a8751b056d570391389fa8a9db459595b">FA::DFA</a>
 </li>
 <li>getType()
-: <a class="el" href="classFA_1_1Field.html#aaade7c3ed1114decb01e0ef389002eee">FA::Field</a>
-, <a class="el" href="classFA_1_1Component.html#a448d6a03f2f26ecd32421c681b25319a">FA::Component</a>
+: <a class="el" href="classFA_1_1Component.html#a448d6a03f2f26ecd32421c681b25319a">FA::Component</a>
 </li>
 <li>getValue()
 : <a class="el" href="classFA_1_1Field.html#aeb5018b7d7152c880ba2270ddeffc43a">FA::Field</a>
 </li>
-<li>go()
-: <a class="el" href="structFA_1_1DFAstate.html#a58f887da9b98411f3f446113ad5ff7a2">FA::DFAstate</a>
+</ul>
+
+
+<h3><a class="anchor" id="index_h"></a>- h -</h3><ul>
+<li>hasStartState()
+: <a class="el" href="classFA_1_1DFA.html#aec06d82c3ee0efdb193510d35031f36d">FA::DFA</a>
 </li>
 </ul>
 
@@ -225,14 +284,20 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <li>isAccepted()
 : <a class="el" href="classFA_1_1Field.html#a01be4e9f90b9c2f4f67b619570e8583d">FA::Field</a>
 </li>
+<li>isEnding()
+: <a class="el" href="classFA_1_1State.html#a5e4faae4fd5229971523feb39e7186dc">FA::State</a>
+</li>
 <li>isFilledIn()
 : <a class="el" href="classFA_1_1Field.html#a678ddbfa901a9d5f88cc43eccd82ff91">FA::Field</a>
+</li>
+<li>isInAlphabet()
+: <a class="el" href="classFA_1_1DFA.html#a8b9f3bbda0044b4ed8d413f5fa3cd56b">FA::DFA</a>
 </li>
 <li>isRequired()
 : <a class="el" href="classFA_1_1Field.html#ab6df02362d7655ccf7b1844036abd7c9">FA::Field</a>
 </li>
-<li>isState()
-: <a class="el" href="structFA_1_1DFAstate.html#ad8ad9a3198ba5015535f0922b068007d">FA::DFAstate</a>
+<li>isStarting()
+: <a class="el" href="classFA_1_1State.html#a62e1733d123a4630aa924b35e3edd958">FA::State</a>
 </li>
 </ul>
 
@@ -250,9 +315,6 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <h3><a class="anchor" id="index_m"></a>- m -</h3><ul>
 <li>makeLabel()
 : <a class="el" href="classFA_1_1Field.html#a09bed0fa968eb80a8282527b22398c50">FA::Field</a>
-</li>
-<li>makeTransitions()
-: <a class="el" href="structFA_1_1DFAstate.html#a312fac557966742eea52d0d702671901">FA::DFAstate</a>
 </li>
 </ul>
 
@@ -273,15 +335,21 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 
 <h3><a class="anchor" id="index_p"></a>- p -</h3><ul>
 <li>process()
-: <a class="el" href="classFA_1_1DFA.html#ab8bfad13bf047feba0b4f9a9df79e658">FA::DFA</a>
+: <a class="el" href="classFA_1_1Component.html#a1c40852fe3f5272e5b17deb9dfae72ee">FA::Component</a>
 , <a class="el" href="classFA_1_1Form.html#a2e9badd806d51ecbffa08dd006dc2394">FA::Form</a>
 , <a class="el" href="classFA_1_1Field.html#ae14533f11add52c7e1d846676ca54805">FA::Field</a>
 , <a class="el" href="classFA_1_1eNFA.html#a9f3cae2ce7da666b24401fd582cfcd9a">FA::eNFA</a>
+, <a class="el" href="classFA_1_1DFA.html#a63940f64c434af04a97ff101d52b83a1">FA::DFA</a>
+, <a class="el" href="classFA_1_1Arc.html#a97e6df2bfbcb08253eae0c15db40e571">FA::Arc</a>
+, <a class="el" href="classFA_1_1State.html#a8f4e1fbb5a42a63db62e614b8bdc0eee">FA::State</a>
 </li>
 </ul>
 
 
 <h3><a class="anchor" id="index_r"></a>- r -</h3><ul>
+<li>readComponents()
+: <a class="el" href="classFA_1_1Form.html#a4a0a5182c866bb4cc6010f1cbbb8e4f3">FA::Form</a>
+</li>
 <li>regex()
 : <a class="el" href="classFA_1_1Component.html#a0bf03aa2ba0850511a4352396db4a61f">FA::Component</a>
 </li>
@@ -291,18 +359,25 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </ul>
 
 
+<h3><a class="anchor" id="index_s"></a>- s -</h3><ul>
+<li>State()
+: <a class="el" href="classFA_1_1State.html#a0cfddd8a032f4d16ff607a13bcaeede3">FA::State</a>
+</li>
+<li>SubsetConstruction()
+: <a class="el" href="classFA_1_1SubsetConstruction.html#a3ba705dc40b9e123e36cda7d387c3e9a">FA::SubsetConstruction</a>
+</li>
+</ul>
+
+
 <h3><a class="anchor" id="index_t"></a>- t -</h3><ul>
 <li>toFile()
 : <a class="el" href="classFA_1_1eNFA.html#ac59b890fcc3922ad6ad90c10b07f249d">FA::eNFA</a>
-</li>
-<li>transition()
-: <a class="el" href="structFA_1_1DFAstate.html#a5c5ff1b409dc6868b862b027f9259826">FA::DFAstate</a>
 </li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Sat May 18 2013 16:49:59 for Form Validation by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Thu Jun 6 2013 12:58:15 for Form Validation by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.3.1
 </small></address>

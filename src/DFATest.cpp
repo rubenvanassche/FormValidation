@@ -8,7 +8,7 @@
 #include "DFATest.h"
 
 void stringControlTest(){
-	FA::Test t("String Control Test");
+	FA::Test t("String Control");
 
 	// States
 	FA::State q0(true, true);

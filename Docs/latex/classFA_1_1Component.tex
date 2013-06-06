@@ -1,0 +1,188 @@
+\hypertarget{classFA_1_1Component}{\section{F\-A\-:\-:Component Class Reference}
+\label{classFA_1_1Component}\index{F\-A\-::\-Component@{F\-A\-::\-Component}}
+}
+
+
+Class to represent a component (field) of a form.  
+
+
+
+
+{\ttfamily \#include $<$Component.\-h$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classFA_1_1Component_a34aa58bbe772f397e019d090bd4f4d1d}{Component} (std\-::string type)
+\begin{DoxyCompactList}\small\item\em Constructor. \end{DoxyCompactList}\item 
+bool \hyperlink{classFA_1_1Component_a0bf03aa2ba0850511a4352396db4a61f}{regex} (std\-::string value)
+\begin{DoxyCompactList}\small\item\em add \hyperlink{classFA_1_1eNFA}{e\-N\-F\-A} described by regex to component \end{DoxyCompactList}\item 
+bool \hyperlink{classFA_1_1Component_a6c53702203b59f41126b829d680662e4}{db} (std\-::string file)
+\begin{DoxyCompactList}\small\item\em add database to regex \end{DoxyCompactList}\item 
+bool \hyperlink{classFA_1_1Component_a9a70d686864f2f0f15bc13de4237c9cd}{db} (std\-::string file, bool corrector)
+\begin{DoxyCompactList}\small\item\em add database to regex \end{DoxyCompactList}\item 
+bool \hyperlink{classFA_1_1Component_adbc44ec06fb79de8375e7cab47792cc7}{E\-N\-F\-A} (std\-::string file)
+\begin{DoxyCompactList}\small\item\em add \hyperlink{classFA_1_1eNFA}{e\-N\-F\-A} described by file to component \end{DoxyCompactList}\item 
+std\-::string \hyperlink{classFA_1_1Component_a0b8ff8e190b8456a7e56dcabb376fee9}{D\-Bcorrector} (std\-::string value)
+\begin{DoxyCompactList}\small\item\em generates corrected version of input string \end{DoxyCompactList}\item 
+bool \hyperlink{classFA_1_1Component_a1c40852fe3f5272e5b17deb9dfae72ee}{process} (std\-::string)
+\begin{DoxyCompactList}\small\item\em check if string is accepted by component \end{DoxyCompactList}\item 
+std\-::string \hyperlink{classFA_1_1Component_a448d6a03f2f26ecd32421c681b25319a}{get\-Type} ()
+\begin{DoxyCompactList}\small\item\em returns the type of the component \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Class to represent a component (field) of a form. 
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{classFA_1_1Component_a34aa58bbe772f397e019d090bd4f4d1d}{\index{F\-A\-::\-Component@{F\-A\-::\-Component}!Component@{Component}}
+\index{Component@{Component}!FA::Component@{F\-A\-::\-Component}}
+\subsubsection[{Component}]{\setlength{\rightskip}{0pt plus 5cm}F\-A\-::\-Component\-::\-Component (
+\begin{DoxyParamCaption}
+\item[{std\-::string}]{type}
+\end{DoxyParamCaption}
+)}}\label{classFA_1_1Component_a34aa58bbe772f397e019d090bd4f4d1d}
+
+
+Constructor. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em type} & type of the component \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{classFA_1_1Component_a6c53702203b59f41126b829d680662e4}{\index{F\-A\-::\-Component@{F\-A\-::\-Component}!db@{db}}
+\index{db@{db}!FA::Component@{F\-A\-::\-Component}}
+\subsubsection[{db}]{\setlength{\rightskip}{0pt plus 5cm}bool F\-A\-::\-Component\-::db (
+\begin{DoxyParamCaption}
+\item[{std\-::string}]{file}
+\end{DoxyParamCaption}
+)}}\label{classFA_1_1Component_a6c53702203b59f41126b829d680662e4}
+
+
+add database to regex 
+
+
+\begin{DoxyParams}{Parameters}
+{\em file} & Name of the database file\\
+\hline
+\end{DoxyParams}
+\begin{DoxyPrecond}{Precondition}
+No database should be present 
+\end{DoxyPrecond}
+\hypertarget{classFA_1_1Component_a9a70d686864f2f0f15bc13de4237c9cd}{\index{F\-A\-::\-Component@{F\-A\-::\-Component}!db@{db}}
+\index{db@{db}!FA::Component@{F\-A\-::\-Component}}
+\subsubsection[{db}]{\setlength{\rightskip}{0pt plus 5cm}bool F\-A\-::\-Component\-::db (
+\begin{DoxyParamCaption}
+\item[{std\-::string}]{file, }
+\item[{bool}]{corrector}
+\end{DoxyParamCaption}
+)}}\label{classFA_1_1Component_a9a70d686864f2f0f15bc13de4237c9cd}
+
+
+add database to regex 
+
+
+\begin{DoxyParams}{Parameters}
+{\em file} & Name of the database file \\
+\hline
+{\em corrector} & Indicates where input correction should be applied\\
+\hline
+\end{DoxyParams}
+\begin{DoxyPrecond}{Precondition}
+No database should be present 
+\end{DoxyPrecond}
+\hypertarget{classFA_1_1Component_a0b8ff8e190b8456a7e56dcabb376fee9}{\index{F\-A\-::\-Component@{F\-A\-::\-Component}!D\-Bcorrector@{D\-Bcorrector}}
+\index{D\-Bcorrector@{D\-Bcorrector}!FA::Component@{F\-A\-::\-Component}}
+\subsubsection[{D\-Bcorrector}]{\setlength{\rightskip}{0pt plus 5cm}std\-::string F\-A\-::\-Component\-::\-D\-Bcorrector (
+\begin{DoxyParamCaption}
+\item[{std\-::string}]{value}
+\end{DoxyParamCaption}
+)}}\label{classFA_1_1Component_a0b8ff8e190b8456a7e56dcabb376fee9}
+
+
+generates corrected version of input string 
+
+
+\begin{DoxyParams}{Parameters}
+{\em value} & the string to be corrected\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the corrected string 
+\end{DoxyReturn}
+\hypertarget{classFA_1_1Component_adbc44ec06fb79de8375e7cab47792cc7}{\index{F\-A\-::\-Component@{F\-A\-::\-Component}!E\-N\-F\-A@{E\-N\-F\-A}}
+\index{E\-N\-F\-A@{E\-N\-F\-A}!FA::Component@{F\-A\-::\-Component}}
+\subsubsection[{E\-N\-F\-A}]{\setlength{\rightskip}{0pt plus 5cm}bool F\-A\-::\-Component\-::\-E\-N\-F\-A (
+\begin{DoxyParamCaption}
+\item[{std\-::string}]{file}
+\end{DoxyParamCaption}
+)}}\label{classFA_1_1Component_adbc44ec06fb79de8375e7cab47792cc7}
+
+
+add \hyperlink{classFA_1_1eNFA}{e\-N\-F\-A} described by file to component 
+
+
+\begin{DoxyParams}{Parameters}
+{\em file} & The filename\\
+\hline
+\end{DoxyParams}
+\begin{DoxyPrecond}{Precondition}
+No database should be present 
+\end{DoxyPrecond}
+\hypertarget{classFA_1_1Component_a448d6a03f2f26ecd32421c681b25319a}{\index{F\-A\-::\-Component@{F\-A\-::\-Component}!get\-Type@{get\-Type}}
+\index{get\-Type@{get\-Type}!FA::Component@{F\-A\-::\-Component}}
+\subsubsection[{get\-Type}]{\setlength{\rightskip}{0pt plus 5cm}std\-::string F\-A\-::\-Component\-::get\-Type (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{classFA_1_1Component_a448d6a03f2f26ecd32421c681b25319a}
+
+
+returns the type of the component 
+
+\begin{DoxyReturn}{Returns}
+the type 
+\end{DoxyReturn}
+\hypertarget{classFA_1_1Component_a1c40852fe3f5272e5b17deb9dfae72ee}{\index{F\-A\-::\-Component@{F\-A\-::\-Component}!process@{process}}
+\index{process@{process}!FA::Component@{F\-A\-::\-Component}}
+\subsubsection[{process}]{\setlength{\rightskip}{0pt plus 5cm}bool F\-A\-::\-Component\-::process (
+\begin{DoxyParamCaption}
+\item[{std\-::string}]{value}
+\end{DoxyParamCaption}
+)}}\label{classFA_1_1Component_a1c40852fe3f5272e5b17deb9dfae72ee}
+
+
+check if string is accepted by component 
+
+\begin{DoxyReturn}{Returns}
+true if accepted 
+\end{DoxyReturn}
+\hypertarget{classFA_1_1Component_a0bf03aa2ba0850511a4352396db4a61f}{\index{F\-A\-::\-Component@{F\-A\-::\-Component}!regex@{regex}}
+\index{regex@{regex}!FA::Component@{F\-A\-::\-Component}}
+\subsubsection[{regex}]{\setlength{\rightskip}{0pt plus 5cm}bool F\-A\-::\-Component\-::regex (
+\begin{DoxyParamCaption}
+\item[{std\-::string}]{value}
+\end{DoxyParamCaption}
+)}}\label{classFA_1_1Component_a0bf03aa2ba0850511a4352396db4a61f}
+
+
+add \hyperlink{classFA_1_1eNFA}{e\-N\-F\-A} described by regex to component 
+
+
+\begin{DoxyParams}{Parameters}
+{\em value} & the regex\\
+\hline
+\end{DoxyParams}
+\begin{DoxyPrecond}{Precondition}
+No database should be present 
+\end{DoxyPrecond}
+
+
+The documentation for this class was generated from the following files\-:\begin{DoxyCompactItemize}
+\item 
+/home/jakob/\-Dropbox/\-U\-A/workspace/\-Form\-Validation/src/Component.\-h\item 
+/home/jakob/\-Dropbox/\-U\-A/workspace/\-Form\-Validation/src/Component.\-cpp\end{DoxyCompactItemize}

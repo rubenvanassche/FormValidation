@@ -1,0 +1,271 @@
+\hypertarget{classFA_1_1Form}{\section{F\-A\-:\-:Form Class Reference}
+\label{classFA_1_1Form}\index{F\-A\-::\-Form@{F\-A\-::\-Form}}
+}
+
+
+Class representing a form.  
+
+
+
+
+{\ttfamily \#include $<$Form.\-h$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classFA_1_1Form_a91933b8204a67dcf14f1b6ac7092e84c}{Form} (std\-::string name)
+\begin{DoxyCompactList}\small\item\em constructor \end{DoxyCompactList}\item 
+bool \hyperlink{classFA_1_1Form_a1ead0d4f240193e7192ccd5c7e2d6023}{add} (std\-::string name, std\-::string type)
+\begin{DoxyCompactList}\small\item\em add non-\/required field without minimal length to form \end{DoxyCompactList}\item 
+bool \hyperlink{classFA_1_1Form_ad969a36c1cb318774b557d4cd50564ea}{add} (std\-::string name, std\-::string type, bool required)
+\begin{DoxyCompactList}\small\item\em add field without minimum length to form \end{DoxyCompactList}\item 
+bool \hyperlink{classFA_1_1Form_a819a4256afda2bebf784b93e8d69093f}{add} (std\-::string name, std\-::string type, unsigned int length)
+\begin{DoxyCompactList}\small\item\em add non-\/required field to form \end{DoxyCompactList}\item 
+bool \hyperlink{classFA_1_1Form_a1d0caba37f936d700d311621c9761293}{add} (std\-::string name, std\-::string type, bool required, unsigned int length)
+\begin{DoxyCompactList}\small\item\em add field to form \end{DoxyCompactList}\item 
+bool \hyperlink{classFA_1_1Form_a792d137754257e45960910747f80e9e6}{add} (std\-::string name, std\-::string type, unsigned int length, bool required)
+\begin{DoxyCompactList}\small\item\em add field to form \end{DoxyCompactList}\item 
+bool \hyperlink{classFA_1_1Form_a05beb2b9ca100cd046d02aa9b41618e7}{add\-Components} (std\-::string file, const std\-::vector$<$ std\-::string $>$ \&=std\-::vector$<$ std\-::string $>$())
+\begin{DoxyCompactList}\small\item\em adds all of the possible components to the form \end{DoxyCompactList}\item 
+\hypertarget{classFA_1_1Form_aff3263e5b4f3a8e0fe24081e20959419}{void \hyperlink{classFA_1_1Form_aff3263e5b4f3a8e0fe24081e20959419}{build} ()}\label{classFA_1_1Form_aff3263e5b4f3a8e0fe24081e20959419}
+
+\begin{DoxyCompactList}\small\item\em run the form \end{DoxyCompactList}\item 
+bool \hyperlink{classFA_1_1Form_ae100d99ac80468b6fd4bbf4fe9bb7060}{ok} ()
+\begin{DoxyCompactList}\small\item\em check if form is complete \end{DoxyCompactList}\item 
+\hypertarget{classFA_1_1Form_a2e9badd806d51ecbffa08dd006dc2394}{void \hyperlink{classFA_1_1Form_a2e9badd806d51ecbffa08dd006dc2394}{process} ()}\label{classFA_1_1Form_a2e9badd806d51ecbffa08dd006dc2394}
+
+\begin{DoxyCompactList}\small\item\em run the form (without printing name of form) \end{DoxyCompactList}\item 
+std\-::map$<$ std\-::string, \\*
+std\-::string $>$ \hyperlink{classFA_1_1Form_a1768f802e54e999cb0214575f6941753}{get\-Data} ()
+\begin{DoxyCompactList}\small\item\em Get the filled in data from the form. \end{DoxyCompactList}\item 
+bool \hyperlink{classFA_1_1Form_ae532a76fd60e7244ae8311d2bbd1a710}{load} (std\-::string file)
+\begin{DoxyCompactList}\small\item\em load form from file \end{DoxyCompactList}\item 
+void \hyperlink{classFA_1_1Form_a4a0a5182c866bb4cc6010f1cbbb8e4f3}{read\-Components} (std\-::string file, std\-::vector$<$ std\-::string $>$ \&used\-Comps)
+\begin{DoxyCompactList}\small\item\em get vector of components used by form \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Class representing a form. 
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{classFA_1_1Form_a91933b8204a67dcf14f1b6ac7092e84c}{\index{F\-A\-::\-Form@{F\-A\-::\-Form}!Form@{Form}}
+\index{Form@{Form}!FA::Form@{F\-A\-::\-Form}}
+\subsubsection[{Form}]{\setlength{\rightskip}{0pt plus 5cm}F\-A\-::\-Form\-::\-Form (
+\begin{DoxyParamCaption}
+\item[{std\-::string}]{name}
+\end{DoxyParamCaption}
+)}}\label{classFA_1_1Form_a91933b8204a67dcf14f1b6ac7092e84c}
+
+
+constructor 
+
+
+\begin{DoxyParams}{Parameters}
+{\em name} & Name of the form \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{classFA_1_1Form_a1ead0d4f240193e7192ccd5c7e2d6023}{\index{F\-A\-::\-Form@{F\-A\-::\-Form}!add@{add}}
+\index{add@{add}!FA::Form@{F\-A\-::\-Form}}
+\subsubsection[{add}]{\setlength{\rightskip}{0pt plus 5cm}bool F\-A\-::\-Form\-::add (
+\begin{DoxyParamCaption}
+\item[{std\-::string}]{name, }
+\item[{std\-::string}]{type}
+\end{DoxyParamCaption}
+)}}\label{classFA_1_1Form_a1ead0d4f240193e7192ccd5c7e2d6023}
+
+
+add non-\/required field without minimal length to form 
+
+
+\begin{DoxyParams}{Parameters}
+{\em name} & name of the field \\
+\hline
+{\em type} & of the field (its component) \\
+\hline
+\end{DoxyParams}
+\hypertarget{classFA_1_1Form_ad969a36c1cb318774b557d4cd50564ea}{\index{F\-A\-::\-Form@{F\-A\-::\-Form}!add@{add}}
+\index{add@{add}!FA::Form@{F\-A\-::\-Form}}
+\subsubsection[{add}]{\setlength{\rightskip}{0pt plus 5cm}bool F\-A\-::\-Form\-::add (
+\begin{DoxyParamCaption}
+\item[{std\-::string}]{name, }
+\item[{std\-::string}]{type, }
+\item[{bool}]{required}
+\end{DoxyParamCaption}
+)}}\label{classFA_1_1Form_ad969a36c1cb318774b557d4cd50564ea}
+
+
+add field without minimum length to form 
+
+
+\begin{DoxyParams}{Parameters}
+{\em name} & name of the field \\
+\hline
+{\em type} & of the field (its component) \\
+\hline
+{\em required} & true if required \\
+\hline
+\end{DoxyParams}
+\hypertarget{classFA_1_1Form_a819a4256afda2bebf784b93e8d69093f}{\index{F\-A\-::\-Form@{F\-A\-::\-Form}!add@{add}}
+\index{add@{add}!FA::Form@{F\-A\-::\-Form}}
+\subsubsection[{add}]{\setlength{\rightskip}{0pt plus 5cm}bool F\-A\-::\-Form\-::add (
+\begin{DoxyParamCaption}
+\item[{std\-::string}]{name, }
+\item[{std\-::string}]{type, }
+\item[{unsigned int}]{length}
+\end{DoxyParamCaption}
+)}}\label{classFA_1_1Form_a819a4256afda2bebf784b93e8d69093f}
+
+
+add non-\/required field to form 
+
+
+\begin{DoxyParams}{Parameters}
+{\em name} & name of the field \\
+\hline
+{\em type} & of the field (its component) \\
+\hline
+{\em length} & minimal length of input \\
+\hline
+\end{DoxyParams}
+\hypertarget{classFA_1_1Form_a1d0caba37f936d700d311621c9761293}{\index{F\-A\-::\-Form@{F\-A\-::\-Form}!add@{add}}
+\index{add@{add}!FA::Form@{F\-A\-::\-Form}}
+\subsubsection[{add}]{\setlength{\rightskip}{0pt plus 5cm}bool F\-A\-::\-Form\-::add (
+\begin{DoxyParamCaption}
+\item[{std\-::string}]{name, }
+\item[{std\-::string}]{type, }
+\item[{bool}]{required, }
+\item[{unsigned int}]{length}
+\end{DoxyParamCaption}
+)}}\label{classFA_1_1Form_a1d0caba37f936d700d311621c9761293}
+
+
+add field to form 
+
+
+\begin{DoxyParams}{Parameters}
+{\em name} & name of the field \\
+\hline
+{\em type} & of the field (its component) \\
+\hline
+{\em required} & true if required \\
+\hline
+{\em length} & minimal length of input \\
+\hline
+\end{DoxyParams}
+\hypertarget{classFA_1_1Form_a792d137754257e45960910747f80e9e6}{\index{F\-A\-::\-Form@{F\-A\-::\-Form}!add@{add}}
+\index{add@{add}!FA::Form@{F\-A\-::\-Form}}
+\subsubsection[{add}]{\setlength{\rightskip}{0pt plus 5cm}bool F\-A\-::\-Form\-::add (
+\begin{DoxyParamCaption}
+\item[{std\-::string}]{name, }
+\item[{std\-::string}]{type, }
+\item[{unsigned int}]{length, }
+\item[{bool}]{required}
+\end{DoxyParamCaption}
+)}}\label{classFA_1_1Form_a792d137754257e45960910747f80e9e6}
+
+
+add field to form 
+
+
+\begin{DoxyParams}{Parameters}
+{\em name} & name of the field \\
+\hline
+{\em type} & of the field (its component) \\
+\hline
+{\em length} & minimal length of input \\
+\hline
+{\em required} & true if required \\
+\hline
+\end{DoxyParams}
+\hypertarget{classFA_1_1Form_a05beb2b9ca100cd046d02aa9b41618e7}{\index{F\-A\-::\-Form@{F\-A\-::\-Form}!add\-Components@{add\-Components}}
+\index{add\-Components@{add\-Components}!FA::Form@{F\-A\-::\-Form}}
+\subsubsection[{add\-Components}]{\setlength{\rightskip}{0pt plus 5cm}bool F\-A\-::\-Form\-::add\-Components (
+\begin{DoxyParamCaption}
+\item[{std\-::string}]{file, }
+\item[{const std\-::vector$<$ std\-::string $>$ \&}]{used\-Comps = {\ttfamily std\-:\-:vector$<$std\-:\-:string$>$()}}
+\end{DoxyParamCaption}
+)}}\label{classFA_1_1Form_a05beb2b9ca100cd046d02aa9b41618e7}
+
+
+adds all of the possible components to the form 
+
+
+\begin{DoxyParams}{Parameters}
+{\em file} & file name of textfile containing components\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if success 
+\end{DoxyReturn}
+\hypertarget{classFA_1_1Form_a1768f802e54e999cb0214575f6941753}{\index{F\-A\-::\-Form@{F\-A\-::\-Form}!get\-Data@{get\-Data}}
+\index{get\-Data@{get\-Data}!FA::Form@{F\-A\-::\-Form}}
+\subsubsection[{get\-Data}]{\setlength{\rightskip}{0pt plus 5cm}std\-::map$<$ std\-::string, std\-::string $>$ F\-A\-::\-Form\-::get\-Data (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{classFA_1_1Form_a1768f802e54e999cb0214575f6941753}
+
+
+Get the filled in data from the form. 
+
+\begin{DoxyReturn}{Returns}
+the data 
+\end{DoxyReturn}
+\hypertarget{classFA_1_1Form_ae532a76fd60e7244ae8311d2bbd1a710}{\index{F\-A\-::\-Form@{F\-A\-::\-Form}!load@{load}}
+\index{load@{load}!FA::Form@{F\-A\-::\-Form}}
+\subsubsection[{load}]{\setlength{\rightskip}{0pt plus 5cm}bool F\-A\-::\-Form\-::load (
+\begin{DoxyParamCaption}
+\item[{std\-::string}]{file}
+\end{DoxyParamCaption}
+)}}\label{classFA_1_1Form_ae532a76fd60e7244ae8311d2bbd1a710}
+
+
+load form from file 
+
+
+\begin{DoxyParams}{Parameters}
+{\em file} & the file name of file containing form \\
+\hline
+\end{DoxyParams}
+\hypertarget{classFA_1_1Form_ae100d99ac80468b6fd4bbf4fe9bb7060}{\index{F\-A\-::\-Form@{F\-A\-::\-Form}!ok@{ok}}
+\index{ok@{ok}!FA::Form@{F\-A\-::\-Form}}
+\subsubsection[{ok}]{\setlength{\rightskip}{0pt plus 5cm}bool F\-A\-::\-Form\-::ok (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{classFA_1_1Form_ae100d99ac80468b6fd4bbf4fe9bb7060}
+
+
+check if form is complete 
+
+\begin{DoxyReturn}{Returns}
+true if complete 
+\end{DoxyReturn}
+\hypertarget{classFA_1_1Form_a4a0a5182c866bb4cc6010f1cbbb8e4f3}{\index{F\-A\-::\-Form@{F\-A\-::\-Form}!read\-Components@{read\-Components}}
+\index{read\-Components@{read\-Components}!FA::Form@{F\-A\-::\-Form}}
+\subsubsection[{read\-Components}]{\setlength{\rightskip}{0pt plus 5cm}void F\-A\-::\-Form\-::read\-Components (
+\begin{DoxyParamCaption}
+\item[{std\-::string}]{file, }
+\item[{std\-::vector$<$ std\-::string $>$ \&}]{used\-Comps}
+\end{DoxyParamCaption}
+)}}\label{classFA_1_1Form_a4a0a5182c866bb4cc6010f1cbbb8e4f3}
+
+
+get vector of components used by form 
+
+
+\begin{DoxyParams}{Parameters}
+{\em file} & the file name of file containing form\\
+\hline
+{\em used\-Comps} & vector to contain the names of the components used by the form \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following files\-:\begin{DoxyCompactItemize}
+\item 
+/home/jakob/\-Dropbox/\-U\-A/workspace/\-Form\-Validation/src/Form.\-h\item 
+/home/jakob/\-Dropbox/\-U\-A/workspace/\-Form\-Validation/src/Form.\-cpp\end{DoxyCompactItemize}

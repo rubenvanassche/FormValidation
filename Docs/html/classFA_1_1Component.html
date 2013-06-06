@@ -69,7 +69,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Friends</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Friends</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -117,8 +117,8 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a0b8ff8e190b8456a7e56dcabb376fee9"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classFA_1_1Component.html#a0b8ff8e190b8456a7e56dcabb376fee9">DBcorrector</a> (std::string value)</td></tr>
 <tr class="memdesc:a0b8ff8e190b8456a7e56dcabb376fee9"><td class="mdescLeft">&#160;</td><td class="mdescRight">generates corrected version of input string  <a href="#a0b8ff8e190b8456a7e56dcabb376fee9">More...</a><br/></td></tr>
 <tr class="separator:a0b8ff8e190b8456a7e56dcabb376fee9"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1c40852fe3f5272e5b17deb9dfae72ee"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a1c40852fe3f5272e5b17deb9dfae72ee"></a>
-bool&#160;</td><td class="memItemRight" valign="bottom"><b>process</b> (std::string)</td></tr>
+<tr class="memitem:a1c40852fe3f5272e5b17deb9dfae72ee"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classFA_1_1Component.html#a1c40852fe3f5272e5b17deb9dfae72ee">process</a> (std::string)</td></tr>
+<tr class="memdesc:a1c40852fe3f5272e5b17deb9dfae72ee"><td class="mdescLeft">&#160;</td><td class="mdescRight">check if string is accepted by component  <a href="#a1c40852fe3f5272e5b17deb9dfae72ee">More...</a><br/></td></tr>
 <tr class="separator:a1c40852fe3f5272e5b17deb9dfae72ee"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a448d6a03f2f26ecd32421c681b25319a"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classFA_1_1Component.html#a448d6a03f2f26ecd32421c681b25319a">getType</a> ()</td></tr>
 <tr class="memdesc:a448d6a03f2f26ecd32421c681b25319a"><td class="mdescLeft">&#160;</td><td class="mdescRight">returns the type of the component  <a href="#a448d6a03f2f26ecd32421c681b25319a">More...</a><br/></td></tr>
@@ -281,6 +281,25 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><b>process</b> (std::str
 
 </div>
 </div>
+<a class="anchor" id="a1c40852fe3f5272e5b17deb9dfae72ee"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool FA::Component::process </td>
+          <td>(</td>
+          <td class="paramtype">std::string&#160;</td>
+          <td class="paramname"><em>value</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>check if string is accepted by component </p>
+<dl class="section return"><dt>Returns</dt><dd>true if accepted </dd></dl>
+
+</div>
+</div>
 <a class="anchor" id="a0bf03aa2ba0850511a4352396db4a61f"></a>
 <div class="memitem">
 <div class="memproto">
@@ -313,7 +332,7 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><b>process</b> (std::str
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Sat May 18 2013 16:49:59 for Form Validation by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Thu Jun 6 2013 12:58:15 for Form Validation by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.3.1
 </small></address>
