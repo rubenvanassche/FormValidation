@@ -14,10 +14,13 @@ Via terminal momenteel maar het is makkelijk om de bibliotheek uit te breiden na
 
 Compilen:
 
+$ cmake CMakeLists.txt
 $ make
-$ FA (voor standaard form.txt bestand)
+
+Runnen:
+$ ./FormValidation #(voor standaard form.txt bestand)
 of
-$ FA formbestand.txt
+$ ./FormValidation formbestand.txt
 
 Form Betsanden
 --------------
