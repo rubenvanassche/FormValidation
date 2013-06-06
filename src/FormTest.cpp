@@ -11,18 +11,18 @@ void FormTest(){
 	FA::Form f("TestForm");
 
 	// Loading
-	t.expectFalse(f.addComponents("notexistingFile.txt"));
+	t.expectFalse(f.addComponents("ComponentsDoesNotExist.txt"));
 	t.expectTrue(f.addComponents("components.txt"));
 
 	t.equal(f.getData().size(),0);
 
-	t.expectFalse(f.load("notexistingFile.txt"));
+	t.expectFalse(f.load("FormDoesNotExist.txt"));
 	t.expectTrue(f.load("form.txt"));
 
 	t.equal(f.getData().size(),6);
 
 	t.expectTrue(f.add("Works", "Email"));
-	t.expectFalse(f.add("Works not", "Emailding"));
+	t.expectFalse(f.add("Works not", "EmailDoesNotExist"));
 
 	t.equal(f.getData().size(),7);
 

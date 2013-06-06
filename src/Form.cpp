@@ -52,7 +52,7 @@ bool Form::addComponents(std::string file, const std::vector<std::string>& usedC
 	std::ifstream stream(filename);
 	if(!stream.good()){
 		// File doesn't exists
-		std::cout << "Component file not found" << std::endl;
+		std::cout << "Component file '" << filename << "' not found" << std::endl;
 		return false;
 	}
 
@@ -214,7 +214,7 @@ bool Form::load(std::string file){
 	std::ifstream stream(filename);
 	if(!stream.good()){
 		// File doesn't exists
-		std::cout << "Form file not found" << std::endl;
+		std::cout << "Form file '" << filename <<"' not found" << std::endl;
 		return false;
 	}
 
