@@ -330,7 +330,7 @@ public:
 	 */
 	void clear();
 
-	/*
+
 	/**
 	 * @brief Read's a DFA file and makes one based upon this file
 	 *
