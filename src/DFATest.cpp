@@ -8,78 +8,66 @@
 #include "DFATest.h"
 
 void stringControlTest(){
+	FA::Test t("String Control Test");
+
 	// States
 	FA::State q0(true, true);
-	q0.addLabel("q0");
+	t.expectTrue(q0.addLabel("q0"));
+	t.expectFalse(q0.addLabel("q0"));
 
 	FA::State q1(false);
-	q1.addLabel("q1");
+	t.expectTrue(q1.addLabel("q1"));
 
 	FA::State q2(true);
-	q2.addLabel("q2");
+	t.expectTrue(q2.addLabel("q2"));
+
+	FA::State failState(true);
+	t.expectTrue(failState.addLabel("fail"));
 
 	// Transitions
-	q0.addTransition('a', &q1);
-	q0.addTransition('b', &q2);
+	t.expectTrue(q0.addTransition('a', &q1));
+	t.expectTrue(q0.addTransition('b', &q2));
 
-	q1.addTransition('a', &q1);
-	q1.addTransition('b', &q0);
+	t.expectTrue(q1.addTransition('a', &q1));
+	t.expectTrue(q1.addTransition('b', &q0));
 
-	q2.addTransition('a', &q0);
-	q2.addTransition('b', &q1);
+	t.expectTrue(q2.addTransition('a', &q0));
+	t.expectTrue(q2.addTransition('b', &q1));
+	t.expectTrue(q2.addTransition('b', &q1));
+	t.expectFalse(q2.addTransition('b', &q2));
+
+	t.expectTrue(failState.addTransition('c', &q2));
 
 	// DFA
 	FA::DFA dfa;
-	std::cout << dfa.addAlphabet('a') << std::endl;
-	std::cout << dfa.addAlphabet('b') << std::endl;
+	t.expectTrue(dfa.addAlphabet('a'));
+	t.expectTrue(dfa.addAlphabet('b'));
 
-	std::cout << dfa.addState(q0) << std::endl;
-	std::cout << dfa.addState(q1) << std::endl;
-	std::cout << dfa.addState(q2) << std::endl;
+	t.expectTrue(dfa.addState(q0));
+	t.expectTrue(dfa.addState(q1));
+	t.expectTrue(dfa.addState(q2));
+	t.expectFalse(dfa.addState(failState));
 
-	std::cout << dfa;
+	t.expectFalse(dfa.process("a"));
+	t.expectTrue(dfa.process("b"));
 
-	/*
-	std::cout << "a" << std::endl;
-	std::cout << dfa.process("a") << std::endl;
-	std::cout << "b" << std::endl;
-	std::cout << dfa.process("b") << std::endl;
+	t.expectTrue(dfa.process("ab"));
+	t.expectTrue(dfa.process("ba"));
+	t.expectFalse(dfa.process("bb"));
 
-	std::cout << "ab" << std::endl;
-	std::cout << dfa.process("ab") << std::endl;
-	std::cout << "ba" << std::endl;
-	std::cout << dfa.process("ba") << std::endl;
-	std::cout << "aa" << std::endl;
-	std::cout << dfa.process("aa") << std::endl;
-	std::cout << "bb" << std::endl;
-	std::cout << dfa.process("bb") << std::endl;
+	t.expectFalse(dfa.process("aaa"));
+	t.expectTrue(dfa.process("aab"));
+	t.expectFalse(dfa.process("aba"));
+	t.expectTrue(dfa.process("abb"));
+	t.expectTrue(dfa.process("bbb"));
+	t.expectFalse(dfa.process("bba"));
+	t.expectTrue(dfa.process("bab"));
+	t.expectFalse(dfa.process("baa"));
 
-	std::cout << "aaa" << std::endl;
-	std::cout << dfa.process("aaa") << std::endl;
-	std::cout << "aab" << std::endl;
-	std::cout << dfa.process("aab") << std::endl;
-	std::cout << "aba" << std::endl;
-	std::cout << dfa.process("aba") << std::endl;
-	std::cout << "abb" << std::endl;
-	std::cout << dfa.process("abb") << std::endl;
-	std::cout << "bbb" << std::endl;
-	std::cout << dfa.process("bbb") << std::endl;
-	std::cout << "bba" << std::endl;
-	std::cout << dfa.process("bba") << std::endl;
-	std::cout << "bab" << std::endl;
-	std::cout << dfa.process("bab") << std::endl;
-	std::cout << "baa" << std::endl;
-	std::cout << dfa.process("baa") << std::endl;
-
-	std::cout << "" << std::endl;
-	std::cout << dfa.process("") << std::endl;
-	std::cout << "c" << std::endl;
-	std::cout << dfa.process("c") << std::endl;
-	std::cout << "ac" << std::endl;
-	std::cout << dfa.process("ac") << std::endl;
-	std::cout << "abc" << std::endl;
-	std::cout << dfa.process("abc") << std::endl;
-	*/
+	t.expectTrue(dfa.process(""));
+	t.expectFalse(dfa.process("c"));
+	t.expectFalse(dfa.process("ac"));
+	t.expectFalse(dfa.process("abc"));
 }
 
 void subsetConstructionTest(){
@@ -300,6 +288,6 @@ void subsetConstructionTest(){
 void DFAreadTest(){
 	FA::Test t("DFA Read");
 	FA::DFA dfa;
-	dfa.load("DFAexample.txt");
-	std::cout << dfa << std::endl;
+	//dfa.load("DFAexample.txt");
+	//std::cout << dfa << std::endl;
 }

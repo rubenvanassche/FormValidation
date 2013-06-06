@@ -65,8 +65,12 @@ std::string State::getName(){
 bool State::addLabel(std::string label){
 	if(std::find(this->fLabels.begin(), this->fLabels.end(), label) == this->fLabels.end()){
 		// Label not in vector so add
-		this->fLabels.push_back(label);
-		return true;
+		if(label.size() > 0){
+			this->fLabels.push_back(label);
+			return true;
+		}else{
+			return false;
+		}
 	}else{
 		// Label in vector
 		return false;
@@ -188,8 +192,12 @@ Arc::Arc(State* destination){
 bool Arc::addSymbol(char symbol){
 	if(std::find(this->fSymbols.begin(), this->fSymbols.end(), symbol) == this->fSymbols.end()){
 		// symbol not in vector so add
-		this->fSymbols.push_back(symbol);
-		return true;
+		if(symbol != '\0'){
+			this->fSymbols.push_back(symbol);
+			return true;
+		}else{
+			return false;
+		}
 	}else{
 		// Label in vector
 		return false;
@@ -303,6 +311,11 @@ State* DFA::process(char symbol, State* currentState){
 bool DFA::addState(State state){
 	// check if all the symbols from the arcs in the state are part of the alphabet
 	if(state.checkAlphabet(this->fAlphabet) == false){
+		return false;
+	}
+
+	// State must have at least one label
+	if(state.getLabel() == ""){
 		return false;
 	}
 
