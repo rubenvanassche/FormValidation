@@ -278,31 +278,6 @@ void subsetConstructionTest(){
 	t.expectFalse(dfa12->process("ac"));
 
 
-
-	// crashes
-	/*
-	eNFA *enfa13 = regexToNFA("(((0+(10))*)((1+(01))*))(0+<)");    //(0+10)*(1+01)*(0+e
-	SubsetConstruction sc15(enfa13);
-	DFA* dfa13 = (sc15.getDFA());
-	t.expectTrue(dfa13->process(""));
-	t.expectTrue(dfa13->process("0"));
-	t.expectTrue(dfa13->process("1"));
-	t.expectTrue(dfa13->process("01"));
-	t.expectTrue(dfa13->process("10"));
-	t.expectTrue(dfa13->process("001"));
-	t.expectTrue(dfa13->process("0011"));
-	t.expectFalse(dfa13->process("1100"));
-	t.expectTrue(dfa13->process("110"));
-	t.expectTrue(dfa13->process("0001001011010"));
-	t.expectFalse(dfa13->process("110001001011010"));
-	t.expectFalse(dfa13->process("001011001110"));
-	t.expectTrue(dfa13->process("00101001110"));
-	t.expectTrue(dfa13->process("0000000"));
-	t.expectTrue(dfa13->process("1111111"));
-	t.expectTrue(dfa13->process("000010001001010110111011110"));
-	*/
-
-
 	eNFA *enfa14 = regexToNFA("((ab)*)+((cd)*)");    //(ab)*+(cd)*
 	SubsetConstruction sc16(enfa14);
 	DFA* dfa14 = (sc16.getDFA());
@@ -320,4 +295,11 @@ void subsetConstructionTest(){
 	t.expectTrue(dfa14->process("cdcdcdcdcdcd"));
 
 
+}
+
+void DFAreadTest(){
+	FA::Test t("DFA Read");
+	FA::DFA dfa;
+	dfa.load("DFAexample.txt");
+	std::cout << dfa << std::endl;
 }

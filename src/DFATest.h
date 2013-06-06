@@ -17,5 +17,6 @@
 
 void stringControlTest();
 void subsetConstructionTest();
+void DFAreadTest();
 
 #endif /* DFATEST_H_ */

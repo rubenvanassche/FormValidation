@@ -379,6 +379,238 @@ void DFA::clearStates(){
 	this->fStates.clear();
 }
 
+void DFA::clear(){
+	this->clearStates();
+	this->fStartState = NULL;
+	this->fAlphabet.clear();
+}
+/*
+bool DFA::load(std::string filename){
+	const char *file = filename.c_str();
+
+	std::ifstream stream(file);
+	if(!stream.good()){
+		// File doesn't exists
+		std::cout << "DFA file bestaat niet" << std::endl;
+		return false;
+	}
+
+	std::string line;
+	int lineCounter = 1;
+
+	std::string::iterator it;
+
+	std::vector<std::string> states;
+	std::string startStateLabel = "";
+	std::vector<std::string> endingStates;
+
+	std::vector<State> finalStates;
+	std::vector<State>::iterator stateIt;
+
+
+	while(std::getline(stream, line)){
+		if(lineCounter == 1){
+			// We are reading the alphabet
+			std::vector<char> alphabet;
+
+			bool letter = true;
+
+			for(it = line.begin();it != line.end();it++){
+				if(letter == true){
+					// There should be a letter here
+					if(*it != ' ' or *it != '\0' or *it != '\n'){
+						alphabet.push_back(*it);
+					}else{
+						std::cout << "Hier moet een letter staan" << std::endl;
+					}
+					letter = false;
+				}else{
+					// There should be a space here
+					if(*it == ' ' or *it == '\0' or *it == '\n'){
+						letter = true;
+						continue;
+					}else{
+						std::cout << "Hier moet een spatie staan" << std::endl;
+					}
+				}
+			}
+
+			this->fAlphabet = alphabet;
+		}else if(lineCounter == 3){
+			// We are reading the states
+			std::vector<std::string> fileStates;
+			std::string newState;
+			for(it = line.begin();it != line.end();it++){
+				if(*it == ' ' or *it == '\n'){
+					fileStates.push_back(newState);
+					newState = "";
+				}else if(*it == '\0'){
+					// Do nothing
+				}else{
+					newState += *it;
+				}
+			}
+
+			// Add those states to the states vector
+			for(unsigned int i = 0;i < fileStates.size();i++){
+				states.push_back(fileStates.at(i));
+			}
+		}else if(lineCounter == 5){
+			// We're reading the start state
+			std::string startState;
+
+			for(it = line.begin();it != line.end();it++){
+				if(*it != ' ' or *it != '\0' or *it != '\n'){
+					startState += *it;
+				}
+			}
+
+			if(startState.size() == 0){
+				std::cout << "Er kan geen automaat gemaakt worden zonder start staat" << std::endl;
+				return false;
+			}
+
+			if(std::find(states.begin(), states.end(), startState) == states.end()){
+				std::cout << "De start staat bestaat niet" << std::endl;
+				return false;
+			}
+			startStateLabel = startState;
+		}else if(lineCounter == 7){
+			// We're reading the ending states
+			std::vector<std::string> fileStates;
+			std::string newState;
+			for(it = line.begin();it != line.end();it++){
+				if(*it == ' ' or *it == '\n'){
+					fileStates.push_back(newState);
+					newState = "";
+				}else if(*it == '\0'){
+					// Do nothing
+				}else{
+					newState += *it;
+				}
+			}
+
+			// Add those states to the states vector
+			for(unsigned int i = 0;i < fileStates.size();i++){
+				endingStates.push_back(fileStates.at(i));
+			}
+		}else if(lineCounter == 8){
+			// Make the states
+			for(unsigned int i = 0;i < states.size();i++){
+				std::string stateLabel = states.at(i);
+
+				State *q;
+				if(stateLabel == startStateLabel){
+					// It's the start state
+					State Q(false, true);
+					q = &Q;
+				}else{
+					// Just another state
+					State Q(false, false);
+					q = &Q;
+				}
+
+				// Is this q ending?
+				if(std::find(endingStates.begin(), endingStates.end(), stateLabel) != endingStates.end()){
+					// Jup
+					q->makeEnding();
+				}
+
+				q->addLabel(stateLabel);
+
+				finalStates.push_back(*q);
+			}
+
+			// add them to the DFA
+			this->fStates.clear();
+			this->fStates = finalStates;
+
+		}else if(lineCounter > 8){
+			// We're reading the arcs
+			std::string state1;
+			std::string state2;
+			char symbol;
+
+			int delimiterCounter = 0;
+
+			for(it = line.begin();it != line.end();it++){
+				if(delimiterCounter == 0){
+					// Read the first state
+					if(*it == ' ' or *it == '\n'){
+						delimiterCounter++;
+					}else{
+						state1 += *it;
+					}
+				}else if(delimiterCounter == 1){
+					// We're reading the second state
+					if(*it == ' ' or *it == '\n'){
+						delimiterCounter++;
+					}else{
+						state2 += *it;
+					}
+				}else if(delimiterCounter == 2){
+					if(*it != ' ' or *it != '\0' or *it != '\n'){
+						symbol = *it;
+						break;
+					}
+				}
+			}
+
+			if(std::find(states.begin(), states.end(), state1) == states.end()){
+				std::cout << "De 1ste staat bestaat niet bij transities" << std::endl;
+				continue;
+			}
+
+			if(std::find(states.begin(), states.end(), state2) == states.end()){
+				std::cout << "De 2de staat bestaat niet bij transities" << std::endl;
+				continue;
+			}
+
+			if(symbol == '\0' or symbol == ' ' or symbol == '\n'){
+				std::cout << "Geen geldig symbool" << std::endl;
+				continue;
+			}
+
+			State* first;
+			State* second;
+
+			// Now find the first state
+			for(stateIt = this->fStates.begin();stateIt != this->fStates.end();stateIt++){
+				if(stateIt->hasLabel(state1)){
+					first = &(*stateIt);
+					continue;
+				}
+
+				if(stateIt->hasLabel(state2)){
+					second = &(*stateIt);
+					continue;
+				}
+			}
+
+			std::cout << "Add transition from " << first->getName() << " => " << second->getName() << "  via" << symbol << std::endl;
+
+			if(first->addTransition(symbol, second) == false){
+				std::cout << "Er ging iets mis bij het toevoegen van de transitie van" << first->getName() << " => " << second->getName() << " met " << symbol << std::endl;
+			}
+		}
+
+		lineCounter++;
+	}
+
+	for(stateIt = finalStates.begin();stateIt != finalStates.end();stateIt++){
+		if(this->addState(*stateIt) == false){
+			std::cout << "Er ging iets mis bij het toevoegen van de staat " << stateIt->getName() << std::endl;
+		}
+	}
+
+	return true;
+}
+
+bool DFA::save(std::string filename){
+
+}
+*/
+
 State* DFA::findStartState(){
 	std::vector<State>::iterator it;
 	for(it = this->fStates.begin();it != this->fStates.end();it++){

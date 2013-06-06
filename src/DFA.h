@@ -12,6 +12,7 @@
 #include <string>
 #include <iostream>
 #include <algorithm>
+#include <fstream>
 
 namespace FA {
 
@@ -324,7 +325,32 @@ public:
 	 */
 	void clearStates();
 
-	std::vector<State> fStates;
+	/**
+	 * @brief Clears the states, startstate, transitions in the DFA
+	 */
+	void clear();
+
+	/*
+	/**
+	 * @brief Read's a DFA file and makes one based upon this file
+	 *
+	 * @param string The file to be loaded
+	 *
+	 * @return bool True if success
+	 */
+	//bool load(std::string filename);
+
+	/**
+	 * @brief Save the DFA in a file
+	 *
+	 * @param string The filename of the file
+	 *
+	 * @return bool True if success
+	 */
+	//bool save(std::string filename);
+
+
+	std::vector<State> fStates; // States in the DFA
 private:
 	/**
 	 * @brief Find a start state in the vector of states
